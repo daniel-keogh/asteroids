@@ -4,8 +4,8 @@ using UnityEngine;
 
 public class WrapAround : MonoBehaviour
 {
-    [SerializeField] private float sceneHeight = 13.2f;
-    [SerializeField] private float sceneWidth = 16.7f;
+    [SerializeField] private float sceneHeight;
+    [SerializeField] private float sceneWidth;
 
     void Update()
     {

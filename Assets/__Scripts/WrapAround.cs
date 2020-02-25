@@ -4,22 +4,35 @@ using UnityEngine;
 
 public class WrapAround : MonoBehaviour
 {
-    [SerializeField] private float sceneHeight;
-    [SerializeField] private float sceneWidth;
+    private Vector3 sceneHeight, sceneWidth;
+    private Vector2 viewport;
+
+    void Start()
+    {
+        viewport = Camera.main.ViewportToWorldPoint(new Vector2(1, 1));
+
+        sceneHeight = new Vector2(0, viewport.y * 2);
+        sceneWidth = new Vector2(viewport.x * 2, 0);
+    }
 
     void Update()
     {
-        var position = new Vector2(transform.position.x, transform.position.y);
-
-        if (transform.position.y > sceneHeight || transform.position.y < -sceneHeight)
+        if (transform.position.y > viewport.y)
         {
-            position.y = -transform.position.y;
+            transform.position -= sceneHeight;
         }
-        if (transform.position.x > sceneWidth || transform.position.x < -sceneWidth)
+        else if (transform.position.y < -viewport.y)
         {
-            position.x = -transform.position.x;
+            transform.position += sceneHeight;
         }
 
-        transform.position = position;
+        if (transform.position.x > viewport.x)
+        {
+            transform.position -= sceneWidth;
+        }
+        else if (transform.position.x < -viewport.x)
+        {
+            transform.position += sceneWidth;
+        }
     }
 }

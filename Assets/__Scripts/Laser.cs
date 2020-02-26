@@ -4,4 +4,10 @@ using UnityEngine;
 
 [RequireComponent(typeof(Rigidbody2D))]
 [RequireComponent(typeof(BoxCollider2D))]
-public class Laser : MonoBehaviour { }
+public class Laser : MonoBehaviour
+{
+    public void OnBecameInvisible()
+    {
+        Destroy(gameObject);
+    }
+}

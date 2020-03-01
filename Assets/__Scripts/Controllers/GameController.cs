@@ -34,6 +34,6 @@ public class GameController : MonoBehaviour
     private void UpdateScore()
     {
         // Display on screen
-        scoreText.text = playerScore.ToString();
+        scoreText.text = "Score: " + playerScore.ToString();
     }
 }

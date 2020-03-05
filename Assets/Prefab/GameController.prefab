@@ -43,4 +43,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7faed0665b581b54f8b316df7ebfebff, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  startingLives: 3
   scoreText: {fileID: 0}

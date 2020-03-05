@@ -723,18 +723,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 258723198, guid: 5c41003f4ff47bf40b9b68b941e3a9d4, type: 3}
-      propertyPath: m_AnchoredPosition.x
-      value: -412
-      objectReference: {fileID: 0}
-    - target: {fileID: 258723198, guid: 5c41003f4ff47bf40b9b68b941e3a9d4, type: 3}
-      propertyPath: m_AnchoredPosition.y
-      value: 359
-      objectReference: {fileID: 0}
-    - target: {fileID: 258723199, guid: 5c41003f4ff47bf40b9b68b941e3a9d4, type: 3}
-      propertyPath: m_enableVertexGradient
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 8138106054076217056, guid: 5c41003f4ff47bf40b9b68b941e3a9d4,
         type: 3}
       propertyPath: m_Name

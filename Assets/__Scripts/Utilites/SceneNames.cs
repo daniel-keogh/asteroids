@@ -6,7 +6,7 @@ namespace Utilities
 {
     public class SceneNames
     {
-        public const string MAIN_MENU = "MainMenuScene";
+        public const string MAIN_MENU = "MainMenu";
         public const string GAME_SCENE = "GameScene";
     }
 }

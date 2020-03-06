@@ -15,4 +15,11 @@ public class SceneController : MonoBehaviour
     {
         SceneManager.LoadSceneAsync(SceneNames.MAIN_MENU);
     }
+
+    public void QuitOnClick()
+    {
+        // UnityEditor.EditorApplication.isPlaying = false;
+
+        Application.Quit();
+    }
 }

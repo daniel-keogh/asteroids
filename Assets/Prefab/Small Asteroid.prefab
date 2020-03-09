@@ -14,8 +14,9 @@ GameObject:
   - component: {fileID: 8182805982248106572}
   - component: {fileID: 8182805982248106568}
   - component: {fileID: 8182805982248106611}
+  - component: {fileID: 4450254302817275759}
   m_Layer: 0
-  m_Name: small_asteroid
+  m_Name: Small Asteroid
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -173,5 +174,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8a4945a185a7f6142b3057558d3f0825, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  sceneHeight: 12.38
-  sceneWidth: 16.33
+--- !u!114 &4450254302817275759
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8182805982248106569}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8a0b671df042740488679b6b70313335, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  scoreValue: 0

@@ -27,17 +27,21 @@ public class GameController : MonoBehaviour
         UpdateScore();
     }
 
-    private void SetupSingleton()
+    private void OnEnable()
     {
-        // Check for any other objects of the same type
-        if (FindObjectsOfType(GetType()).Length > 1)
-        {
-            Destroy(gameObject); // destroy the current object
-        }
-        else
-        {
-            DontDestroyOnLoad(gameObject); // persist across scenes
-        }
+        Asteroid.EnemyKilledEvent += OnEnemyKilledEvent;
+    }
+
+    private void OnDisable()
+    {
+        Asteroid.EnemyKilledEvent -= OnEnemyKilledEvent;
+    }
+
+    private void OnEnemyKilledEvent(Asteroid asteroid)
+    {
+        // add the score value for the enemy to the player score
+        playerScore += asteroid.ScoreValue;
+        UpdateScore();
     }
 
     private void UpdateScore()
@@ -49,5 +53,18 @@ public class GameController : MonoBehaviour
     public void LoseOneLife()
     {
         remainingLives--;
+    }
+
+    private void SetupSingleton()
+    {
+        // Check for any other objects of the same type
+        if (FindObjectsOfType(GetType()).Length > 1)
+        {
+            Destroy(gameObject); // destroy the current object
+        }
+        else
+        {
+            DontDestroyOnLoad(gameObject); // persist across scenes
+        }
     }
 }

@@ -664,25 +664,26 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 6723512523177929432, guid: e63c05d93fca9f449b75fab85715bce4,
-        type: 3}
-      propertyPath: m_SortingOrder
+    - target: {fileID: 1653570243, guid: e63c05d93fca9f449b75fab85715bce4, type: 3}
+      propertyPath: m_IsActive
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1653570246, guid: e63c05d93fca9f449b75fab85715bce4, type: 3}
+      propertyPath: EmissionModule.enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1653570246, guid: e63c05d93fca9f449b75fab85715bce4, type: 3}
+      propertyPath: playOnAwake
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1653570246, guid: e63c05d93fca9f449b75fab85715bce4, type: 3}
+      propertyPath: prewarm
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6723512523177929433, guid: e63c05d93fca9f449b75fab85715bce4,
         type: 3}
       propertyPath: m_Name
       value: Player Ship
-      objectReference: {fileID: 0}
-    - target: {fileID: 6723512523177929434, guid: e63c05d93fca9f449b75fab85715bce4,
-        type: 3}
-      propertyPath: m_UseAutoMass
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 6723512523177929434, guid: e63c05d93fca9f449b75fab85715bce4,
-        type: 3}
-      propertyPath: m_Mass
-      value: 1.9818242
       objectReference: {fileID: 0}
     - target: {fileID: 6723512523177929435, guid: e63c05d93fca9f449b75fab85715bce4,
         type: 3}
@@ -737,11 +738,6 @@ PrefabInstance:
     - target: {fileID: 6723512523177929435, guid: e63c05d93fca9f449b75fab85715bce4,
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6723512523177929436, guid: e63c05d93fca9f449b75fab85715bce4,
-        type: 3}
-      propertyPath: m_IsTrigger
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []

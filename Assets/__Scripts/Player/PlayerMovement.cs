@@ -8,6 +8,7 @@ public class PlayerMovement : MonoBehaviour
 {
     private Rigidbody2D rb;
     private float forward, rotation;
+    private ParticleSystem thrusters;
 
     [SerializeField] private float forwardSpeed = 8.0f;
     [SerializeField] private float rotationSpeed = 5.0f;
@@ -15,12 +16,23 @@ public class PlayerMovement : MonoBehaviour
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
+        thrusters = GetComponentInChildren<ParticleSystem>();
     }
 
     void Update()
     {
-        forward = Input.GetAxis("Vertical");
         rotation = Input.GetAxis("Horizontal");
+        forward = Input.GetAxis("Vertical");
+
+        // Enable/Disable the thruster ParticleEffect
+        if (thrusters && forward > 0)
+        {
+            thrusters.Play();
+        }
+        else
+        {
+            thrusters.Stop();
+        }
     }
 
     void FixedUpdate()

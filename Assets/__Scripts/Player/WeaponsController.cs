@@ -10,6 +10,7 @@ public class WeaponsController : MonoBehaviour
 
     [SerializeField] private float laserSpeed = 20.0f;
     [SerializeField] private float fireRate = 0.3f;
+    [SerializeField] private Transform turretTransform;
     [SerializeField] private Laser laserPrefab;
     [SerializeField] private AudioClip shootClip;
     [SerializeField] [Range(0f, 1.0f)] private float shootVolume = 0.5f;
@@ -43,7 +44,7 @@ public class WeaponsController : MonoBehaviour
         while (true)
         {
             Laser laser = Instantiate(laserPrefab, laserParent.transform);
-            laser.transform.position = transform.position;
+            laser.transform.position = turretTransform.position;
             // Face the same direction as the player
             laser.transform.rotation = transform.rotation;
 

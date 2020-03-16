@@ -5,10 +5,20 @@ using UnityEngine;
 public class Asteroid : MonoBehaviour
 {
     [SerializeField] private int scoreValue;
-    [SerializeField] private AsteroidSize currentSize;
+    [SerializeField] private Asteroid breaksInto;
+    [SerializeField] private int numHitsBeforeDesroy;
+    [SerializeField] private GameObject destroyEffect;
+    [SerializeField] private float destroyEffectDuration;
+    [SerializeField] private GameObject hitEffect;
+    [SerializeField] private float hitEffectDuration;
+
+    private int numHits;
 
     // Used from GameController enemy.ScoreValue
-    public int ScoreValue { get { return scoreValue; } }
+    public int ScoreValue
+    {
+        get { return scoreValue; }
+    }
 
     // Delegate type to use for event
     public delegate void EnemyKilled(Asteroid asteroid);
@@ -18,7 +28,6 @@ public class Asteroid : MonoBehaviour
 
     void Start()
     {
-        currentSize = AsteroidSize.Large;
     }
 
     private void OnTriggerEnter2D(Collider2D other)
@@ -29,8 +38,25 @@ public class Asteroid : MonoBehaviour
         {
             Destroy(laser.gameObject);
 
+            if (breaksInto)
+            {
+                if (++numHits < numHitsBeforeDesroy)
+                {
+                    // show some kind of feedback indicating it was hit
+
+                    return;
+                }
+                else
+                {
+                    Instantiate(breaksInto, transform.position, transform.rotation);
+                    Instantiate(breaksInto, transform.position, transform.rotation);
+                }
+            }
+
             PublishEnemyKilledEvent();
 
+            GameObject explosion = Instantiate(destroyEffect, transform.position, transform.rotation);
+            Destroy(explosion, destroyEffectDuration);
             Destroy(gameObject);
         }
     }

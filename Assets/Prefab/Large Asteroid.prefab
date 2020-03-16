@@ -30,7 +30,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2646086979634312365}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -5.75, y: 5.27, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -222,4 +222,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   scoreValue: 20
-  currentSize: 2
+  breaksInto: {fileID: 7458207695300214454, guid: 2fe7ff5042949214eba7c8fc2c27a5e4,
+    type: 3}
+  numHitsBeforeDesroy: 3
+  destroyEffect: {fileID: 5456398976044202209, guid: 37deeb9da4879714a82b1b6f93f18260,
+    type: 3}
+  destroyEffectDuration: 1
+  hitEffect: {fileID: 0}
+  hitEffectDuration: 0.1

@@ -46,11 +46,14 @@ public class PauseController : MonoBehaviour
     public void QuitToMainMenu()
     {
         var sc = FindObjectOfType<SceneController>();
+        var gc = FindObjectOfType<GameController>();
 
-        if (sc)
+        if (sc && gc)
         {
             Time.timeScale = 1;
             sc.GoToMainMenu();
+
+            Destroy(gc);
         }
     }
 }

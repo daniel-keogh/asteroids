@@ -585,7 +585,8 @@ PrefabInstance:
       propertyPath: m_Name
       value: Large Asteroid
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 1852539514, guid: a35df115022433b4aad3a51ede1c2b2b, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: a35df115022433b4aad3a51ede1c2b2b, type: 3}
 --- !u!1001 &4301901769909562380
 PrefabInstance:
@@ -1029,6 +1030,14 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 117893489, guid: 5c41003f4ff47bf40b9b68b941e3a9d4, type: 3}
+      propertyPath: m_ChildControlWidth
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 117893489, guid: 5c41003f4ff47bf40b9b68b941e3a9d4, type: 3}
+      propertyPath: m_ChildControlHeight
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 2377776379142868310, guid: 5c41003f4ff47bf40b9b68b941e3a9d4,
         type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target

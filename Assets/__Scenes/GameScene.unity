@@ -422,6 +422,22 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   disableRotation: 0
+--- !u!114 &1574885578
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1574885576}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dc984073b3b70724dbf99729ce0ddea0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  explosionEffect: {fileID: 1534296265662101853, guid: 1b3e1fa6f8edd0d468e5b4a9aaac7178,
+    type: 3}
+  explosionDuration: 1
+  timeToRepawn: 3
 --- !u!1 &1636838124 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 1636838124, guid: 5c41003f4ff47bf40b9b68b941e3a9d4,
@@ -929,7 +945,8 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 1574885577, guid: e63c05d93fca9f449b75fab85715bce4, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: e63c05d93fca9f449b75fab85715bce4, type: 3}
 --- !u!1001 &7680037250508728539
 PrefabInstance:

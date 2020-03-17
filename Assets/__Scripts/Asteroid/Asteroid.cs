@@ -22,10 +22,10 @@ public class Asteroid : MonoBehaviour
     }
 
     // Delegate type to use for event
-    public delegate void EnemyKilled(Asteroid asteroid);
+    public delegate void AsteroidDestroyed(Asteroid asteroid);
 
     // Static method to be implemented in the listener
-    public static EnemyKilled EnemyKilledEvent;
+    public static AsteroidDestroyed AsteroidDestroyedEvent;
 
     void Start()
     {
@@ -55,21 +55,10 @@ public class Asteroid : MonoBehaviour
                 }
             }
 
-            PublishEnemyKilledEvent();
+            PublishAsteroidDestroyedEvent();
 
             GameObject explosion = Instantiate(destroyEffect, transform.position, transform.rotation);
             Destroy(explosion, destroyEffectDuration);
-            Destroy(gameObject);
-        }
-    }
-
-    private void OnCollisionEnter2D(Collision2D other)
-    {
-        var player = other.collider.GetComponent<PlayerMovement>();
-
-        if (player)
-        {
-            Destroy(player.gameObject);
             Destroy(gameObject);
         }
     }
@@ -83,12 +72,12 @@ public class Asteroid : MonoBehaviour
         spriteRenderer.material.color = Color.white;
     }
 
-    private void PublishEnemyKilledEvent()
+    private void PublishAsteroidDestroyedEvent()
     {
         // Make sure somebody is listening
-        if (EnemyKilledEvent != null)
+        if (AsteroidDestroyedEvent != null)
         {
-            EnemyKilledEvent(this);
+            AsteroidDestroyedEvent(this);
         }
     }
 }

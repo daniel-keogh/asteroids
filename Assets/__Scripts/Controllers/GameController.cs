@@ -10,6 +10,11 @@ public class GameController : MonoBehaviour
         get { return startingLives; }
     }
 
+    public int RemainingLives
+    {
+        get { return remainingLives; }
+    }
+
     private int playerScore = 0;
     private int remainingLives;
     [SerializeField] private int startingLives = 3;
@@ -29,19 +34,26 @@ public class GameController : MonoBehaviour
 
     private void OnEnable()
     {
-        Asteroid.EnemyKilledEvent += OnEnemyKilledEvent;
+        Asteroid.AsteroidDestroyedEvent += OnAsteroidDestroyedEvent;
+        Player.PlayerKilledEvent += OnPlayerKilledEvent;
     }
 
     private void OnDisable()
     {
-        Asteroid.EnemyKilledEvent -= OnEnemyKilledEvent;
+        Asteroid.AsteroidDestroyedEvent -= OnAsteroidDestroyedEvent;
+        Player.PlayerKilledEvent -= OnPlayerKilledEvent;
     }
 
-    private void OnEnemyKilledEvent(Asteroid asteroid)
+    private void OnAsteroidDestroyedEvent(Asteroid asteroid)
     {
         // add the score value for the enemy to the player score
         playerScore += asteroid.ScoreValue;
         UpdateScore();
+    }
+
+    private void OnPlayerKilledEvent(Player player)
+    {
+        LoseOneLife();
     }
 
     private void UpdateScore()

@@ -255,7 +255,7 @@ PrefabInstance:
         type: 3}
       propertyPath: scoreText
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 3605300634378587948}
     - target: {fileID: 7680037249322081370, guid: 27183e16ea321cd4dbfd62e226df3a96,
         type: 3}
       propertyPath: m_Name
@@ -527,6 +527,11 @@ PrefabInstance:
       propertyPath: m_Pivot.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3605300634106856846, guid: 90c62a58c2dfc654893adfe7606e5046,
+        type: 3}
+      propertyPath: m_Name
+      value: Score
+      objectReference: {fileID: 0}
     - target: {fileID: 7063696459715582187, guid: 90c62a58c2dfc654893adfe7606e5046,
         type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
@@ -599,3 +604,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 90c62a58c2dfc654893adfe7606e5046, type: 3}
+--- !u!114 &3605300634378587948 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 3605300634106856844, guid: 90c62a58c2dfc654893adfe7606e5046,
+    type: 3}
+  m_PrefabInstance: {fileID: 3605300634378587947}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

@@ -42,6 +42,7 @@ public class GameController : MonoBehaviour
         // add the score value for the enemy to the player score
         playerScore += asteroid.ScoreValue;
         UpdateScore();
+        LoseOneLife();
     }
 
     private void UpdateScore()
@@ -56,7 +57,8 @@ public class GameController : MonoBehaviour
 
         if (remainingLives == 0)
         {
-
+            var sc = FindObjectOfType<SceneController>();
+            sc?.GameOver();
         }
     }
 

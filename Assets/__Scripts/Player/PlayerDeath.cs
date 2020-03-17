@@ -18,10 +18,10 @@ public class PlayerDeath : MonoBehaviour
 
     private void OnDestroy()
     {
-        GameObject explosion = Instantiate(explosionEffect, transform.position, transform.rotation);
-        Destroy(explosion, explosionDuration);
+        // GameObject explosion = Instantiate(explosionEffect, transform.position, transform.rotation);
+        // Destroy(explosion, explosionDuration);
 
-        Invoke("Repawn", timeToRepawn);
+        // Invoke("Repawn", timeToRepawn);
     }
 
     private void Respawn()

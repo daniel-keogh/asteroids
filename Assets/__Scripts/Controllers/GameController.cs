@@ -53,6 +53,11 @@ public class GameController : MonoBehaviour
     public void LoseOneLife()
     {
         remainingLives--;
+
+        if (remainingLives == 0)
+        {
+
+        }
     }
 
     private void SetupSingleton()

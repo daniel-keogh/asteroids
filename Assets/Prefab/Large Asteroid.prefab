@@ -15,6 +15,7 @@ GameObject:
   - component: {fileID: 2646086979634312361}
   - component: {fileID: 2646086979634312342}
   - component: {fileID: 8261654414769820204}
+  - component: {fileID: 1852539514}
   m_Layer: 0
   m_Name: Large Asteroid
   m_TagString: Untagged
@@ -228,5 +229,17 @@ MonoBehaviour:
   destroyEffect: {fileID: 5456398976044202209, guid: 37deeb9da4879714a82b1b6f93f18260,
     type: 3}
   destroyEffectDuration: 1
-  hitEffect: {fileID: 0}
-  hitEffectDuration: 0.1
+  hitEffectColor: {r: 1, g: 0.67058825, b: 0.56078434, a: 1}
+  hitEffectDuration: 0.15
+--- !u!114 &1852539514
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2646086979634312365}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8bd026b4f87304044800b2fb6039ced1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

@@ -199,5 +199,5 @@ MonoBehaviour:
   destroyEffect: {fileID: 5456398976044202209, guid: 37deeb9da4879714a82b1b6f93f18260,
     type: 3}
   destroyEffectDuration: 1
-  hitEffect: {fileID: 0}
-  hitEffectDuration: 0.1
+  hitEffectColor: {r: 1, g: 0.67058825, b: 0.56078434, a: 1}
+  hitEffectDuration: 0.15

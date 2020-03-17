@@ -4797,9 +4797,10 @@ GameObject:
   - component: {fileID: 6723512523177929436}
   - component: {fileID: 902871887}
   - component: {fileID: 6723512523177929437}
-  - component: {fileID: 1574885577}
   - component: {fileID: 6723512523177929439}
   - component: {fileID: 352865369}
+  - component: {fileID: 1574885577}
+  - component: {fileID: 5829934110347238549}
   m_Layer: 0
   m_Name: Player Ship
   m_TagString: Untagged
@@ -5076,21 +5077,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   forwardSpeed: 8
   rotationSpeed: 5
---- !u!114 &1574885577
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6723512523177929433}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 11dec9c9efc2c3744bf59f71c36d3d0f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  explosionEffect: {fileID: 1534296265662101853, guid: 1b3e1fa6f8edd0d468e5b4a9aaac7178,
-    type: 3}
-  explosionDuration: 1
 --- !u!114 &6723512523177929439
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5121,3 +5107,32 @@ MonoBehaviour:
   laserPrefab: {fileID: 2102178937, guid: 5f94e9263b777894c91d32ff667e52a5, type: 3}
   shootClip: {fileID: 8300000, guid: e3252be42181bbb45a8ad1dd83cb2359, type: 3}
   shootVolume: 0.5
+--- !u!114 &1574885577
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6723512523177929433}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 11dec9c9efc2c3744bf59f71c36d3d0f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  explosionEffect: {fileID: 1534296265662101853, guid: 1b3e1fa6f8edd0d468e5b4a9aaac7178,
+    type: 3}
+  explosionDuration: 1
+  timeToRepawn: 3
+--- !u!114 &5829934110347238549
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6723512523177929433}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3e792e20b5a87bd488a02bbbb58182c7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  disableRotation: 0

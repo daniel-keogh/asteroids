@@ -381,12 +381,13 @@ MonoBehaviour:
   m_GameObject: {fileID: 1574885576}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 11dec9c9efc2c3744bf59f71c36d3d0f, type: 3}
+  m_Script: {fileID: 11500000, guid: 3e792e20b5a87bd488a02bbbb58182c7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  explosionEffect: {fileID: 1534296265662101853, guid: 1b3e1fa6f8edd0d468e5b4a9aaac7178,
-    type: 3}
-  explosionDuration: 1
+  maxRandomPos: 10
+  minRandomPos: -10
+  minRotate: -360
+  maxRotate: 360
 --- !u!1001 &247121872826093500
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -468,11 +469,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 2646086979634312362, guid: a35df115022433b4aad3a51ede1c2b2b,
-        type: 3}
-      propertyPath: m_Color.a
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 2646086979634312363, guid: a35df115022433b4aad3a51ede1c2b2b,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -754,6 +750,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Player Ship
       objectReference: {fileID: 0}
+    - target: {fileID: 6723512523177929434, guid: e63c05d93fca9f449b75fab85715bce4,
+        type: 3}
+      propertyPath: m_Constraints
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 6723512523177929435, guid: e63c05d93fca9f449b75fab85715bce4,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -809,8 +810,7 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    m_RemovedComponents:
-    - {fileID: 1574885577, guid: e63c05d93fca9f449b75fab85715bce4, type: 3}
+    m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e63c05d93fca9f449b75fab85715bce4, type: 3}
 --- !u!1001 &7680037250508728539
 PrefabInstance:

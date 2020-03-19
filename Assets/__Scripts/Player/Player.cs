@@ -2,6 +2,8 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+[RequireComponent(typeof(PolygonCollider2D))]
+[RequireComponent(typeof(Rigidbody2D))]
 public class Player : MonoBehaviour
 {
     [Header("Player Death")]
@@ -25,13 +27,17 @@ public class Player : MonoBehaviour
     private void OnCollisionEnter2D(Collision2D other)
     {
         var asteroid = other.collider.GetComponent<Asteroid>();
+        var ufo = other.collider.GetComponent<UFO>();
 
-        if (asteroid)
+        if (asteroid || ufo)
         {
-            Destroy(asteroid.gameObject);
+            Destroy(other.gameObject);
 
-            GameObject explosion = Instantiate(explosionEffect, transform.position, transform.rotation);
-            Destroy(explosion, explosionDuration);
+            if (explosionEffect)
+            {
+                GameObject explosion = Instantiate(explosionEffect, transform.position, transform.rotation);
+                Destroy(explosion, explosionDuration);
+            }
 
             gameObject.SetActive(false);
             Invoke("Respawn", timeToRepawn);

@@ -33,10 +33,16 @@ public class WeaponsController : MonoBehaviour
         {
             firingCoroutine = StartCoroutine(FireCoroutine());
         }
+
         if (Input.GetKeyUp(KeyCode.Space))
         {
-            StopCoroutine(firingCoroutine);
+            StopFireCoroutine();
         }
+    }
+
+    private void OnDisable()
+    {
+        StopFireCoroutine();
     }
 
     private IEnumerator FireCoroutine()
@@ -57,6 +63,14 @@ public class WeaponsController : MonoBehaviour
 
             // Sleep for a short time
             yield return new WaitForSeconds(fireRate);
+        }
+    }
+
+    private void StopFireCoroutine()
+    {
+        if (firingCoroutine != null)
+        {
+            StopCoroutine(firingCoroutine);
         }
     }
 }

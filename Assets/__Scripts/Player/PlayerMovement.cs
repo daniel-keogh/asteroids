@@ -44,4 +44,12 @@ public class PlayerMovement : MonoBehaviour
         rotation = rotation * rotationSpeed;
         rb.AddTorque(-rotation);
     }
+
+    private void OnDisable()
+    {
+        if (thrusters)
+        {
+            thrusters.Stop();
+        }
+    }
 }

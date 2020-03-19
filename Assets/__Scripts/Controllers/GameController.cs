@@ -79,9 +79,4 @@ public class GameController : MonoBehaviour
             DontDestroyOnLoad(gameObject); // persist across scenes
         }
     }
-
-    public void ResetGame()
-    {
-        Destroy(gameObject);
-    }
 }

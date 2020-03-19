@@ -20,40 +20,30 @@ public class PauseController : MonoBehaviour
         {
             if (IsPaused)
             {
-                Resume();
+                SetPaused(false);
             }
             else
             {
-                Pause();
+                SetPaused(true);
             }
         }
     }
 
-    public void Pause()
+    public void SetPaused(bool status)
     {
-        Time.timeScale = 0;
-        pauseMenu.SetActive(true);
-        IsPaused = true;
-    }
-
-    public void Resume()
-    {
-        Time.timeScale = 1;
-        pauseMenu.SetActive(false);
-        IsPaused = false;
+        Time.timeScale = status ? 0 : 1; // stop/start time
+        pauseMenu.SetActive(status); // show the pause menu UI
+        IsPaused = status;
     }
 
     public void QuitToMainMenu()
     {
         var sc = FindObjectOfType<SceneController>();
-        var gc = FindObjectOfType<GameController>();
 
-        if (sc && gc)
+        if (sc)
         {
             Time.timeScale = 1;
             sc.GoToMainMenu();
-
-            Destroy(gc);
         }
     }
 }

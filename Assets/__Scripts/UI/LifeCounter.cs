@@ -21,7 +21,7 @@ public class LifeCounter : MonoBehaviour
             remainingLives = gc.StartingLives;
             lifeIcons = new Stack<LifeIcon>(remainingLives);
 
-            CreateIcons();
+            SetupIcons();
         }
     }
 
@@ -42,7 +42,7 @@ public class LifeCounter : MonoBehaviour
         }
     }
 
-    private void CreateIcons()
+    private void SetupIcons()
     {
         // Show the appropriate number of hearts on the screen
         for (int i = 0; i < remainingLives; i++)

@@ -8,7 +8,13 @@ public class SceneController : MonoBehaviour
 {
     public void PlayOnClick()
     {
-        FindObjectOfType<GameController>()?.ResetGame();
+        // Reset the GameController singleton before re-playing.
+        var gc = FindObjectOfType<GameController>();
+
+        if (gc)
+        {
+            Destroy(gc.gameObject);
+        }
 
         SceneManager.LoadSceneAsync(SceneNames.GAME_SCENE);
     }

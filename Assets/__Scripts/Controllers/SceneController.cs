@@ -8,6 +8,8 @@ public class SceneController : MonoBehaviour
 {
     public void PlayOnClick()
     {
+        FindObjectOfType<GameController>()?.ResetGame();
+
         SceneManager.LoadSceneAsync(SceneNames.GAME_SCENE);
     }
 

@@ -1,7 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using TMPro;
 
 public class GameController : MonoBehaviour
 {
@@ -15,10 +14,15 @@ public class GameController : MonoBehaviour
         get { return remainingLives; }
     }
 
+    public int PlayerScore
+    {
+        get { return playerScore; }
+    }
+
     private int playerScore = 0;
     private int remainingLives;
+
     [SerializeField] private int startingLives = 3;
-    [SerializeField] private TextMeshProUGUI scoreText;
 
     void Awake()
     {
@@ -28,8 +32,6 @@ public class GameController : MonoBehaviour
     void Start()
     {
         remainingLives = startingLives;
-
-        UpdateScore();
     }
 
     private void OnEnable()
@@ -48,18 +50,11 @@ public class GameController : MonoBehaviour
     {
         // add the score value for the enemy to the player score
         playerScore += asteroid.ScoreValue;
-        UpdateScore();
     }
 
     private void OnPlayerKilledEvent(Player player)
     {
         LoseOneLife();
-    }
-
-    private void UpdateScore()
-    {
-        // Display on screen
-        scoreText.text = "Score: " + playerScore.ToString();
     }
 
     public void LoseOneLife()
@@ -68,8 +63,7 @@ public class GameController : MonoBehaviour
 
         if (remainingLives == 0)
         {
-            var sc = FindObjectOfType<SceneController>();
-            sc?.GameOver();
+            FindObjectOfType<SceneController>()?.GameOver();
         }
     }
 
@@ -84,5 +78,10 @@ public class GameController : MonoBehaviour
         {
             DontDestroyOnLoad(gameObject); // persist across scenes
         }
+    }
+
+    public void ResetGame()
+    {
+        Destroy(gameObject);
     }
 }

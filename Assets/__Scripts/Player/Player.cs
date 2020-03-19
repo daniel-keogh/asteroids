@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class Player : MonoBehaviour
 {
+    [Header("Player Death")]
     [SerializeField] private GameObject explosionEffect;
     [SerializeField] private int explosionDuration;
     [SerializeField] private float timeToRepawn;

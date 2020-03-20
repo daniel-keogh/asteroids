@@ -32,12 +32,17 @@ public class LifeCounter : MonoBehaviour
 
     private void CheckLivesRemaining()
     {
+        if (remainingLives == 1)
+        {
+            ShowFinalLifeAnimation();
+        }
+
         if (gc)
         {
-            if (remainingLives != gc.RemainingLives)
+            while (remainingLives != gc.RemainingLives)
             {
                 Destroy(lifeIcons.Pop().gameObject);
-                remainingLives = gc.RemainingLives;
+                remainingLives--;
             }
         }
     }
@@ -48,6 +53,15 @@ public class LifeCounter : MonoBehaviour
         for (int i = 0; i < remainingLives; i++)
         {
             lifeIcons.Push(Instantiate(lifeIconPrefab, transform));
+        }
+    }
+
+    private void ShowFinalLifeAnimation()
+    {
+        var animator = lifeIcons.Peek().GetComponent<Animator>();
+        if (animator)
+        {
+            animator.enabled = true;
         }
     }
 }

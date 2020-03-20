@@ -6,24 +6,27 @@ using Utilities;
 
 public class SceneController : MonoBehaviour
 {
-    [SerializeField] private float gameOverDelay;
+    [SerializeField] private float sceneTransitionDelay;
+    [SerializeField] private Animator crossFadeAnimator;
+
+    private const string ANIMATOR_TRIGGER = "Start";
 
     public void PlayOnClick()
     {
         // Reset the GameController singleton before re-playing.
         FindObjectOfType<GameController>()?.ResetGame();
 
-        SceneManager.LoadSceneAsync(SceneNames.GAME_SCENE);
+        StartCoroutine(SceneTransition(SceneNames.GAME_SCENE, ANIMATOR_TRIGGER));
     }
 
     public void GoToMainMenu()
     {
-        SceneManager.LoadSceneAsync(SceneNames.MAIN_MENU);
+        StartCoroutine(SceneTransition(SceneNames.MAIN_MENU, ANIMATOR_TRIGGER));
     }
 
     public void GameOver()
     {
-        StartCoroutine(GameOverCoroutine());
+        StartCoroutine(SceneTransition(SceneNames.GAME_OVER, ANIMATOR_TRIGGER));
     }
 
     public void QuitOnClick()
@@ -33,10 +36,12 @@ public class SceneController : MonoBehaviour
         Application.Quit();
     }
 
-    private IEnumerator GameOverCoroutine()
+    private IEnumerator SceneTransition(string sceneName, string trigger)
     {
-        yield return new WaitForSeconds(gameOverDelay);
+        crossFadeAnimator.SetTrigger(trigger);
 
-        SceneManager.LoadSceneAsync(SceneNames.GAME_OVER);
+        yield return new WaitForSeconds(sceneTransitionDelay);
+
+        SceneManager.LoadSceneAsync(sceneName);
     }
 }

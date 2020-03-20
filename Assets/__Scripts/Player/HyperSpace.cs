@@ -16,6 +16,7 @@ public class HyperSpace : MonoBehaviour
     private float sceneWidth;
     private Rigidbody2D rb;
     private Animator animator;
+    private SpawnEffect spawnEffect;
 
     private const string START_TRIGGER = "Start";
     private const string END_TRIGGER = "End";
@@ -24,6 +25,7 @@ public class HyperSpace : MonoBehaviour
     {
         rb = GetComponent<Rigidbody2D>();
         animator = GetComponent<Animator>();
+        spawnEffect = GetComponentInChildren<SpawnEffect>();
 
         // The bottom-left of the viewport is (0,0); the top-right is (1,1).
         var viewport = Camera.main.ViewportToWorldPoint(new Vector2(1, 1));
@@ -43,16 +45,24 @@ public class HyperSpace : MonoBehaviour
         }
     }
 
+    private void OnDisable()
+    {
+        // in case the player dies while hyperspacing
+        isCooledDown = true;
+    }
+
     private IEnumerator HyperSpaceCoroutine()
     {
         isCooledDown = false;
 
         animator.SetTrigger(START_TRIGGER);
+
         yield return new WaitForSeconds(duration);
 
         Move();
 
         animator.SetTrigger(END_TRIGGER);
+
         // Prevent user from spamming the 'H' key
         yield return new WaitForSeconds(cooldownDuration + duration);
 
@@ -75,5 +85,10 @@ public class HyperSpace : MonoBehaviour
             Random.Range(-sceneWidth, sceneWidth),
             Random.Range(-sceneHeight, sceneHeight)
         );
+    }
+
+    private void PlaySpawnEffect()
+    {
+        spawnEffect.PlaySpawnIn();
     }
 }

@@ -6,8 +6,8 @@ using Utilities;
 
 public class SceneController : MonoBehaviour
 {
-    [SerializeField] private float sceneTransitionDelay;
-    [SerializeField] private Animator crossFadeAnimator;
+    [SerializeField] private float transitionDelay;
+    [SerializeField] private Animator transitionAnimator;
 
     private const string ANIMATOR_TRIGGER = "Start";
 
@@ -16,17 +16,17 @@ public class SceneController : MonoBehaviour
         // Reset the GameController singleton before re-playing.
         FindObjectOfType<GameController>()?.ResetGame();
 
-        StartCoroutine(SceneTransition(SceneNames.GAME_SCENE, ANIMATOR_TRIGGER));
+        StartCoroutine(SceneTransition(SceneNames.GAME_SCENE));
     }
 
     public void GoToMainMenu()
     {
-        StartCoroutine(SceneTransition(SceneNames.MAIN_MENU, ANIMATOR_TRIGGER));
+        StartCoroutine(SceneTransition(SceneNames.MAIN_MENU));
     }
 
     public void GameOver()
     {
-        StartCoroutine(SceneTransition(SceneNames.GAME_OVER, ANIMATOR_TRIGGER));
+        StartCoroutine(SceneTransition(SceneNames.GAME_OVER));
     }
 
     public void QuitOnClick()
@@ -36,11 +36,14 @@ public class SceneController : MonoBehaviour
         Application.Quit();
     }
 
-    private IEnumerator SceneTransition(string sceneName, string trigger)
+    private IEnumerator SceneTransition(string sceneName)
     {
-        crossFadeAnimator.SetTrigger(trigger);
+        if (transitionAnimator)
+        {
+            transitionAnimator.SetTrigger(ANIMATOR_TRIGGER);
+        }
 
-        yield return new WaitForSeconds(sceneTransitionDelay);
+        yield return new WaitForSeconds(transitionDelay);
 
         SceneManager.LoadSceneAsync(sceneName);
     }

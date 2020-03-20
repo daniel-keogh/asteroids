@@ -196,10 +196,25 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 2074816713765902837, guid: e9a8a037c05498b4da451cb7f065b606,
+        type: 3}
+      propertyPath: crossFadeAnimator
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 2245075772728308979, guid: e9a8a037c05498b4da451cb7f065b606,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 3046649514141541988, guid: e9a8a037c05498b4da451cb7f065b606,
         type: 3}
       propertyPath: m_Name
       value: SceneController
+      objectReference: {fileID: 0}
+    - target: {fileID: 4355500472156518856, guid: e9a8a037c05498b4da451cb7f065b606,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7832548209357809442, guid: e9a8a037c05498b4da451cb7f065b606,
         type: 3}

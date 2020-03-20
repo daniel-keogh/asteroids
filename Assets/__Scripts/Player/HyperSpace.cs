@@ -3,10 +3,6 @@ using System.Collections.Generic;
 using UnityEngine;
 
 [RequireComponent(typeof(Rigidbody2D))]
-[RequireComponent(typeof(SpriteRenderer))]
-[RequireComponent(typeof(PolygonCollider2D))]
-[RequireComponent(typeof(WeaponsController))]
-[RequireComponent(typeof(PlayerMovement))]
 [RequireComponent(typeof(Animator))]
 public class HyperSpace : MonoBehaviour
 {
@@ -19,18 +15,15 @@ public class HyperSpace : MonoBehaviour
     private float sceneHeight;
     private float sceneWidth;
     private Rigidbody2D rb;
-    private SpriteRenderer spriteRenderer;
-    private PolygonCollider2D polygonCollider;
-    private WeaponsController weaponsController;
-    private PlayerMovement playerMovement;
+    private Animator animator;
+
+    private const string START_TRIGGER = "Start";
+    private const string END_TRIGGER = "End";
 
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
-        spriteRenderer = GetComponent<SpriteRenderer>();
-        polygonCollider = GetComponent<PolygonCollider2D>();
-        weaponsController = GetComponent<WeaponsController>();
-        playerMovement = GetComponent<PlayerMovement>();
+        animator = GetComponent<Animator>();
 
         // The bottom-left of the viewport is (0,0); the top-right is (1,1).
         var viewport = Camera.main.ViewportToWorldPoint(new Vector2(1, 1));
@@ -54,16 +47,15 @@ public class HyperSpace : MonoBehaviour
     {
         isCooledDown = false;
 
-        DisableComonents();
-
+        animator.SetTrigger(START_TRIGGER);
         yield return new WaitForSeconds(duration);
 
         Move();
 
-        EnableComponents();
-
+        animator.SetTrigger(END_TRIGGER);
         // Prevent user from spamming the 'H' key
-        yield return new WaitForSeconds(cooldownDuration);
+        yield return new WaitForSeconds(cooldownDuration + duration);
+
         isCooledDown = true;
     }
 
@@ -75,24 +67,6 @@ public class HyperSpace : MonoBehaviour
         {
             rb.rotation = Random.Range(-maxRotate, maxRotate);
         }
-    }
-
-    private void DisableComonents()
-    {
-        SetComponentsEnabled(false);
-    }
-
-    private void EnableComponents()
-    {
-        SetComponentsEnabled(true);
-    }
-
-    private void SetComponentsEnabled(bool status)
-    {
-        spriteRenderer.enabled = status;
-        polygonCollider.enabled = status;
-        playerMovement.enabled = status;
-        weaponsController.enabled = status;
     }
 
     private Vector3 GenerateRandomPosition()

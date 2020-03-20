@@ -5141,7 +5141,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   disableRotation: 0
   duration: 2
-  cooldownDuration: 3
+  cooldownDuration: 5
 --- !u!114 &6776455908487683428
 MonoBehaviour:
   m_ObjectHideFlags: 0

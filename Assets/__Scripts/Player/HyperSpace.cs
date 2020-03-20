@@ -16,7 +16,7 @@ public class HyperSpace : MonoBehaviour
     private float sceneWidth;
     private Rigidbody2D rb;
     private Animator animator;
-    private SpawnEffect spawnEffect;
+    private HyperSpaceEffect hyperSpaceVFX;
 
     private const string START_TRIGGER = "Start";
     private const string END_TRIGGER = "End";
@@ -25,7 +25,7 @@ public class HyperSpace : MonoBehaviour
     {
         rb = GetComponent<Rigidbody2D>();
         animator = GetComponent<Animator>();
-        spawnEffect = GetComponentInChildren<SpawnEffect>();
+        hyperSpaceVFX = GetComponentInChildren<HyperSpaceEffect>();
 
         // The bottom-left of the viewport is (0,0); the top-right is (1,1).
         var viewport = Camera.main.ViewportToWorldPoint(new Vector2(1, 1));
@@ -89,6 +89,6 @@ public class HyperSpace : MonoBehaviour
 
     private void PlaySpawnEffect()
     {
-        spawnEffect.PlaySpawnIn();
+        hyperSpaceVFX?.Play();
     }
 }

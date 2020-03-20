@@ -287,6 +287,16 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 4801298195992082857, guid: e63c05d93fca9f449b75fab85715bce4,
+        type: 3}
+      propertyPath: SizeModule.separateAxes
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4801298195992082860, guid: e63c05d93fca9f449b75fab85715bce4,
+        type: 3}
+      propertyPath: m_Name
+      value: HyperSpaceEffect
+      objectReference: {fileID: 0}
     - target: {fileID: 6723512523177929433, guid: e63c05d93fca9f449b75fab85715bce4,
         type: 3}
       propertyPath: m_Name

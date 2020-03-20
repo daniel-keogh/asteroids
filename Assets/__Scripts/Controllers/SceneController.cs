@@ -6,15 +6,12 @@ using Utilities;
 
 public class SceneController : MonoBehaviour
 {
+    [SerializeField] private float gameOverDelay;
+
     public void PlayOnClick()
     {
         // Reset the GameController singleton before re-playing.
-        var gc = FindObjectOfType<GameController>();
-
-        if (gc)
-        {
-            Destroy(gc.gameObject);
-        }
+        FindObjectOfType<GameController>()?.ResetGame();
 
         SceneManager.LoadSceneAsync(SceneNames.GAME_SCENE);
     }
@@ -26,7 +23,7 @@ public class SceneController : MonoBehaviour
 
     public void GameOver()
     {
-        SceneManager.LoadSceneAsync(SceneNames.GAME_OVER);
+        StartCoroutine(GameOverCoroutine());
     }
 
     public void QuitOnClick()
@@ -34,5 +31,12 @@ public class SceneController : MonoBehaviour
         // UnityEditor.EditorApplication.isPlaying = false;
 
         Application.Quit();
+    }
+
+    private IEnumerator GameOverCoroutine()
+    {
+        yield return new WaitForSeconds(gameOverDelay);
+
+        SceneManager.LoadSceneAsync(SceneNames.GAME_OVER);
     }
 }

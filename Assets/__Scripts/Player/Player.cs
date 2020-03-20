@@ -48,6 +48,8 @@ public class Player : MonoBehaviour
 
     private void Respawn()
     {
+        // TODO: dont invoke if the player lives remaining is 0
+
         rb.transform.position = new Vector2(0, 0);
         rb.velocity = new Vector2(0, 0);
         rb.transform.rotation = Quaternion.identity;

@@ -4,6 +4,7 @@ using UnityEngine;
 
 [RequireComponent(typeof(PolygonCollider2D))]
 [RequireComponent(typeof(Rigidbody2D))]
+// [RequireComponent(typeof(WrapAround))]
 public class Asteroid : MonoBehaviour
 {
     [SerializeField] private int scoreValue;
@@ -16,6 +17,7 @@ public class Asteroid : MonoBehaviour
 
     private int numHits;
     private SpriteRenderer spriteRenderer;
+    // private WrapAround wrapAround;
 
     // Used from GameController enemy.ScoreValue
     public int ScoreValue
@@ -32,7 +34,15 @@ public class Asteroid : MonoBehaviour
     void Start()
     {
         spriteRenderer = GetComponent<SpriteRenderer>();
+
+        // wrapAround = GetComponent<WrapAround>();
+        // wrapAround.enabled = false;
     }
+
+    // private void OnBecameVisible()
+    // {
+    //     wrapAround.enabled = true;
+    // }
 
     private void OnTriggerEnter2D(Collider2D other)
     {

@@ -7,6 +7,7 @@ using UnityEngine;
 [RequireComponent(typeof(PolygonCollider2D))]
 [RequireComponent(typeof(WeaponsController))]
 [RequireComponent(typeof(PlayerMovement))]
+[RequireComponent(typeof(Animator))]
 public class HyperSpace : MonoBehaviour
 {
     [SerializeField] private bool disableRotation;

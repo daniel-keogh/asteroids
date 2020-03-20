@@ -43,3 +43,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3a34a7c5154795a4bb358e80eb46aad6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  gameOverDelay: 3

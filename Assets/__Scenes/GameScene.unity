@@ -872,6 +872,16 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1256985644619305879, guid: e9a8a037c05498b4da451cb7f065b606,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1256985644619305880, guid: e9a8a037c05498b4da451cb7f065b606,
+        type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 2641
+      objectReference: {fileID: 0}
     - target: {fileID: 2074816713765902837, guid: e9a8a037c05498b4da451cb7f065b606,
         type: 3}
       propertyPath: transitionAnimator

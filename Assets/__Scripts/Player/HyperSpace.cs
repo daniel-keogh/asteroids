@@ -18,9 +18,6 @@ public class HyperSpace : MonoBehaviour
     private Animator animator;
     private HyperSpaceEffect hyperSpaceVFX;
 
-    private const string START_TRIGGER = "Start";
-    private const string END_TRIGGER = "End";
-
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
@@ -55,13 +52,13 @@ public class HyperSpace : MonoBehaviour
     {
         isCooledDown = false;
 
-        animator.SetTrigger(START_TRIGGER);
+        animator.SetTrigger(HyperSpaceEffect.START_TRIGGER);
 
         yield return new WaitForSeconds(duration);
 
         Move();
 
-        animator.SetTrigger(END_TRIGGER);
+        animator.SetTrigger(HyperSpaceEffect.END_TRIGGER);
 
         // Prevent user from spamming the 'H' key
         yield return new WaitForSeconds(cooldownDuration + duration);

@@ -405,7 +405,7 @@ MonoBehaviour:
   explosionEffect: {fileID: 1534296265662101853, guid: 1b3e1fa6f8edd0d468e5b4a9aaac7178,
     type: 3}
   explosionDuration: 1
-  timeToRepawn: 3
+  repawnDelay: 3
 --- !u!1001 &2467506667551457213
 PrefabInstance:
   m_ObjectHideFlags: 0

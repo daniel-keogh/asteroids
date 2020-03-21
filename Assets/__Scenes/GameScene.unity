@@ -287,16 +287,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 4801298195992082857, guid: e63c05d93fca9f449b75fab85715bce4,
-        type: 3}
-      propertyPath: SizeModule.separateAxes
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 4801298195992082860, guid: e63c05d93fca9f449b75fab85715bce4,
-        type: 3}
-      propertyPath: m_Name
-      value: HyperSpaceEffect
-      objectReference: {fileID: 0}
     - target: {fileID: 6723512523177929433, guid: e63c05d93fca9f449b75fab85715bce4,
         type: 3}
       propertyPath: m_Name
@@ -356,6 +346,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6776455908487683428, guid: e63c05d93fca9f449b75fab85715bce4,
+        type: 3}
+      propertyPath: repawnDelay
+      value: 3
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e63c05d93fca9f449b75fab85715bce4, type: 3}
@@ -887,6 +882,11 @@ PrefabInstance:
       propertyPath: transitionAnimator
       value: 
       objectReference: {fileID: 4301901769909562381}
+    - target: {fileID: 2074816713765902837, guid: e9a8a037c05498b4da451cb7f065b606,
+        type: 3}
+      propertyPath: exitTransitionDelay
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 2245075772728308979, guid: e9a8a037c05498b4da451cb7f065b606,
         type: 3}
       propertyPath: m_IsActive

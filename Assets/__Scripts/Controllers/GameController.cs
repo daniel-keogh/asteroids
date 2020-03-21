@@ -9,6 +9,11 @@ public class GameController : MonoBehaviour
         get { return startingLives; }
     }
 
+    public int RemainingLives
+    {
+        get { return remainingLives; }
+    }
+
     public int PlayerScore
     {
         get { return playerScore; }

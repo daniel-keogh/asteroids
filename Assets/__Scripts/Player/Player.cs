@@ -9,9 +9,10 @@ public class Player : MonoBehaviour
     [Header("Player Death")]
     [SerializeField] private GameObject explosionEffect;
     [SerializeField] private int explosionDuration;
-    [SerializeField] private float timeToRepawn;
+    [SerializeField] private float repawnDelay;
 
     private Rigidbody2D rb;
+    private GameController gc;
 
     // event for telling the player died
     public delegate void PlayerKilled();
@@ -20,6 +21,7 @@ public class Player : MonoBehaviour
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
+        gc = FindObjectOfType<GameController>();
     }
 
     private void OnCollisionEnter2D(Collision2D other)
@@ -30,29 +32,35 @@ public class Player : MonoBehaviour
         if (asteroid || ufo)
         {
             Destroy(other.gameObject);
-
-            if (explosionEffect)
-            {
-                GameObject explosion = Instantiate(explosionEffect, transform.position, transform.rotation);
-                Destroy(explosion, explosionDuration);
-            }
-
-            gameObject.SetActive(false);
-            Invoke("Respawn", timeToRepawn);
-
-            PublishPlayerKilledEvent();
+            Die();
         }
+    }
+
+    private void Die()
+    {
+        if (explosionEffect)
+        {
+            GameObject explosion = Instantiate(explosionEffect, transform.position, transform.rotation);
+            Destroy(explosion, explosionDuration);
+        }
+
+        gameObject.SetActive(false);
+        Invoke("Respawn", repawnDelay);
+
+        PublishPlayerKilledEvent();
     }
 
     private void Respawn()
     {
-        // TODO: dont invoke if the player lives remaining is 0
+        // Only respawn if the player has any lives remaining
+        if (gc.RemainingLives > 0)
+        {
+            rb.transform.position = new Vector2(0, 0);
+            rb.velocity = new Vector2(0, 0);
+            rb.transform.rotation = Quaternion.identity;
 
-        rb.transform.position = new Vector2(0, 0);
-        rb.velocity = new Vector2(0, 0);
-        rb.transform.rotation = Quaternion.identity;
-
-        gameObject.SetActive(true);
+            gameObject.SetActive(true);
+        }
     }
 
     private void PublishPlayerKilledEvent()

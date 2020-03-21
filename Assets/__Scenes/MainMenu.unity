@@ -364,6 +364,23 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 4531587347965237940, guid: 26bb8fb126b4ef74ab523ad26591fa93,
+        type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 477.7
+      objectReference: {fileID: 0}
+    - target: {fileID: 4531587347965237947, guid: 26bb8fb126b4ef74ab523ad26591fa93,
+        type: 3}
+      propertyPath: m_fontAsset
+      value: 
+      objectReference: {fileID: 11400000, guid: 0ce13d684c97e084ab763a4ba6431884,
+        type: 2}
+    - target: {fileID: 4531587347965237947, guid: 26bb8fb126b4ef74ab523ad26591fa93,
+        type: 3}
+      propertyPath: m_sharedMaterial
+      value: 
+      objectReference: {fileID: 7888820882710521763, guid: 0ce13d684c97e084ab763a4ba6431884,
+        type: 2}
     - target: {fileID: 4531587348670034756, guid: 26bb8fb126b4ef74ab523ad26591fa93,
         type: 3}
       propertyPath: m_Name

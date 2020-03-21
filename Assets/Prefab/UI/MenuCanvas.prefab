@@ -1,5 +1,20 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!114 &1238221823
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4531587347965237941}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cfabb0440166ab443bba8876756fdfa9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_EffectColor: {r: 0, g: 0, b: 0, a: 0.5}
+  m_EffectDistance: {x: 1, y: -1}
+  m_UseGraphicAlpha: 1
 --- !u!1 &4531587348581498924
 GameObject:
   m_ObjectHideFlags: 0
@@ -1003,7 +1018,7 @@ PrefabInstance:
     - target: {fileID: 8273520035506618851, guid: 78b66e7fdd1db1b499c699e70ccc3988,
         type: 3}
       propertyPath: m_SizeDelta.x
-      value: 440
+      value: 477.7
       objectReference: {fileID: 0}
     - target: {fileID: 8273520035506618851, guid: 78b66e7fdd1db1b499c699e70ccc3988,
         type: 3}
@@ -1040,8 +1055,26 @@ PrefabInstance:
       propertyPath: m_Pivot.y
       value: 0.5
       objectReference: {fileID: 0}
+    - target: {fileID: 8273520035506618860, guid: 78b66e7fdd1db1b499c699e70ccc3988,
+        type: 3}
+      propertyPath: m_fontAsset
+      value: 
+      objectReference: {fileID: 11400000, guid: 0ce13d684c97e084ab763a4ba6431884,
+        type: 2}
+    - target: {fileID: 8273520035506618860, guid: 78b66e7fdd1db1b499c699e70ccc3988,
+        type: 3}
+      propertyPath: m_sharedMaterial
+      value: 
+      objectReference: {fileID: 7888820882710521763, guid: 0ce13d684c97e084ab763a4ba6431884,
+        type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 78b66e7fdd1db1b499c699e70ccc3988, type: 3}
+--- !u!1 &4531587347965237941 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 8273520035506618850, guid: 78b66e7fdd1db1b499c699e70ccc3988,
+    type: 3}
+  m_PrefabInstance: {fileID: 5490481734227876695}
+  m_PrefabAsset: {fileID: 0}
 --- !u!224 &4531587347965237940 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 8273520035506618851, guid: 78b66e7fdd1db1b499c699e70ccc3988,

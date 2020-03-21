@@ -6,9 +6,11 @@ using UnityEngine;
 [RequireComponent(typeof(Animator))]
 public class HyperSpace : MonoBehaviour
 {
-    [SerializeField] private bool disableRotation;
-    [SerializeField] private float duration;
-    [SerializeField] private float cooldownDuration;
+    [Tooltip("Prevents the player being re-positioned too close to the edge.")]
+    [SerializeField] private float borderPadding = 1.0f;
+    [SerializeField] private bool disableRotation = false;
+    [SerializeField] private float duration = 2.0f;
+    [SerializeField] private float cooldownDuration = 3.0f;
 
     private float maxRotate = 360;
     private bool isCooledDown = true;
@@ -25,6 +27,8 @@ public class HyperSpace : MonoBehaviour
 
         // The bottom-left of the viewport is (0,0); the top-right is (1,1).
         viewport = Camera.main.ViewportToWorldPoint(new Vector2(1, 1));
+        viewport.x -= borderPadding;
+        viewport.y -= borderPadding;
     }
 
     void Update()

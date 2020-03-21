@@ -160,7 +160,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5ebddf32ab9ab0046828d93bf3db5176, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  rotation: 10
+  maxRotation: 50
   speed: -100
 --- !u!114 &8182805982248106611
 MonoBehaviour:
@@ -192,5 +192,5 @@ MonoBehaviour:
   destroyEffect: {fileID: 5456398976044202209, guid: 37deeb9da4879714a82b1b6f93f18260,
     type: 3}
   destroyEffectDuration: 1
-  hitEffect: {fileID: 0}
+  hitEffectColor: {r: 0, g: 0, b: 0, a: 0}
   hitEffectDuration: 0.1

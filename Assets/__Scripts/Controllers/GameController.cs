@@ -79,14 +79,16 @@ public class GameController : MonoBehaviour
             // add the score value for the enemy to the player score
             playerScore += asteroid.ScoreValue;
         }
+
+        int currentWaveSize = FindObjectsOfType<Asteroid>().Length - 1;
+
+        if (currentWaveSize == 0)
+        {
+            StartCoroutine(SetupNextWave());
+        }
     }
 
     private void OnPlayerKilledEvent()
-    {
-        LoseOneLife();
-    }
-
-    public void LoseOneLife()
     {
         remainingLives--;
 

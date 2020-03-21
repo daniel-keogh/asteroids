@@ -2,5 +2,6 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+[RequireComponent(typeof(Animator))]
 public class LifeIcon : MonoBehaviour
 { }

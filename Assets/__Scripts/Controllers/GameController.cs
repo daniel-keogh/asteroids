@@ -21,8 +21,11 @@ public class GameController : MonoBehaviour
 
     private int playerScore = 0;
     private int remainingLives;
+    private int remainingAsteroids;
+    private int waveNumber;
 
     [SerializeField] private int startingLives = 3;
+    [SerializeField] private int asteroidCountPerWave;
 
     void Awake()
     {
@@ -32,24 +35,50 @@ public class GameController : MonoBehaviour
     void Start()
     {
         remainingLives = startingLives;
+        remainingAsteroids = asteroidCountPerWave;
     }
 
     private void OnEnable()
     {
         Asteroid.AsteroidDestroyedEvent += OnAsteroidDestroyedEvent;
         Player.PlayerKilledEvent += OnPlayerKilledEvent;
+        PointSpawners.EnemySpawnedEvent += OnEnemySpawnedEvent;
     }
 
     private void OnDisable()
     {
         Asteroid.AsteroidDestroyedEvent -= OnAsteroidDestroyedEvent;
         Player.PlayerKilledEvent -= OnPlayerKilledEvent;
+        PointSpawners.EnemySpawnedEvent -= OnEnemySpawnedEvent;
     }
+
+    private void OnEnemySpawnedEvent()
+    {
+        remainingAsteroids--;
+
+        if (remainingAsteroids == 0)
+        {
+            DisableSpawning();
+        }
+    }
+
+    private IEnumerator SetupNextWave()
+    {
+        yield return new WaitForSeconds(5.0f);
+
+        waveNumber++; // not displayed
+        remainingAsteroids = asteroidCountPerWave;
+        EnableSpawning();
+    }
+
 
     private void OnAsteroidDestroyedEvent(Asteroid asteroid)
     {
-        // add the score value for the enemy to the player score
-        playerScore += asteroid.ScoreValue;
+        if (asteroid != null)
+        {
+            // add the score value for the enemy to the player score
+            playerScore += asteroid.ScoreValue;
+        }
     }
 
     private void OnPlayerKilledEvent()
@@ -64,6 +93,22 @@ public class GameController : MonoBehaviour
         if (remainingLives == 0)
         {
             FindObjectOfType<SceneController>()?.GameOver();
+        }
+    }
+
+    public void DisableSpawning()
+    {
+        foreach (var spawner in FindObjectsOfType<PointSpawners>())
+        {
+            spawner.DisableSpawning();
+        }
+    }
+
+    public void EnableSpawning()
+    {
+        foreach (var spawner in FindObjectsOfType<PointSpawners>())
+        {
+            spawner.EnableSpawning();
         }
     }
 

@@ -13,11 +13,9 @@ public class Player : MonoBehaviour
 
     private Rigidbody2D rb;
 
-    // Delegate type to use for event
-    public delegate void PlayerKilled(Player player);
-
-    // Static method to be implemented in the listener
-    public static PlayerKilled PlayerKilledEvent;
+    // event for telling the player died
+    public delegate void PlayerKilled();
+    public static event PlayerKilled PlayerKilledEvent;
 
     void Start()
     {
@@ -59,10 +57,6 @@ public class Player : MonoBehaviour
 
     private void PublishPlayerKilledEvent()
     {
-        // Make sure somebody is listening
-        if (PlayerKilledEvent != null)
-        {
-            PlayerKilledEvent(this);
-        }
+        PlayerKilledEvent?.Invoke();
     }
 }

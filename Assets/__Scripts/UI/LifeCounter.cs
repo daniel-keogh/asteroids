@@ -6,7 +6,6 @@ public class LifeCounter : MonoBehaviour
 {
     [SerializeField] private LifeIcon lifeIconPrefab;
 
-    private int remainingLives;
     private GameController gc;
     private Stack<LifeIcon> lifeIcons;
 
@@ -17,51 +16,51 @@ public class LifeCounter : MonoBehaviour
 
         if (gc)
         {
-            // Retrieve the starting lives value
-            remainingLives = gc.StartingLives;
-            lifeIcons = new Stack<LifeIcon>(remainingLives);
-
-            SetupIcons();
+            SetupLifeIcons();
         }
     }
 
-    void Update()
+    private void OnEnable()
     {
-        CheckLivesRemaining();
+        Player.PlayerKilledEvent += OnPlayerKilledEvent;
     }
 
-    private void CheckLivesRemaining()
+    private void OnDisable()
     {
-        if (remainingLives == 1)
+        Player.PlayerKilledEvent -= OnPlayerKilledEvent;
+    }
+
+    private void OnPlayerKilledEvent()
+    {
+        Destroy(lifeIcons.Pop().gameObject);
+
+        if (lifeIcons.Count == 1)
         {
             ShowFinalLifeAnimation();
-        }
-
-        if (gc)
-        {
-            while (remainingLives != gc.RemainingLives)
-            {
-                Destroy(lifeIcons.Pop().gameObject);
-                remainingLives--;
-            }
-        }
-    }
-
-    private void SetupIcons()
-    {
-        // Show the appropriate number of hearts on the screen
-        for (int i = 0; i < remainingLives; i++)
-        {
-            lifeIcons.Push(Instantiate(lifeIconPrefab, transform));
         }
     }
 
     private void ShowFinalLifeAnimation()
     {
+        // Animate the icon on the top of the stack
         var animator = lifeIcons.Peek().GetComponent<Animator>();
         if (animator)
         {
             animator.enabled = true;
+        }
+    }
+
+    private void SetupLifeIcons()
+    {
+        if (gc)
+        {
+            lifeIcons = new Stack<LifeIcon>(gc.StartingLives);
+
+            // Show the appropriate number of hearts on the screen
+            for (int i = 0; i < gc.StartingLives; i++)
+            {
+                lifeIcons.Push(Instantiate(lifeIconPrefab, transform));
+            }
         }
     }
 }

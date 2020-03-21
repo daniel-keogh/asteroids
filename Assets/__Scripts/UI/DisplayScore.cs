@@ -20,6 +20,6 @@ public class DisplayScore : MonoBehaviour
 
     void Update()
     {
-        scoreText.text = $"{originalText}{gc.PlayerScore}";
+        scoreText.text = $"{originalText}{(gc ? gc.PlayerScore : 0)}";
     }
 }

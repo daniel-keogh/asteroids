@@ -5,9 +5,15 @@ using Utilities;
 
 public class PointSpawners : MonoBehaviour
 {
+    // Event for telling the system an asteroid has spawned
+    public delegate void EnemySpawned();
+    public static event EnemySpawned EnemySpawnedEvent;
+
     [SerializeField] private Asteroid asteroidPrefab;
     [SerializeField] private float spawnDelay;
     [SerializeField] private float spawnInterval;
+    [SerializeField] [Range(-1, 1)] private float xDirection;
+    [SerializeField] [Range(-1, 1)] private float yDirection;
 
     private const string SPAWN_ENEMY_METHOD = "SpawnOneEnemy";
     private const string ASTEROID_PARENT = "AsteroidParent";
@@ -15,10 +21,6 @@ public class PointSpawners : MonoBehaviour
     private IList<SpawnPoint> spawnPoints;
     private Stack<SpawnPoint> spawnStack;
     private GameObject enemyParent;
-
-    // Event for telling the system an asteroid has spawned
-    public delegate void EnemySpawned();
-    public static event EnemySpawned EnemySpawnedEvent;
 
     void Start()
     {
@@ -32,8 +34,8 @@ public class PointSpawners : MonoBehaviour
         // Get the spawn points here
         spawnPoints = GetComponentsInChildren<SpawnPoint>();
 
-        EnableSpawning();
         SpawnEnemyWaves();
+        EnableSpawning();
     }
 
     private void SpawnEnemyWaves()
@@ -52,30 +54,12 @@ public class PointSpawners : MonoBehaviour
         }
 
         var sp = spawnStack.Pop();
-        var asteriod = Instantiate(asteroidPrefab, enemyParent.transform);
 
+        var asteriod = Instantiate(asteroidPrefab, enemyParent.transform);
         asteriod.transform.position = sp.transform.position;
 
-        var rb = asteriod.gameObject.GetComponent<Rigidbody2D>();
         var movement = asteriod.gameObject.GetComponent<AsteroidMovement>();
-
-        switch (gameObject.tag)
-        {
-            case "TopPointSpawner":
-                rb.AddForce(new Vector2(0, -movement.Speed));
-                break;
-            case "BottomPointSpawner":
-                rb.AddForce(new Vector2(0, movement.Speed));
-                break;
-            case "RightPointSpawner":
-                rb.AddForce(new Vector2(-movement.Speed, 0));
-                break;
-            case "LeftPointSpawner":
-                rb.AddForce(new Vector2(movement.Speed, 0));
-                break;
-            default:
-                break;
-        }
+        movement.Move(new Vector2(xDirection, yDirection));
 
         PublishOnEnemySpawnedEvent();
     }

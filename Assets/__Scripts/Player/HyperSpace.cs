@@ -12,11 +12,10 @@ public class HyperSpace : MonoBehaviour
 
     private float maxRotate = 360;
     private bool isCooledDown = true;
-    private float sceneHeight;
-    private float sceneWidth;
     private Rigidbody2D rb;
     private Animator animator;
     private HyperSpaceEffect hyperSpaceVFX;
+    private Vector3 viewport;
 
     void Start()
     {
@@ -25,10 +24,7 @@ public class HyperSpace : MonoBehaviour
         hyperSpaceVFX = GetComponentInChildren<HyperSpaceEffect>();
 
         // The bottom-left of the viewport is (0,0); the top-right is (1,1).
-        var viewport = Camera.main.ViewportToWorldPoint(new Vector2(1, 1));
-
-        sceneHeight = viewport.y * 2;
-        sceneWidth = viewport.x * 2;
+        viewport = Camera.main.ViewportToWorldPoint(new Vector2(1, 1));
     }
 
     void Update()
@@ -79,8 +75,8 @@ public class HyperSpace : MonoBehaviour
     private Vector3 GenerateRandomPosition()
     {
         return new Vector2(
-            Random.Range(-sceneWidth, sceneWidth),
-            Random.Range(-sceneHeight, sceneHeight)
+            Random.Range(-viewport.y, viewport.y),
+            Random.Range(-viewport.x, viewport.x)
         );
     }
 

@@ -46,3 +46,4 @@ MonoBehaviour:
   startingLives: 3
   asteroidCountPerWave: 5
   delayPerWave: 5
+  waveIndicator: {fileID: 0}

@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using TMPro;
 
 public class GameController : MonoBehaviour
 {
@@ -22,13 +23,14 @@ public class GameController : MonoBehaviour
     private int playerScore = 0;
     private int remainingLives;
     private int remainingAsteroids;
-    private int waveNumber;
+    private int waveNumber = 1;
 
     [Header("Player Lives")]
     [SerializeField] private int startingLives = 3;
     [Header("Waves")]
     [SerializeField] private int asteroidCountPerWave;
     [SerializeField] private float delayPerWave;
+    [SerializeField] private TextMeshProUGUI waveIndicator;
 
     void Awake()
     {
@@ -67,11 +69,14 @@ public class GameController : MonoBehaviour
 
     private IEnumerator SetupNextWave()
     {
+        waveIndicator.gameObject.SetActive(true);
+        // show some feedback to the player
+        waveIndicator.text = $"Wave {++waveNumber}";
+
         yield return new WaitForSeconds(delayPerWave);
 
-        // show some feedback to the player
+        waveIndicator.gameObject.SetActive(false);
 
-        waveNumber++; // not displayed
         remainingAsteroids = asteroidCountPerWave;
         EnableSpawning();
     }

@@ -18,6 +18,9 @@ public class AsteroidMovement : MonoBehaviour
     void Start()
     {
         rb.AddTorque(Random.Range(-maxRotation, maxRotation));
+        // Add initial movement and rotation
+        // var force = new Vector2(0, speed);
+        // rb.AddForce(force);
     }
 
     public void Move(Vector2 direction)

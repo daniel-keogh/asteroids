@@ -24,8 +24,11 @@ public class GameController : MonoBehaviour
     private int remainingAsteroids;
     private int waveNumber;
 
+    [Header("Player Lives")]
     [SerializeField] private int startingLives = 3;
+    [Header("Waves")]
     [SerializeField] private int asteroidCountPerWave;
+    [SerializeField] private float delayPerWave;
 
     void Awake()
     {
@@ -42,17 +45,17 @@ public class GameController : MonoBehaviour
     {
         Asteroid.AsteroidDestroyedEvent += OnAsteroidDestroyedEvent;
         Player.PlayerKilledEvent += OnPlayerKilledEvent;
-        PointSpawners.EnemySpawnedEvent += OnEnemySpawnedEvent;
+        PointSpawners.AsteroidSpawnedEvent += OnAsteroidSpawnedEvent;
     }
 
     private void OnDisable()
     {
         Asteroid.AsteroidDestroyedEvent -= OnAsteroidDestroyedEvent;
         Player.PlayerKilledEvent -= OnPlayerKilledEvent;
-        PointSpawners.EnemySpawnedEvent -= OnEnemySpawnedEvent;
+        PointSpawners.AsteroidSpawnedEvent -= OnAsteroidSpawnedEvent;
     }
 
-    private void OnEnemySpawnedEvent()
+    private void OnAsteroidSpawnedEvent()
     {
         remainingAsteroids--;
 
@@ -64,7 +67,9 @@ public class GameController : MonoBehaviour
 
     private IEnumerator SetupNextWave()
     {
-        yield return new WaitForSeconds(5.0f);
+        yield return new WaitForSeconds(delayPerWave);
+
+        // show some feedback to the player
 
         waveNumber++; // not displayed
         remainingAsteroids = asteroidCountPerWave;

@@ -92,7 +92,7 @@ public class GameController : MonoBehaviour
 
         int currentWaveSize = FindObjectsOfType<Asteroid>().Length - 1;
 
-        if (currentWaveSize == 0)
+        if (currentWaveSize <= 0)
         {
             StartCoroutine(SetupNextWave());
         }

@@ -13,8 +13,9 @@ public class Player : MonoBehaviour
 
     private Rigidbody2D rb;
     private GameController gc;
+    private ForceField forceField;
 
-    // event for telling the player died
+    // Event for telling the system the player died
     public delegate void PlayerKilled();
     public static event PlayerKilled PlayerKilledEvent;
 
@@ -22,6 +23,7 @@ public class Player : MonoBehaviour
     {
         rb = GetComponent<Rigidbody2D>();
         gc = FindObjectOfType<GameController>();
+        forceField = GetComponentInChildren<ForceField>();
     }
 
     private void OnCollisionEnter2D(Collision2D other)
@@ -55,11 +57,15 @@ public class Player : MonoBehaviour
         // Only respawn if the player has any lives remaining
         if (gc.RemainingLives > 0)
         {
+            // Respawn in the center of the scene
             rb.transform.position = new Vector2(0, 0);
             rb.velocity = new Vector2(0, 0);
             rb.transform.rotation = Quaternion.identity;
 
             gameObject.SetActive(true);
+
+            // Try & prevent from dying immediately
+            forceField.ActivateForceField();
         }
     }
 

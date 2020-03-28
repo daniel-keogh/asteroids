@@ -32,7 +32,10 @@ public class LifeCounter : MonoBehaviour
 
     private void OnPlayerKilledEvent()
     {
-        Destroy(lifeIcons.Pop().gameObject);
+        if (lifeIcons.Count > 0)
+        {
+            Destroy(lifeIcons.Pop().gameObject);
+        }
 
         if (lifeIcons.Count == 1)
         {

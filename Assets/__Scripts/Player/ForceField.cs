@@ -9,7 +9,7 @@ using UnityEngine;
 public class ForceField : MonoBehaviour
 {
     [Tooltip("The number of seconds the force field will be active.")]
-    [SerializeField] private float activeDuration = 5.0f;
+    [SerializeField] private float activeDuration = 3.0f;
 
     private SpriteRenderer spriteRenderer;
     private CircleCollider2D circleCollider;

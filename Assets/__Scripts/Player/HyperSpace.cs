@@ -4,6 +4,10 @@ using UnityEngine;
 
 [RequireComponent(typeof(Rigidbody2D))]
 [RequireComponent(typeof(Animator))]
+[RequireComponent(typeof(PlayerMovement))]
+[RequireComponent(typeof(WeaponsController))]
+[RequireComponent(typeof(PolygonCollider2D))]
+[RequireComponent(typeof(SpriteRenderer))]
 public class HyperSpace : MonoBehaviour
 {
     [Tooltip("Prevents the player being re-positioned too close to the edge.")]
@@ -18,6 +22,7 @@ public class HyperSpace : MonoBehaviour
     private Animator animator;
     private HyperSpaceEffect hyperSpaceVFX;
     private Vector3 viewport;
+    private Vector3 startScale;
 
     void Start()
     {
@@ -29,6 +34,8 @@ public class HyperSpace : MonoBehaviour
         viewport = Camera.main.ViewportToWorldPoint(new Vector2(1, 1));
         viewport.x -= borderPadding;
         viewport.y -= borderPadding;
+
+        startScale = transform.localScale;
     }
 
     void Update()
@@ -46,6 +53,13 @@ public class HyperSpace : MonoBehaviour
     {
         // in case the player dies while hyperspacing
         isCooledDown = true;
+
+        GetComponent<PlayerMovement>().enabled = true;
+        GetComponent<WeaponsController>().enabled = true;
+        GetComponent<PolygonCollider2D>().enabled = true;
+        GetComponent<SpriteRenderer>().enabled = true;
+
+        transform.localScale = startScale;
     }
 
     private IEnumerator HyperSpaceCoroutine()

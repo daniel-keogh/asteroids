@@ -11,6 +11,10 @@ public class Player : MonoBehaviour
     [SerializeField] private int explosionDuration;
     [SerializeField] private float repawnDelay;
 
+    [Header("Respawn")]
+    [Tooltip("The number of seconds the player will be invincible after respawning.")]
+    [SerializeField] private float immunityDuration = 3.0f;
+
     private Rigidbody2D rb;
     private GameController gc;
     private ForceField forceField;
@@ -64,9 +68,16 @@ public class Player : MonoBehaviour
 
             gameObject.SetActive(true);
 
-            // Try & prevent from dying immediately
-            forceField.ActivateForceField();
+            StartCoroutine(ImmunityCoroutine());
         }
+    }
+
+    private IEnumerator ImmunityCoroutine()
+    {
+        // Try & prevent from dying immediately
+        forceField.Activate();
+        yield return new WaitForSeconds(immunityDuration);
+        forceField.Deactivate();
     }
 
     private void PublishPlayerKilledEvent()

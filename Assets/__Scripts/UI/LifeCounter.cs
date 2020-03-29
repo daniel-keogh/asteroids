@@ -18,6 +18,11 @@ public class LifeCounter : MonoBehaviour
         {
             SetupLifeIcons();
         }
+
+        if (lifeIcons.Count == 1)
+        {
+            ShowFinalLifeAnimation();
+        }
     }
 
     private void OnEnable()

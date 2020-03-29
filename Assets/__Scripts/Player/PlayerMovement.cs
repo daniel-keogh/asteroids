@@ -47,6 +47,9 @@ public class PlayerMovement : MonoBehaviour
 
     private void OnDisable()
     {
+        forward = 0;
+        rotation = 0;
+
         if (thrusters)
         {
             thrusters.Stop();

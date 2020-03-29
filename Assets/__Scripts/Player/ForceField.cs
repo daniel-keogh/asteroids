@@ -8,13 +8,11 @@ using UnityEngine;
 [RequireComponent(typeof(Animator))]
 public class ForceField : MonoBehaviour
 {
-    [Tooltip("The number of seconds the force field will be active.")]
-    [SerializeField] private float activeDuration = 3.0f;
-
     private SpriteRenderer spriteRenderer;
     private CircleCollider2D circleCollider;
     private PointEffector2D pointEffector;
     private Animator animator;
+    private PolygonCollider2D parentCollider;
 
     private void Start()
     {
@@ -23,18 +21,20 @@ public class ForceField : MonoBehaviour
         pointEffector = GetComponent<PointEffector2D>();
         animator = GetComponent<Animator>();
 
+        parentCollider = GetComponentInParent<PolygonCollider2D>();
+
         SetComponentsEnabled(false);
     }
 
-    public void ActivateForceField()
+    public void Activate()
     {
-        StartCoroutine(ForceFieldCoroutine());
+        parentCollider.enabled = false;
+        SetComponentsEnabled(true);
     }
 
-    private IEnumerator ForceFieldCoroutine()
+    public void Deactivate()
     {
-        SetComponentsEnabled(true);
-        yield return new WaitForSeconds(activeDuration);
+        parentCollider.enabled = true;
         SetComponentsEnabled(false);
     }
 

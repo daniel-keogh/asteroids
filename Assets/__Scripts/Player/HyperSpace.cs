@@ -6,7 +6,6 @@ using UnityEngine;
 [RequireComponent(typeof(Animator))]
 [RequireComponent(typeof(PlayerMovement))]
 [RequireComponent(typeof(WeaponsController))]
-[RequireComponent(typeof(PolygonCollider2D))]
 [RequireComponent(typeof(SpriteRenderer))]
 public class HyperSpace : MonoBehaviour
 {
@@ -56,7 +55,6 @@ public class HyperSpace : MonoBehaviour
 
         GetComponent<PlayerMovement>().enabled = true;
         GetComponent<WeaponsController>().enabled = true;
-        GetComponent<PolygonCollider2D>().enabled = true;
         GetComponent<SpriteRenderer>().enabled = true;
 
         transform.localScale = startScale;
@@ -98,7 +96,7 @@ public class HyperSpace : MonoBehaviour
         );
     }
 
-    private void PlaySpawnEffect()
+    private void PlayVFX()
     {
         hyperSpaceVFX?.Play();
     }

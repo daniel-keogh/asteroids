@@ -408,6 +408,7 @@ MonoBehaviour:
     type: 3}
   explosionDuration: 1
   repawnDelay: 3
+  immunityDuration: 3
 --- !u!1001 &2467506667551457213
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -490,10 +491,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 6723512523177929435}
     m_Modifications:
-    - target: {fileID: 752670363, guid: 66197bca1b19e3842a449afad5449cd2, type: 3}
-      propertyPath: activeDuration
-      value: 3
-      objectReference: {fileID: 0}
     - target: {fileID: 2509978130035061221, guid: 66197bca1b19e3842a449afad5449cd2,
         type: 3}
       propertyPath: m_Name

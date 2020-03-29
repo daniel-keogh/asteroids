@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 7605761420130614545}
   - component: {fileID: 7605761420130611950}
   - component: {fileID: 7605761420130611948}
+  - component: {fileID: -1436323011306715559}
   - component: {fileID: 7605761420130611951}
   - component: {fileID: 7605761420130614547}
   - component: {fileID: 7458207695300214454}
@@ -154,6 +155,25 @@ PolygonCollider2D:
       - {x: 0.56, y: -0.71}
       - {x: 0.64, y: -0.59}
       - {x: 0.84, y: -0.26999998}
+--- !u!95 &-1436323011306715559
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7605761420130611949}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: ae4ab622920b8314ab779a55575ee218, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!114 &7605761420130611951
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -199,5 +219,3 @@ MonoBehaviour:
   destroyEffect: {fileID: 5456398976044202209, guid: 37deeb9da4879714a82b1b6f93f18260,
     type: 3}
   destroyEffectDuration: 1
-  hitEffectColor: {r: 1, g: 0.67058825, b: 0.56078434, a: 1}
-  hitEffectDuration: 0.15

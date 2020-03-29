@@ -51,11 +51,8 @@ public class LifeCounter : MonoBehaviour
     private void ShowFinalLifeAnimation()
     {
         // Animate the icon on the top of the stack
-        var animator = lifeIcons.Peek().GetComponent<Animator>();
-        if (animator)
-        {
-            animator.enabled = true;
-        }
+        var icon = lifeIcons.Peek();
+        icon.GetComponent<Animator>().enabled = true;
     }
 
     private void SetupLifeIcons()

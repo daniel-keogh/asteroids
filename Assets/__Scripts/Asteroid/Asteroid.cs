@@ -4,6 +4,7 @@ using UnityEngine;
 
 [RequireComponent(typeof(PolygonCollider2D))]
 [RequireComponent(typeof(Rigidbody2D))]
+[RequireComponent(typeof(Animator))]
 public class Asteroid : MonoBehaviour
 {
     [SerializeField] private int scoreValue;
@@ -11,11 +12,9 @@ public class Asteroid : MonoBehaviour
     [SerializeField] private int numHitsBeforeDesroy;
     [SerializeField] private GameObject destroyEffect;
     [SerializeField] private float destroyEffectDuration;
-    [SerializeField] private Color hitEffectColor;
-    [SerializeField] private float hitEffectDuration;
 
     private int numHits;
-    private SpriteRenderer spriteRenderer;
+    private Animator animator;
 
     // Used from GameController enemy.ScoreValue
     public int ScoreValue
@@ -31,7 +30,7 @@ public class Asteroid : MonoBehaviour
 
     void Start()
     {
-        spriteRenderer = GetComponent<SpriteRenderer>();
+        animator = GetComponent<Animator>();
     }
 
     private void OnTriggerEnter2D(Collider2D other)
@@ -47,7 +46,7 @@ public class Asteroid : MonoBehaviour
                 if (++numHits < numHitsBeforeDesroy)
                 {
                     // show some kind of feedback indicating it was hit
-                    StartCoroutine(ShowBlinkEffect());
+                    ToggleIsShot(1);
                     return;
                 }
                 else
@@ -65,13 +64,9 @@ public class Asteroid : MonoBehaviour
         }
     }
 
-    private IEnumerator ShowBlinkEffect()
+    private void ToggleIsShot(int flag)
     {
-        Color currentColor = spriteRenderer.material.color;
-
-        spriteRenderer.material.color = hitEffectColor;
-        yield return new WaitForSeconds(hitEffectDuration);
-        spriteRenderer.material.color = Color.white;
+        animator.SetBool("IsShot", flag == 1 ? true : false);
     }
 
     private void PublishAsteroidDestroyedEvent()

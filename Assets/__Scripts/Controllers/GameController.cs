@@ -27,6 +27,7 @@ public class GameController : MonoBehaviour
 
     [Header("Player Lives")]
     [SerializeField] private int startingLives = 3;
+
     [Header("Waves")]
     [SerializeField] private int asteroidCountPerWave;
     [SerializeField] private float delayPerWave;
@@ -92,7 +93,7 @@ public class GameController : MonoBehaviour
 
         int currentWaveSize = FindObjectsOfType<Asteroid>().Length - 1;
 
-        if (currentWaveSize <= 0)
+        if (currentWaveSize == 0 && remainingAsteroids == 0)
         {
             StartCoroutine(SetupNextWave());
         }

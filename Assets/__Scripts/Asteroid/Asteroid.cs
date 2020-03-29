@@ -8,6 +8,8 @@ using UnityEngine;
 public class Asteroid : MonoBehaviour
 {
     [SerializeField] private int scoreValue;
+
+    [Header("Destruction")]
     [SerializeField] private Asteroid breaksInto;
     [SerializeField] private int numHitsBeforeDesroy;
     [SerializeField] private GameObject destroyEffect;
@@ -45,7 +47,7 @@ public class Asteroid : MonoBehaviour
             {
                 if (++numHits < numHitsBeforeDesroy)
                 {
-                    // show some kind of feedback indicating it was hit
+                    // show some feedback indicating it was hit
                     ToggleIsShot(1);
                     return;
                 }

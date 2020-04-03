@@ -9,7 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1616801561}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Turret
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -49,7 +49,7 @@ GameObject:
   - component: {fileID: 352865369}
   - component: {fileID: 5829934110347238549}
   - component: {fileID: 6776455908487683428}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Player Ship
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -476,6 +476,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: ThrustEffect
       objectReference: {fileID: 0}
+    - target: {fileID: 2467506668129256830, guid: b311c9a41408fc243a4a6acefe183a74,
+        type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b311c9a41408fc243a4a6acefe183a74, type: 3}
 --- !u!4 &1653570244 stripped
@@ -495,6 +500,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: ForceField
+      objectReference: {fileID: 0}
+    - target: {fileID: 2509978130035061221, guid: 66197bca1b19e3842a449afad5449cd2,
+        type: 3}
+      propertyPath: m_Layer
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 2509978130035061226, guid: 66197bca1b19e3842a449afad5449cd2,
         type: 3}
@@ -630,6 +640,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: HyperSpaceEffect
+      objectReference: {fileID: 0}
+    - target: {fileID: 4801298195592322830, guid: fef6b6180bc52b14ba645b13a577cef4,
+        type: 3}
+      propertyPath: m_Layer
+      value: 8
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: fef6b6180bc52b14ba645b13a577cef4, type: 3}

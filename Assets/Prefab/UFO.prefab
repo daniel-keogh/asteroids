@@ -306,12 +306,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 632461090ae7f9a47b0a69f0523e9aa6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  waypoints:
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
+  waypoint: {fileID: 0}
   speed: 0.1
+  stoppingDistance: 0
+  retreatDistance: 0
   rotateSpeed: 100
   eyeline: {fileID: 548031549}
   sightDistance: 25

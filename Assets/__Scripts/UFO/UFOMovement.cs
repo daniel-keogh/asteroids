@@ -5,33 +5,36 @@ using UnityEngine;
 [RequireComponent(typeof(Rigidbody2D))]
 public class UFOMovement : MonoBehaviour
 {
-    [SerializeField] private List<Transform> waypoints;
+    [Header("Movement")]
+    [SerializeField] private Transform waypoint;
     [SerializeField] private float speed;
     [SerializeField] private float rotateSpeed = 200f;
+
+    [Header("Raycast")]
     [SerializeField] private Transform eyeline;
-    [SerializeField] private float sightDistance = 4.0f;
+    [SerializeField] private float sightDistance = 25.0f;
     [SerializeField] private LayerMask visibleObjects;
 
     private int wpIndex = 0;
     private Transform target;
     private Rigidbody2D rb;
+    private Vector3 viewport;
 
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
 
-        if (waypoints.Count > 0)
-        {
-            transform.position = waypoints[0].position;
-        }
+        viewport = Camera.main.ViewportToWorldPoint(new Vector2(1, 1));
+
+        waypoint.position = new Vector2(
+            Random.Range(-viewport.x, viewport.x),
+            Random.Range(-viewport.y, viewport.y)
+        );
     }
 
     void Update()
     {
-        if (waypoints.Count > 0)
-        {
-            MoveAlongPath();
-        }
+        Move();
 
         Debug.DrawRay(
             eyeline.position,
@@ -42,7 +45,7 @@ public class UFOMovement : MonoBehaviour
         EnemyInSight();
     }
 
-    private void FixedUpdate()
+    void FixedUpdate()
     {
         // https://www.youtube.com/watch?v=0v_H3oOR0aU
         if (target)
@@ -70,42 +73,25 @@ public class UFOMovement : MonoBehaviour
 
         if (hit)
         {
+            // Lock-on to the player
             target = hit.transform;
         }
     }
 
-    private void MoveAlongPath()
+    private void Move()
     {
-        var targetWaypoint = waypoints[wpIndex].position;
-
         transform.position = Vector2.MoveTowards(
             transform.position,
-            targetWaypoint,
+            waypoint.position,
             speed
         );
 
-        if (transform.position == targetWaypoint)
+        if (Vector2.Distance(transform.position, waypoint.position) <= 0f)
         {
-            nextWaypoint();
-        }
-    }
-
-    /*
-     * Reference:
-     * Binkan Salaryman - https://stackoverflow.com/a/33782325
-     */
-    private void nextWaypoint()
-    {
-        wpIndex++;
-        wpIndex %= waypoints.Count; // clip index (turns to 0 if index == items.Count)
-    }
-
-    private void previousWaypoint()
-    {
-        wpIndex--;
-        if (wpIndex < 0)
-        {
-            wpIndex = waypoints.Count - 1;
+            waypoint.position = new Vector2(
+                Random.Range(-viewport.x, viewport.x),
+                Random.Range(-viewport.y, viewport.y)
+            );
         }
     }
 }

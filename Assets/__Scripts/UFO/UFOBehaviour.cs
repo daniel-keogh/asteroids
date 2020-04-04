@@ -124,7 +124,7 @@ public class UFOBehaviour : MonoBehaviour
             transform.position = Vector2.MoveTowards(
                 transform.position,
                 waypoint.position,
-                speed
+                speed * Time.deltaTime
             );
 
             if (Vector2.Distance(transform.position, waypoint.position) <= 0f)
@@ -152,7 +152,11 @@ public class UFOBehaviour : MonoBehaviour
 
             if (distance > stoppingDistance)
             {
-                transform.position = Vector2.MoveTowards(transform.position, target.position, speed);
+                transform.position = Vector2.MoveTowards(
+                    transform.position,
+                    target.position,
+                    speed * Time.deltaTime
+                );
             }
             else if (distance < stoppingDistance && distance > retreatDistance)
             {
@@ -163,7 +167,7 @@ public class UFOBehaviour : MonoBehaviour
                 transform.position = Vector2.MoveTowards(
                     transform.position,
                     target.position,
-                    -speed
+                    -speed * Time.deltaTime
                 );
             }
         }

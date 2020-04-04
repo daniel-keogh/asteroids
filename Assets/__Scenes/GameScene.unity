@@ -178,6 +178,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 37464788, guid: bc344af830fea7d4dac0dfd29f29dde8, type: 3}
+      propertyPath: fireRate
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 2034248982, guid: bc344af830fea7d4dac0dfd29f29dde8, type: 3}
       propertyPath: waypoint
       value: 
@@ -388,11 +392,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6723512523177929436, guid: e63c05d93fca9f449b75fab85715bce4,
-        type: 3}
-      propertyPath: m_Enabled
-      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e63c05d93fca9f449b75fab85715bce4, type: 3}

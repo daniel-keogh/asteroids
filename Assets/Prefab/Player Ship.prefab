@@ -408,6 +408,7 @@ MonoBehaviour:
     type: 3}
   explosionDuration: 1
   repawnDelay: 3
+  shotsBeforeDeath: 2
   immunityDuration: 3
 --- !u!1001 &2467506667551457213
 PrefabInstance:

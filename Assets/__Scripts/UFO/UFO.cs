@@ -41,14 +41,14 @@ public class UFO : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D other)
     {
-        var player = other.collider.GetComponent<Player>();
         var asteroid = other.collider.GetComponent<Asteroid>();
 
-        if (player || asteroid)
+        if (asteroid)
         {
-            Destroy(other.gameObject);
-            Die();
+            Destroy(asteroid.gameObject);
         }
+
+        Die();
     }
 
     private void Die()

@@ -32,6 +32,19 @@ public class ForceField : MonoBehaviour
         SetComponentsEnabled(true);
     }
 
+    private void OnTriggerEnter2D(Collider2D other)
+    {
+        var laser = other.GetComponent<Laser>();
+
+        if (laser)
+        {
+            if (laser.tag == Laser.ENEMY_LASER)
+            {
+                Destroy(laser.gameObject);
+            }
+        }
+    }
+
     public void Deactivate()
     {
         parentCollider.enabled = true;

@@ -11,13 +11,18 @@ public class Player : MonoBehaviour
     [SerializeField] private float explosionDuration = 1f;
     [SerializeField] private float repawnDelay = 3f;
 
+    [Header("Player Health")]
+    [SerializeField] private int shotsBeforeDeath = 2;
+
     [Header("Respawn")]
     [Tooltip("The number of seconds the player will be invincible after respawning.")]
     [SerializeField] private float immunityDuration = 3f;
 
     private Rigidbody2D rb;
+    private PolygonCollider2D polygonCollider;
     private GameController gc;
     private ForceField forceField;
+    private int numTimesShot = 0;
 
     // Event for telling the system the player died
     public delegate void PlayerKilled();
@@ -26,6 +31,7 @@ public class Player : MonoBehaviour
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
+        polygonCollider = GetComponent<PolygonCollider2D>();
         gc = FindObjectOfType<GameController>();
         forceField = GetComponentInChildren<ForceField>();
     }
@@ -38,8 +44,13 @@ public class Player : MonoBehaviour
         {
             if (laser.tag == Laser.ENEMY_LASER)
             {
+                // Make sure it was the polygon collider that was hit
+                if (polygonCollider.IsTouching(other) && ++numTimesShot >= shotsBeforeDeath)
+                {
+                    Die();
+                }
+
                 Destroy(laser.gameObject);
-                Die();
             }
         }
     }
@@ -47,13 +58,13 @@ public class Player : MonoBehaviour
     private void OnCollisionEnter2D(Collision2D other)
     {
         var asteroid = other.collider.GetComponent<Asteroid>();
-        var ufo = other.collider.GetComponent<UFO>();
 
-        if (asteroid || ufo)
+        if (asteroid)
         {
-            Destroy(other.gameObject);
-            Die();
+            Destroy(asteroid.gameObject);
         }
+
+        Die();
     }
 
     private void Die()
@@ -79,6 +90,8 @@ public class Player : MonoBehaviour
             rb.transform.position = new Vector2(0, 0);
             rb.velocity = new Vector2(0, 0);
             rb.transform.rotation = Quaternion.identity;
+
+            numTimesShot = 0;
 
             gameObject.SetActive(true);
 

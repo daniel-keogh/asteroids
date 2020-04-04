@@ -9,13 +9,16 @@ public class UFOMovement : MonoBehaviour
     [SerializeField] private Transform waypoint;
     [SerializeField] private float speed;
     [SerializeField] private float rotateSpeed = 200f;
+    [SerializeField] private float waitTimeOnArrival = 1f;
+    [SerializeField] private float stoppingDistance = 10f;
+    [SerializeField] private float retreatDistance = 7.5f;
 
     [Header("Raycast")]
     [SerializeField] private Transform eyeline;
     [SerializeField] private float sightDistance = 25.0f;
     [SerializeField] private LayerMask visibleObjects;
 
-    private int wpIndex = 0;
+    private float waitTime;
     private Transform target;
     private Rigidbody2D rb;
     private Vector3 viewport;
@@ -30,6 +33,8 @@ public class UFOMovement : MonoBehaviour
             Random.Range(-viewport.x, viewport.x),
             Random.Range(-viewport.y, viewport.y)
         );
+
+        waitTime = waitTimeOnArrival;
     }
 
     void Update()
@@ -42,26 +47,40 @@ public class UFOMovement : MonoBehaviour
             Color.magenta
         );
 
-        EnemyInSight();
+        TargetPlayer();
     }
 
     void FixedUpdate()
     {
-        // https://www.youtube.com/watch?v=0v_H3oOR0aU
-        if (target)
-        {
-            Vector2 direction = (Vector2)target.position - rb.position;
-
-            direction.Normalize();
-
-            float rotateAmount = Vector3.Cross(direction, transform.up).z;
-
-            rb.angularVelocity = -rotateAmount * rotateSpeed;
-            rb.velocity = transform.up * speed;
-        }
+        RotateToTarget();
     }
 
-    private void EnemyInSight()
+    private void RotateToTarget()
+    {
+        // The UFO will always rotate towards the position of either the 
+        // target Transform, or the waypoint (if target is null).
+        // Reference: Brackeys - How to make a Homing Missile in Unity
+        // https://www.youtube.com/watch?v=0v_H3oOR0aU
+
+        Vector2 direction;
+
+        if (target)
+        {
+            direction = (Vector2)target.position - rb.position;
+        }
+        else
+        {
+            direction = (Vector2)waypoint.position - rb.position;
+        }
+
+        direction.Normalize();
+
+        float rotateAmount = Vector3.Cross(direction, transform.up).z;
+
+        rb.angularVelocity = -rotateAmount * rotateSpeed;
+    }
+
+    private void TargetPlayer()
     {
         // Throw a raycast and see if it hits anything
         var hit = Physics2D.Raycast(
@@ -80,18 +99,54 @@ public class UFOMovement : MonoBehaviour
 
     private void Move()
     {
-        transform.position = Vector2.MoveTowards(
-            transform.position,
-            waypoint.position,
-            speed
-        );
-
-        if (Vector2.Distance(transform.position, waypoint.position) <= 0f)
+        if (!target)
         {
-            waypoint.position = new Vector2(
-                Random.Range(-viewport.x, viewport.x),
-                Random.Range(-viewport.y, viewport.y)
+            // Set a waypoint and move towards it.
+            // Reference:  Blackthornprod - https://www.youtube.com/watch?v=8eWbSN2T8TE
+            transform.position = Vector2.MoveTowards(
+                transform.position,
+                waypoint.position,
+                speed
             );
+
+            if (Vector2.Distance(transform.position, waypoint.position) <= 0f)
+            {
+                if (waitTime <= 0)
+                {
+                    waypoint.position = new Vector2(
+                        Random.Range(-viewport.x, viewport.x),
+                        Random.Range(-viewport.y, viewport.y)
+                    );
+
+                    waitTime = waitTimeOnArrival;
+                }
+                else
+                {
+                    waitTime -= Time.deltaTime;
+                }
+            }
+        }
+        else
+        {
+            // Follow/Retreat.
+            // Reference:  Blackthornprod - https://www.youtube.com/watch?v=_Z1t7MNk0c4
+
+            if (Vector2.Distance(transform.position, target.position) > stoppingDistance)
+            {
+                transform.position = Vector2.MoveTowards(transform.position, target.position, speed);
+            }
+            else if (Vector2.Distance(transform.position, target.position) < stoppingDistance && Vector2.Distance(transform.position, target.position) > retreatDistance)
+            {
+                transform.position = this.transform.position;
+            }
+            else
+            {
+                transform.position = Vector2.MoveTowards(
+                    transform.position,
+                    target.position,
+                    -speed
+                );
+            }
         }
     }
 }

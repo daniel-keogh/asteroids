@@ -11,7 +11,7 @@ public class UFO : MonoBehaviour
         get { return scoreValue; }
     }
 
-    [SerializeField] private int scoreValue;
+    [SerializeField] private int scoreValue = 200;
 
     void Start()
     {

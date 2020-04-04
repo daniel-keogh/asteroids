@@ -308,9 +308,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   waypoint: {fileID: 0}
   speed: 0.1
-  stoppingDistance: 0
-  retreatDistance: 0
-  rotateSpeed: 100
+  rotateSpeed: 200
+  waitTimeOnArrival: 0.5
+  stoppingDistance: 10
+  retreatDistance: 7.5
   eyeline: {fileID: 548031549}
   sightDistance: 25
   visibleObjects:

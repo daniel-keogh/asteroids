@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 [RequireComponent(typeof(Rigidbody2D))]
+[RequireComponent(typeof(UFOWeapons))]
 public class UFOMovement : MonoBehaviour
 {
     [Header("Movement")]
@@ -19,13 +20,15 @@ public class UFOMovement : MonoBehaviour
     [SerializeField] private LayerMask visibleObjects;
 
     private float waitTime;
-    private Transform target;
     private Rigidbody2D rb;
+    private Transform target;
+    private UFOWeapons weapons;
     private Vector3 viewport;
 
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
+        weapons = GetComponent<UFOWeapons>();
 
         viewport = Camera.main.ViewportToWorldPoint(new Vector2(1, 1));
 
@@ -94,6 +97,11 @@ public class UFOMovement : MonoBehaviour
         {
             // Lock-on to the player
             target = hit.transform;
+            weapons.StartShooting();
+        }
+        else
+        {
+            weapons.StopShooting();
         }
     }
 

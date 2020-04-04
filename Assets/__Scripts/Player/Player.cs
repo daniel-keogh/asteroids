@@ -8,12 +8,12 @@ public class Player : MonoBehaviour
 {
     [Header("Player Death")]
     [SerializeField] private GameObject explosionEffect;
-    [SerializeField] private int explosionDuration;
-    [SerializeField] private float repawnDelay;
+    [SerializeField] private float explosionDuration = 1f;
+    [SerializeField] private float repawnDelay = 3f;
 
     [Header("Respawn")]
     [Tooltip("The number of seconds the player will be invincible after respawning.")]
-    [SerializeField] private float immunityDuration = 3.0f;
+    [SerializeField] private float immunityDuration = 3f;
 
     private Rigidbody2D rb;
     private GameController gc;

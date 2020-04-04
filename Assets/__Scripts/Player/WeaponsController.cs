@@ -4,16 +4,16 @@ using UnityEngine;
 
 public class WeaponsController : MonoBehaviour
 {
-    private GameObject laserParent;
-    private Coroutine firingCoroutine;
-    private AudioSource audioSource;
-
     [SerializeField] private float laserSpeed = 20.0f;
     [SerializeField] private float fireRate = 0.3f;
     [SerializeField] private Transform turretTransform;
     [SerializeField] private Laser laserPrefab;
     [SerializeField] private AudioClip shootClip;
     [SerializeField] [Range(0f, 1.0f)] private float shootVolume = 0.5f;
+
+    private GameObject laserParent;
+    private Coroutine firingCoroutine;
+    private AudioSource audioSource;
 
     void Start()
     {

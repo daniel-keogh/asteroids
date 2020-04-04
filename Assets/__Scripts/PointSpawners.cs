@@ -5,10 +5,6 @@ using Utilities;
 
 public class PointSpawners : MonoBehaviour
 {
-    // Event for telling the system an asteroid has spawned
-    public delegate void AsteroidSpawned();
-    public static event AsteroidSpawned AsteroidSpawnedEvent;
-
     [SerializeField] private List<Asteroid> asteroidPrefabs;
     [SerializeField] private float spawnDelay;
     [SerializeField] private float spawnInterval;
@@ -21,6 +17,10 @@ public class PointSpawners : MonoBehaviour
     private IList<SpawnPoint> spawnPoints;
     private Stack<SpawnPoint> spawnStack;
     private GameObject asteroidParent;
+
+    // Event for telling the system an asteroid has spawned
+    public delegate void AsteroidSpawned();
+    public static event AsteroidSpawned AsteroidSpawnedEvent;
 
     void Start()
     {

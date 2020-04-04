@@ -7,6 +7,12 @@ using UnityEngine;
 [RequireComponent(typeof(Animator))]
 public class Asteroid : MonoBehaviour
 {
+    public int ScoreValue
+    {
+        get { return scoreValue; }
+    }
+
+    [Header("Scoring")]
     [SerializeField] private int scoreValue;
 
     [Header("Destruction")]
@@ -17,12 +23,6 @@ public class Asteroid : MonoBehaviour
 
     private int numHits;
     private Animator animator;
-
-    // Used from GameController enemy.ScoreValue
-    public int ScoreValue
-    {
-        get { return scoreValue; }
-    }
 
     // Delegate type to use for event
     public delegate void AsteroidDestroyed(Asteroid asteroid);
@@ -47,22 +47,30 @@ public class Asteroid : MonoBehaviour
             {
                 if (++numHits < numHitsBeforeDesroy)
                 {
-                    // show some feedback indicating it was hit
+                    // Show some feedback indicating it was hit
                     ToggleIsShot(1);
                     return;
                 }
                 else
                 {
+                    // Break in two
                     Instantiate(breaksInto, transform.position, transform.rotation);
                     Instantiate(breaksInto, transform.position, transform.rotation);
                 }
             }
 
-            PublishAsteroidDestroyedEvent();
+            if (laser.tag != Laser.PLAYER_LASER)
+            {
+                // Points should only be given if the player destroyed it
+                scoreValue = 0;
+            }
 
+            // Show explosion
             GameObject explosion = Instantiate(destroyEffect, transform.position, transform.rotation);
             Destroy(explosion, destroyEffectDuration);
             Destroy(gameObject);
+
+            PublishAsteroidDestroyedEvent();
         }
     }
 

@@ -20,11 +20,6 @@ public class GameController : MonoBehaviour
         get { return playerScore; }
     }
 
-    private int playerScore = 0;
-    private int remainingLives;
-    private int remainingAsteroids;
-    private int waveNumber = 1;
-
     [Header("Player Lives")]
     [SerializeField] private int startingLives = 3;
 
@@ -32,6 +27,11 @@ public class GameController : MonoBehaviour
     [SerializeField] private int asteroidCountPerWave;
     [SerializeField] private float delayPerWave;
     [SerializeField] private TextMeshProUGUI waveIndicator;
+
+    private int playerScore = 0;
+    private int waveNumber = 1;
+    private int remainingLives;
+    private int remainingAsteroids;
 
     void Awake()
     {
@@ -55,6 +55,7 @@ public class GameController : MonoBehaviour
     private void OnDisable()
     {
         Asteroid.AsteroidDestroyedEvent -= OnAsteroidDestroyedEvent;
+        UFO.UFODestroyedEvent -= OnUFODestroyedEvent;
         Player.PlayerKilledEvent -= OnPlayerKilledEvent;
         PointSpawners.AsteroidSpawnedEvent -= OnAsteroidSpawnedEvent;
     }
@@ -86,11 +87,8 @@ public class GameController : MonoBehaviour
 
     private void OnAsteroidDestroyedEvent(Asteroid asteroid)
     {
-        if (asteroid != null)
-        {
-            // add the score value for the enemy to the player score
-            playerScore += asteroid.ScoreValue;
-        }
+        // add the score value to the player score
+        playerScore += asteroid.ScoreValue;
 
         int currentWaveSize = FindObjectsOfType<Asteroid>().Length - 1;
 
@@ -102,11 +100,8 @@ public class GameController : MonoBehaviour
 
     private void OnUFODestroyedEvent(UFO ufo)
     {
-        if (ufo != null)
-        {
-            // add the score value for the enemy to the player score
-            playerScore += ufo.ScoreValue;
-        }
+        // add the score value to the player score
+        playerScore += ufo.ScoreValue;
     }
 
     private void OnPlayerKilledEvent()

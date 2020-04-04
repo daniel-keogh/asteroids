@@ -178,6 +178,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 2034248982, guid: bc344af830fea7d4dac0dfd29f29dde8, type: 3}
+      propertyPath: waypoint
+      value: 
+      objectReference: {fileID: 1916178737}
     - target: {fileID: 7242363138560531061, guid: bc344af830fea7d4dac0dfd29f29dde8,
         type: 3}
       propertyPath: m_Name
@@ -238,11 +242,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 7242363138560531065, guid: bc344af830fea7d4dac0dfd29f29dde8,
-        type: 3}
-      propertyPath: waypoint
-      value: 
-      objectReference: {fileID: 1916178737}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: bc344af830fea7d4dac0dfd29f29dde8, type: 3}
 --- !u!1 &490974436
@@ -330,19 +329,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 752670359, guid: e63c05d93fca9f449b75fab85715bce4, type: 3}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 6723512523177929433, guid: e63c05d93fca9f449b75fab85715bce4,
         type: 3}
       propertyPath: m_Name
       value: Player Ship
-      objectReference: {fileID: 0}
-    - target: {fileID: 6723512523177929433, guid: e63c05d93fca9f449b75fab85715bce4,
-        type: 3}
-      propertyPath: m_IsActive
-      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6723512523177929435, guid: e63c05d93fca9f449b75fab85715bce4,
         type: 3}

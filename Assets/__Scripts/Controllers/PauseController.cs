@@ -9,7 +9,6 @@ public class PauseController : MonoBehaviour
 
     private KeyCode pauseKey = KeyCode.Escape;
     private bool IsPaused = false;
-
     private SoundController soundController;
 
     void Start()

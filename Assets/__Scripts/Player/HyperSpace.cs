@@ -12,6 +12,8 @@ public class HyperSpace : MonoBehaviour
     [Tooltip("Prevents the player being re-positioned too close to the edge.")]
     [SerializeField] private float borderPadding = 1.0f;
     [SerializeField] private bool disableRotation = false;
+
+    [Header("Duration")]
     [SerializeField] private float duration = 2.0f;
     [SerializeField] private float cooldownDuration = 3.0f;
 
@@ -47,10 +49,9 @@ public class HyperSpace : MonoBehaviour
             }
         }
     }
-
     private void OnDisable()
     {
-        // in case the player dies while hyperspacing
+        // In case the player dies while hyperspacing
         isCooledDown = true;
 
         GetComponent<PlayerMovement>().enabled = true;

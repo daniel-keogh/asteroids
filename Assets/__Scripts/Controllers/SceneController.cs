@@ -40,6 +40,7 @@ public class SceneController : MonoBehaviour
     {
         if (transitionAnimator)
         {
+            // Show an animation
             transitionAnimator.SetTrigger(ANIMATOR_TRIGGER);
         }
 

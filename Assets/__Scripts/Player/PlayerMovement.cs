@@ -6,12 +6,12 @@ using UnityEngine;
 [RequireComponent(typeof(Rigidbody2D))]
 public class PlayerMovement : MonoBehaviour
 {
+    [SerializeField] private float forwardSpeed = 8.0f;
+    [SerializeField] private float rotationSpeed = 5.0f;
+
     private Rigidbody2D rb;
     private float forward, rotation;
     private ParticleSystem thrusters;
-
-    [SerializeField] private float forwardSpeed = 8.0f;
-    [SerializeField] private float rotationSpeed = 5.0f;
 
     void Start()
     {
@@ -47,6 +47,7 @@ public class PlayerMovement : MonoBehaviour
 
     private void OnDisable()
     {
+        // Stop any movement/rotation on re-spawn
         forward = 0;
         rotation = 0;
 

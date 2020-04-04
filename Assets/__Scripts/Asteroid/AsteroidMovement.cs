@@ -5,10 +5,10 @@ using UnityEngine;
 [RequireComponent(typeof(Rigidbody2D))]
 public class AsteroidMovement : MonoBehaviour
 {
-    private Rigidbody2D rb;
-
     [SerializeField] private float maxRotation;
     [SerializeField] private float speed;
+
+    private Rigidbody2D rb;
 
     private void Awake()
     {

@@ -12,6 +12,12 @@ public class UFO : MonoBehaviour
         get { return scoreValue; }
     }
 
+    // Delegate type to use for event
+    public delegate void UFODestroyed(UFO ufo);
+
+    // Static method to be implemented in the listener
+    public static UFODestroyed UFODestroyedEvent;
+
     [Header("Score")]
     [SerializeField] private int scoreValue = 200;
 
@@ -27,6 +33,10 @@ public class UFO : MonoBehaviour
     [SerializeField] private Transform eyeline;
     [SerializeField] private float sightDistance = 25.0f;
     [SerializeField] private LayerMask visibleObjects;
+
+    [Header("Death")]
+    [SerializeField] private GameObject explosionEffect;
+    [SerializeField] private int explosionDuration;
 
     private float waitTime;
     private Rigidbody2D rb;
@@ -67,19 +77,42 @@ public class UFO : MonoBehaviour
         RotateToTarget();
     }
 
+    private void OnEnable()
+    {
+        Player.PlayerKilledEvent += OnTargetDestroyEvent;
+    }
+
+    private void OnDisable()
+    {
+        Player.PlayerKilledEvent -= OnTargetDestroyEvent;
+    }
+
     private void OnTriggerEnter2D(Collider2D other)
     {
         var laser = other.GetComponent<Laser>();
 
         if (laser)
         {
-            Destroy(laser.gameObject);
+            if (laser.tag == Laser.PLAYER_LASER)
+            {
+                Destroy(laser.gameObject);
+                Die();
+
+                PublishUFODestroyedEvent();
+            }
         }
     }
 
     private void OnCollisionEnter2D(Collision2D other)
     {
+        var player = other.collider.GetComponent<Player>();
+        var asteroid = other.collider.GetComponent<Asteroid>();
 
+        if (player || asteroid)
+        {
+            Destroy(other.gameObject);
+            Die();
+        }
     }
 
     private void RotateToTarget()
@@ -183,8 +216,25 @@ public class UFO : MonoBehaviour
         }
     }
 
+    private void OnTargetDestroyEvent()
+    {
+        target = null;
+    }
+
+    private void Die()
+    {
+        GameObject explosion = Instantiate(explosionEffect, transform.position, transform.rotation);
+        Destroy(explosion, explosionDuration);
+
+        Destroy(gameObject);
+    }
+
     private void PublishUFODestroyedEvent()
     {
-
+        // Make sure somebody is listening
+        if (UFODestroyedEvent != null)
+        {
+            UFODestroyedEvent(this);
+        }
     }
 }

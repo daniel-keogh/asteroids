@@ -8,6 +8,8 @@ TagManager:
   - BottomPointSpawner
   - LeftPointSpawner
   - RightPointSpawner
+  - PlayerLaser
+  - EnemyLaser
   layers:
   - Default
   - TransparentFX

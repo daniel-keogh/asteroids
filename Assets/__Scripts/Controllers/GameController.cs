@@ -47,6 +47,7 @@ public class GameController : MonoBehaviour
     private void OnEnable()
     {
         Asteroid.AsteroidDestroyedEvent += OnAsteroidDestroyedEvent;
+        UFO.UFODestroyedEvent += OnUFODestroyedEvent;
         Player.PlayerKilledEvent += OnPlayerKilledEvent;
         PointSpawners.AsteroidSpawnedEvent += OnAsteroidSpawnedEvent;
     }
@@ -96,6 +97,15 @@ public class GameController : MonoBehaviour
         if (currentWaveSize == 0 && remainingAsteroids == 0)
         {
             StartCoroutine(SetupNextWave());
+        }
+    }
+
+    private void OnUFODestroyedEvent(UFO ufo)
+    {
+        if (ufo != null)
+        {
+            // add the score value for the enemy to the player score
+            playerScore += ufo.ScoreValue;
         }
     }
 

@@ -160,7 +160,7 @@ Rigidbody2D:
   m_Simulated: 1
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 1
-  m_Mass: 1
+  m_Mass: 4.16922
   m_LinearDrag: 0
   m_AngularDrag: 0.05
   m_GravityScale: 0
@@ -179,7 +179,7 @@ CircleCollider2D:
   m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
-  m_IsTrigger: 1
+  m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
@@ -305,6 +305,9 @@ MonoBehaviour:
   visibleObjects:
     serializedVersion: 2
     m_Bits: 256
+  explosionEffect: {fileID: 1534296265662101853, guid: 1b3e1fa6f8edd0d468e5b4a9aaac7178,
+    type: 3}
+  explosionDuration: 1
 --- !u!114 &7242363138560531064
 MonoBehaviour:
   m_ObjectHideFlags: 0

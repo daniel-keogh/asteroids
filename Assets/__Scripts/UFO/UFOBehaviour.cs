@@ -7,12 +7,12 @@ using UnityEngine;
 public class UFOBehaviour : MonoBehaviour
 {
     [Header("Movement")]
-    [SerializeField] private float speed = 0.1f;
+    [SerializeField] private float speed = 5f;
     [SerializeField] private float rotateSpeed = 200f;
     [SerializeField] private float waitTimeOnArrival = 0.5f;
     [SerializeField] private float stoppingDistance = 10f;
     [SerializeField] private float retreatDistance = 7.5f;
-    [SerializeField] private Transform waypoint;
+    [SerializeField] private UFOWaypoint waypointPrefab;
 
     [Header("Vision")]
     [SerializeField] private Transform eyeline;
@@ -22,6 +22,7 @@ public class UFOBehaviour : MonoBehaviour
     private float waitTime;
     private Rigidbody2D rb;
     private Transform target;
+    private Transform waypoint;
     private UFOWeapons weapons;
     private Vector3 viewport;
 
@@ -31,6 +32,9 @@ public class UFOBehaviour : MonoBehaviour
         weapons = GetComponent<UFOWeapons>();
 
         viewport = Camera.main.ViewportToWorldPoint(new Vector2(1, 1));
+
+        // Create the UFOWaypoint
+        waypoint = Instantiate(waypointPrefab).transform;
 
         waypoint.position = new Vector2(
             Random.Range(-viewport.x, viewport.x),
@@ -66,6 +70,15 @@ public class UFOBehaviour : MonoBehaviour
     private void OnDisable()
     {
         Player.PlayerKilledEvent -= OnTargetDestroyEvent;
+    }
+
+    private void OnDestroy()
+    {
+        // Remove the UFOWaypoint
+        if (waypoint)
+        {
+            Destroy(waypoint.gameObject);
+        }
     }
 
     private void RotateToTarget()

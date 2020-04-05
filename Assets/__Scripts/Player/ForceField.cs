@@ -3,33 +3,30 @@ using System.Collections.Generic;
 using UnityEngine;
 
 [RequireComponent(typeof(SpriteRenderer))]
-[RequireComponent(typeof(CircleCollider2D))]
+[RequireComponent(typeof(CapsuleCollider2D))]
 [RequireComponent(typeof(PointEffector2D))]
 [RequireComponent(typeof(Animator))]
 public class ForceField : MonoBehaviour
 {
+    public bool IsActivated
+    {
+        get { return isActivated; }
+    }
+
     private SpriteRenderer spriteRenderer;
-    private CircleCollider2D circleCollider;
+    private CapsuleCollider2D capsuleCollider;
     private PointEffector2D pointEffector;
     private Animator animator;
-    private PolygonCollider2D parentCollider;
+    private bool isActivated;
 
     private void Start()
     {
         spriteRenderer = GetComponent<SpriteRenderer>();
-        circleCollider = GetComponent<CircleCollider2D>();
+        capsuleCollider = GetComponent<CapsuleCollider2D>();
         pointEffector = GetComponent<PointEffector2D>();
         animator = GetComponent<Animator>();
 
-        parentCollider = GetComponentInParent<PolygonCollider2D>();
-
-        SetComponentsEnabled(false);
-    }
-
-    public void Activate()
-    {
-        parentCollider.enabled = false;
-        SetComponentsEnabled(true);
+        Deactivate();
     }
 
     private void OnTriggerEnter2D(Collider2D other)
@@ -45,16 +42,22 @@ public class ForceField : MonoBehaviour
         }
     }
 
+    public void Activate()
+    {
+        SetComponentsEnabled(true);
+        isActivated = true;
+    }
+
     public void Deactivate()
     {
-        parentCollider.enabled = true;
         SetComponentsEnabled(false);
+        isActivated = false;
     }
 
     private void SetComponentsEnabled(bool status)
     {
         spriteRenderer.enabled = status;
-        circleCollider.enabled = status;
+        capsuleCollider.enabled = status;
         pointEffector.enabled = status;
         animator.enabled = status;
     }

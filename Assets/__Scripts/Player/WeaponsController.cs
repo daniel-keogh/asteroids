@@ -17,11 +17,11 @@ public class WeaponsController : MonoBehaviour
 
     void Start()
     {
-        laserParent = GameObject.Find("LaserParent");
+        laserParent = GameObject.Find(Laser.LASER_PARENT);
 
         if (!laserParent)
         {
-            laserParent = new GameObject("LaserParent");
+            laserParent = new GameObject(Laser.LASER_PARENT);
         }
 
         audioSource = GetComponent<AudioSource>();

@@ -315,7 +315,8 @@ MonoBehaviour:
   waitTimeOnArrival: 0.5
   stoppingDistance: 10
   retreatDistance: 7.5
-  waypoint: {fileID: 0}
+  waypointPrefab: {fileID: 4191015496147262708, guid: fae33874fc3fef743a7528752886237d,
+    type: 3}
   eyeline: {fileID: 548031549}
   sightDistance: 25
   visibleObjects:
@@ -334,7 +335,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   laserSpeed: 20
-  fireRate: 0.5
+  fireRate: 1
   turretTransform: {fileID: 2049595670}
   laserPrefab: {fileID: 5052472048510619508, guid: 2f9a18793cc30914397d77334d30e8fe,
     type: 3}

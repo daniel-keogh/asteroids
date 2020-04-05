@@ -2,7 +2,6 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-[RequireComponent(typeof(PolygonCollider2D))]
 [RequireComponent(typeof(Rigidbody2D))]
 public class Player : MonoBehaviour
 {
@@ -19,7 +18,6 @@ public class Player : MonoBehaviour
     [SerializeField] private float immunityDuration = 3f;
 
     private Rigidbody2D rb;
-    private PolygonCollider2D polygonCollider;
     private GameController gc;
     private ForceField forceField;
     private int numTimesShot = 0;
@@ -31,21 +29,22 @@ public class Player : MonoBehaviour
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
-        polygonCollider = GetComponent<PolygonCollider2D>();
         gc = FindObjectOfType<GameController>();
         forceField = GetComponentInChildren<ForceField>();
     }
 
     private void OnTriggerEnter2D(Collider2D other)
     {
+        if (forceField.IsActivated)
+            return;
+
         var laser = other.GetComponent<Laser>();
 
         if (laser)
         {
             if (laser.tag == Laser.ENEMY_LASER)
             {
-                // Make sure it was the polygon collider that was hit
-                if (polygonCollider.IsTouching(other) && ++numTimesShot >= shotsBeforeDeath)
+                if (++numTimesShot >= shotsBeforeDeath)
                 {
                     Die();
                 }
@@ -57,6 +56,9 @@ public class Player : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D other)
     {
+        if (forceField.IsActivated)
+            return;
+
         var asteroid = other.collider.GetComponent<Asteroid>();
 
         if (asteroid)

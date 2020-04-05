@@ -178,14 +178,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 37464788, guid: bc344af830fea7d4dac0dfd29f29dde8, type: 3}
-      propertyPath: fireRate
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 2034248982, guid: bc344af830fea7d4dac0dfd29f29dde8, type: 3}
-      propertyPath: waypoint
-      value: 
-      objectReference: {fileID: 1916178737}
     - target: {fileID: 7242363138560531061, guid: bc344af830fea7d4dac0dfd29f29dde8,
         type: 3}
       propertyPath: m_Name
@@ -229,7 +221,7 @@ PrefabInstance:
     - target: {fileID: 7242363138560531063, guid: bc344af830fea7d4dac0dfd29f29dde8,
         type: 3}
       propertyPath: m_RootOrder
-      value: 12
+      value: 11
       objectReference: {fileID: 0}
     - target: {fileID: 7242363138560531063, guid: bc344af830fea7d4dac0dfd29f29dde8,
         type: 3}
@@ -876,36 +868,6 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 1907430883}
   m_PrefabAsset: {fileID: 0}
---- !u!1 &1916178736
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1916178737}
-  m_Layer: 0
-  m_Name: UFO Waypoint
-  m_TagString: Untagged
-  m_Icon: {fileID: 8418204508859773708, guid: 0000000000000000d000000000000000, type: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &1916178737
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1916178736}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_RootOrder: 11
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &247121872826093500
 PrefabInstance:
   m_ObjectHideFlags: 0

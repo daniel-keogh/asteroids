@@ -34,15 +34,10 @@ public class PointSpawners : MonoBehaviour
         // Get the spawn points here
         spawnPoints = GetComponentsInChildren<SpawnPoint>();
 
-        SpawnEnemyWaves();
-    }
-
-    private void SpawnEnemyWaves()
-    {
         // Create the stack of points
         spawnStack = ListUtils.CreateShuffledStack(spawnPoints);
 
-        InvokeRepeating(SPAWN_ASTEROID_METHOD, spawnDelay, spawnInterval);
+        EnableSpawning();
     }
 
     private void SpawnOneAsteroid()

@@ -13,9 +13,10 @@ GameObject:
   - component: {fileID: 2646086979634312343}
   - component: {fileID: 2646086979634312360}
   - component: {fileID: 9203609186316988832}
-  - component: {fileID: 2646086979634312361}
-  - component: {fileID: 2646086979634312342}
   - component: {fileID: 8261654414769820204}
+  - component: {fileID: 2646086979634312361}
+  - component: {fileID: 3714473930963046037}
+  - component: {fileID: 2646086979634312342}
   m_Layer: 9
   m_Name: Large Asteroid
   m_TagString: Untagged
@@ -203,6 +204,24 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!114 &8261654414769820204
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2646086979634312365}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8a0b671df042740488679b6b70313335, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  breaksInto: {fileID: 7458207695300214454, guid: 2fe7ff5042949214eba7c8fc2c27a5e4,
+    type: 3}
+  numHitsBeforeDesroy: 3
+  destroyEffect: {fileID: 5456398976044202209, guid: 37deeb9da4879714a82b1b6f93f18260,
+    type: 3}
+  destroyEffectDuration: 1
 --- !u!114 &2646086979634312361
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -217,6 +236,19 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   maxRotation: 50
   speed: 100
+--- !u!114 &3714473930963046037
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2646086979634312365}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4dc1c3c191e5db6489617254fe0d8a30, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  scoreValue: 20
 --- !u!114 &2646086979634312342
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -229,22 +261,3 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8a4945a185a7f6142b3057558d3f0825, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &8261654414769820204
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2646086979634312365}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8a0b671df042740488679b6b70313335, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  scoreValue: 20
-  breaksInto: {fileID: 7458207695300214454, guid: 2fe7ff5042949214eba7c8fc2c27a5e4,
-    type: 3}
-  numHitsBeforeDesroy: 3
-  destroyEffect: {fileID: 5456398976044202209, guid: 37deeb9da4879714a82b1b6f93f18260,
-    type: 3}
-  destroyEffectDuration: 1

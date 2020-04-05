@@ -3,25 +3,12 @@ using System.Collections.Generic;
 using UnityEngine;
 
 [RequireComponent(typeof(CircleCollider2D))]
+[RequireComponent(typeof(Enemy))]
 public class UFO : MonoBehaviour
 {
-    public int ScoreValue
-    {
-        get { return scoreValue; }
-    }
-
-    [Header("Scoring")]
-    [SerializeField] private int scoreValue = 200;
-
     [Header("Death")]
     [SerializeField] private GameObject explosionEffect;
     [SerializeField] private float explosionDuration = 1f;
-
-    // Delegate type to use for event
-    public delegate void UFODestroyed(UFO ufo);
-
-    // Static method to be implemented in the listener
-    public static UFODestroyed UFODestroyedEvent;
 
     private void OnTriggerEnter2D(Collider2D other)
     {
@@ -62,9 +49,9 @@ public class UFO : MonoBehaviour
     private void PublishUFODestroyedEvent()
     {
         // Make sure somebody is listening
-        if (UFODestroyedEvent != null)
+        if (Enemy.EnemyDestroyedEvent != null)
         {
-            UFODestroyedEvent(this);
+            Enemy.EnemyDestroyedEvent(GetComponent<Enemy>());
         }
     }
 }

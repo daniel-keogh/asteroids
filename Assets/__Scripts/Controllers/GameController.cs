@@ -24,8 +24,8 @@ public class GameController : MonoBehaviour
     [SerializeField] private int startingLives = 3;
 
     [Header("Waves")]
-    [SerializeField] private int asteroidCountPerWave;
-    [SerializeField] private float delayPerWave;
+    [SerializeField] private int asteroidCountPerWave = 3;
+    [SerializeField] private float delayPerWave = 5f;
     [SerializeField] private TextMeshProUGUI waveIndicator;
 
     private int playerScore = 0;
@@ -46,16 +46,14 @@ public class GameController : MonoBehaviour
 
     private void OnEnable()
     {
-        Asteroid.AsteroidDestroyedEvent += OnAsteroidDestroyedEvent;
-        UFO.UFODestroyedEvent += OnUFODestroyedEvent;
+        Enemy.EnemyDestroyedEvent += OnEnemyDestroyedEvent;
         Player.PlayerKilledEvent += OnPlayerKilledEvent;
         PointSpawners.AsteroidSpawnedEvent += OnAsteroidSpawnedEvent;
     }
 
     private void OnDisable()
     {
-        Asteroid.AsteroidDestroyedEvent -= OnAsteroidDestroyedEvent;
-        UFO.UFODestroyedEvent -= OnUFODestroyedEvent;
+        Enemy.EnemyDestroyedEvent -= OnEnemyDestroyedEvent;
         Player.PlayerKilledEvent -= OnPlayerKilledEvent;
         PointSpawners.AsteroidSpawnedEvent -= OnAsteroidSpawnedEvent;
     }
@@ -84,24 +82,17 @@ public class GameController : MonoBehaviour
         EnableSpawning();
     }
 
-
-    private void OnAsteroidDestroyedEvent(Asteroid asteroid)
+    private void OnEnemyDestroyedEvent(Enemy enemy)
     {
         // add the score value to the player score
-        playerScore += asteroid.ScoreValue;
+        playerScore += enemy.ScoreValue;
 
-        int currentWaveSize = FindObjectsOfType<Asteroid>().Length - 1;
+        int currentWaveSize = FindObjectsOfType<Enemy>().Length - 1;
 
         if (currentWaveSize == 0 && remainingAsteroids == 0)
         {
             StartCoroutine(SetupNextWave());
         }
-    }
-
-    private void OnUFODestroyedEvent(UFO ufo)
-    {
-        // add the score value to the player score
-        playerScore += ufo.ScoreValue;
     }
 
     private void OnPlayerKilledEvent()

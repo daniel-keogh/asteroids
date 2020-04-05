@@ -5,16 +5,9 @@ using UnityEngine;
 [RequireComponent(typeof(PolygonCollider2D))]
 [RequireComponent(typeof(Rigidbody2D))]
 [RequireComponent(typeof(Animator))]
+[RequireComponent(typeof(Enemy))]
 public class Asteroid : MonoBehaviour
 {
-    public int ScoreValue
-    {
-        get { return scoreValue; }
-    }
-
-    [Header("Scoring")]
-    [SerializeField] private int scoreValue;
-
     [Header("Destruction")]
     [SerializeField] private Asteroid breaksInto;
     [SerializeField] private int numHitsBeforeDesroy;
@@ -23,12 +16,6 @@ public class Asteroid : MonoBehaviour
 
     private int numHits;
     private Animator animator;
-
-    // Delegate type to use for event
-    public delegate void AsteroidDestroyed(Asteroid asteroid);
-
-    // Static method to be implemented in the listener
-    public static AsteroidDestroyed AsteroidDestroyedEvent;
 
     void Start()
     {
@@ -62,7 +49,7 @@ public class Asteroid : MonoBehaviour
             if (laser.tag != Laser.PLAYER_LASER)
             {
                 // Points should only be given if the player destroyed it
-                scoreValue = 0;
+                GetComponent<Enemy>().ScoreValue = 0;
             }
 
             // Show explosion
@@ -82,9 +69,9 @@ public class Asteroid : MonoBehaviour
     private void PublishAsteroidDestroyedEvent()
     {
         // Make sure somebody is listening
-        if (AsteroidDestroyedEvent != null)
+        if (Enemy.EnemyDestroyedEvent != null)
         {
-            AsteroidDestroyedEvent(this);
+            Enemy.EnemyDestroyedEvent(GetComponent<Enemy>());
         }
     }
 }

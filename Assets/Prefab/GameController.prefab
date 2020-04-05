@@ -44,6 +44,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   startingLives: 3
-  asteroidCountPerWave: 5
+  asteroidCountPerWave: 3
   delayPerWave: 5
   waveIndicator: {fileID: 0}

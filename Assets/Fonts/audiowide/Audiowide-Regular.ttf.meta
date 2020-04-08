@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 2420b06c85d56764d94f6930f4d8acf5
+guid: 3fec11b54d3f55146bb9bf1b87dea7e0
 TrueTypeFontImporter:
   externalObjects: {}
   serializedVersion: 4
@@ -11,7 +11,8 @@ TrueTypeFontImporter:
   fontName: Audiowide
   fontNames:
   - Audiowide
-  fallbackFontReferences: []
+  fallbackFontReferences:
+  - {fileID: 12800000, guid: 2420b06c85d56764d94f6930f4d8acf5, type: 3}
   customCharacters: 
   fontRenderingMode: 0
   ascentCalculationMode: 1

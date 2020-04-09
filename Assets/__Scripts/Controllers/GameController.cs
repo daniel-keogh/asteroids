@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
+using Data;
 
 public class GameController : MonoBehaviour
 {
@@ -28,6 +29,9 @@ public class GameController : MonoBehaviour
     [SerializeField] private float delayPerWave = 5f;
     [SerializeField] private TextMeshProUGUI waveIndicator;
 
+    [Header("LeaderBoard")]
+    [SerializeField] private int maxLeaderBoardSize = 10;
+
     private int playerScore = 0;
     private int waveNumber = 1;
     private int remainingLives;
@@ -40,6 +44,8 @@ public class GameController : MonoBehaviour
 
     void Start()
     {
+        SaveSystem.MaxLeaderBoardSize = maxLeaderBoardSize;
+
         remainingLives = startingLives;
         remainingAsteroids = asteroidCountPerWave;
     }

@@ -13,6 +13,7 @@ namespace Data
 
         public int CompareTo(PlayerData other)
         {
+            // Sort PlayerData objects by the value of `score`
             return this.score.CompareTo(other.score);
         }
 

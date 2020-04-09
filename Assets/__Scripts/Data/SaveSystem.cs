@@ -8,8 +8,21 @@ namespace Data
 {
     public static class SaveSystem
     {
+        public static int MaxLeaderBoardSize
+        {
+            get
+            {
+                return maxLeaderBoardSize;
+            }
+            set
+            {
+                maxLeaderBoardSize = Mathf.Abs(value);
+            }
+        }
+
+        private static int maxLeaderBoardSize = 10;
+
         private static readonly string LEADERBOARD_DATA_PATH = Application.dataPath + "/leaderboard.json";
-        private const int MAX_LB_SIZE = 10;
 
         public static void SaveToLeaderBoard(PlayerData player)
         {
@@ -26,7 +39,7 @@ namespace Data
                 temp = new List<PlayerData>();
             }
 
-            if (temp.Count == MAX_LB_SIZE)
+            if (temp.Count == maxLeaderBoardSize)
             {
                 PlayerData min = temp.Min();
 
@@ -68,6 +81,7 @@ namespace Data
 
         public static void ClearLeaderBoard()
         {
+            // Delete leaderboard.json
             if (File.Exists(LEADERBOARD_DATA_PATH))
             {
                 File.Delete(LEADERBOARD_DATA_PATH);

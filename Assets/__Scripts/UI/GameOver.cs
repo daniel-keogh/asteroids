@@ -5,7 +5,7 @@ using UnityEngine.UI;
 using TMPro;
 using Data;
 
-public class GaveOver : MonoBehaviour
+public class GameOver : MonoBehaviour
 {
     [SerializeField] private GameObject saveScoreUI;
     [SerializeField] private TMP_InputField inputField;
@@ -14,13 +14,14 @@ public class GaveOver : MonoBehaviour
 
     private void Start()
     {
-        saveScoreUI.SetActive(false);
+        ToggleSaveScoreUI(false);
 
         gc = FindObjectOfType<GameController>();
     }
 
     public void ToggleSaveScoreUI(bool show)
     {
+        // Show/hide the input popup
         saveScoreUI.SetActive(show);
     }
 
@@ -28,9 +29,10 @@ public class GaveOver : MonoBehaviour
     {
         if (gc)
         {
-            if (inputField.text.Length > 0)
+            if (inputField.text.Length == 0)
                 return;
 
+            // Save the player's score & name to file
             SaveSystem.SaveToLeaderBoard(new PlayerData
             {
                 name = inputField.text,
@@ -38,6 +40,6 @@ public class GaveOver : MonoBehaviour
             });
         }
 
-        saveScoreUI.SetActive(false);
+        ToggleSaveScoreUI(false);
     }
 }

@@ -8,7 +8,7 @@ namespace Data
 {
     public static class SaveSystem
     {
-        private const string LEADERBOARD_DATA_PATH = "/leaderboard.json";
+        private static readonly string LEADERBOARD_DATA_PATH = Application.dataPath + "/leaderboard.json";
         private const int MAX_LB_SIZE = 10;
 
         public static void SaveToLeaderBoard(PlayerData player)
@@ -50,19 +50,27 @@ namespace Data
 
             // Save to File
             string json = JsonUtility.ToJson(lb, true);
-            File.WriteAllText(Application.dataPath + LEADERBOARD_DATA_PATH, json);
+            File.WriteAllText(LEADERBOARD_DATA_PATH, json);
         }
 
         public static LeaderBoard LoadLeaderBoard()
         {
             try
             {
-                string json = File.ReadAllText(Application.dataPath + LEADERBOARD_DATA_PATH);
+                string json = File.ReadAllText(LEADERBOARD_DATA_PATH);
                 return JsonUtility.FromJson<LeaderBoard>(json);
             }
             catch (FileNotFoundException)
             {
                 return new LeaderBoard();
+            }
+        }
+
+        public static void ClearLeaderBoard()
+        {
+            if (File.Exists(LEADERBOARD_DATA_PATH))
+            {
+                File.Delete(LEADERBOARD_DATA_PATH);
             }
         }
     }

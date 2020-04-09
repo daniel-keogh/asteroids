@@ -24,6 +24,16 @@ public class SceneController : MonoBehaviour
         StartCoroutine(SceneTransition(SceneNames.MAIN_MENU));
     }
 
+    public void GoToOptionsMenu()
+    {
+        StartCoroutine(SceneTransition(SceneNames.OPTIONS_MENU));
+    }
+
+    public void GoToLeaderBoard()
+    {
+        StartCoroutine(SceneTransition(SceneNames.LEADERBOARD_SCREEN));
+    }
+
     public void GameOver()
     {
         StartCoroutine(SceneTransition(SceneNames.GAME_OVER));

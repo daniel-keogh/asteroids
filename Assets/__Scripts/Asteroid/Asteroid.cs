@@ -52,7 +52,7 @@ public class Asteroid : MonoBehaviour
                 GetComponent<Enemy>().ScoreValue = 0;
             }
 
-            // Show explosion
+            // Show an explosion
             GameObject explosion = Instantiate(destroyEffect, transform.position, transform.rotation);
             Destroy(explosion, destroyEffectDuration);
             Destroy(gameObject);
@@ -63,6 +63,7 @@ public class Asteroid : MonoBehaviour
 
     private void ToggleIsShot(int flag)
     {
+        // For animating the Asteroid when shot
         animator.SetBool("IsShot", flag == 1 ? true : false);
     }
 

@@ -47,3 +47,4 @@ MonoBehaviour:
   asteroidCountPerWave: 3
   delayPerWave: 5
   waveIndicator: {fileID: 0}
+  maxLeaderBoardSize: 12

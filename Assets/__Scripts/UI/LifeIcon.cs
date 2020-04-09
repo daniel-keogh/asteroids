@@ -5,7 +5,14 @@ using UnityEngine;
 [RequireComponent(typeof(Animator))]
 public class LifeIcon : MonoBehaviour
 {
-    public void SetAnimationEnabled(bool status)
+    private Animator animator;
+
+    void Start()
+    {
+        animator = GetComponent<Animator>();
+    }
+
+    public void SetAnimatorEnabled(bool status)
     {
         GetComponent<Animator>().enabled = status;
     }

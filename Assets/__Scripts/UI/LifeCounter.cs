@@ -52,7 +52,7 @@ public class LifeCounter : MonoBehaviour
     {
         // Animate the icon on the top of the stack
         var icon = lifeIcons.Peek();
-        icon.SetAnimationEnabled(true);
+        icon.SetAnimatorEnabled(true);
 
         // TODO: play a sound
     }

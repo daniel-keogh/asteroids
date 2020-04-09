@@ -2,12 +2,13 @@
 using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
+using Data;
 
 [RequireComponent(typeof(TextMeshProUGUI))]
 public class LeaderBoardItem : MonoBehaviour
 {
-    public void WriteText(string text)
+    public void WritePlayerData(PlayerData player)
     {
-        GetComponentInChildren<TextMeshProUGUI>().text = text;
+        GetComponentInChildren<TextMeshProUGUI>().text = $"{player.name} {player.score}";
     }
 }

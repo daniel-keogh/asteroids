@@ -12,12 +12,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 08de5cd8b8e63614983bda1ef30a223c, type: 3}
   m_Name: WaveConfig
   m_EditorClassIdentifier: 
-  enemies:
-  - {fileID: 3714473930963046037, guid: a35df115022433b4aad3a51ede1c2b2b, type: 3}
-  - {fileID: -3011700040112773836, guid: 2fe7ff5042949214eba7c8fc2c27a5e4, type: 3}
-  - {fileID: 5280737408933590223, guid: bc344af830fea7d4dac0dfd29f29dde8, type: 3}
+  asteroids:
+  - {fileID: 7458207695300214454, guid: 2fe7ff5042949214eba7c8fc2c27a5e4, type: 3}
+  - {fileID: 8261654414769820204, guid: a35df115022433b4aad3a51ede1c2b2b, type: 3}
+  ufo: {fileID: 7242363138560531065, guid: bc344af830fea7d4dac0dfd29f29dde8, type: 3}
   spawnInterval: 3
   spawnDelay: 0
   delayPerWave: 5
-  numAsteroidsPerWave: 3
+  numAsteroidsPerWave: 5
   numUFOsPerWave: 1

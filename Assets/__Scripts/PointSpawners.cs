@@ -12,6 +12,7 @@ public class PointSpawners : MonoBehaviour
     private Stack<SpawnPoint> spawnStack;
     private GameObject enemyParent;
     private WaveConfig waveConfig;
+    private Stack<Enemy> burst = new Stack<Enemy>();
 
     // Event for telling the system an Enemy has spawned
     public delegate void EnemySpawned();
@@ -26,7 +27,7 @@ public class PointSpawners : MonoBehaviour
             enemyParent = new GameObject(ENEMY_PARENT);
         }
 
-        // Get the SpawnPoints here
+        // Get the SpawnPoints
         spawnPoints = GetComponentsInChildren<SpawnPoint>();
 
         // Create a stack of SpawnPoints
@@ -40,24 +41,25 @@ public class PointSpawners : MonoBehaviour
             spawnStack = ListUtils.CreateShuffledStack(spawnPoints);
         }
 
-        var enemyPrefabs = waveConfig.GetEnemies();
-        var enemy = Instantiate(
-            enemyPrefabs[Random.Range(0, enemyPrefabs.Count)],
-            enemyParent.transform
-        );
+        if (burst.Count == 0)
+        {
+            // Get a Stack of the next round of enemies to be spawned
+            burst = waveConfig.CreateEnemyBurst();
+        }
 
+        var enemy = Instantiate(burst.Pop(), enemyParent.transform);
         var sp = spawnStack.Pop();
         enemy.transform.position = sp.transform.position;
 
         if (enemy.tag == Asteroid.TAG_NAME)
         {
-            SetAsteroidDirection(sp, enemy.GetComponent<AsteroidMovement>());
+            SetAsteroidMovement(sp, enemy.GetComponent<AsteroidMovement>());
         }
 
         PublishOnEnemySpawnedEvent();
     }
 
-    private void SetAsteroidDirection(SpawnPoint sp, AsteroidMovement asteroid)
+    private void SetAsteroidMovement(SpawnPoint sp, AsteroidMovement asteroid)
     {
         float xDirection, yDirection;
 

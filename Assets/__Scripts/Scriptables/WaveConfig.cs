@@ -1,12 +1,14 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Utilities;
 
 [CreateAssetMenu(menuName = "Enemy Wave Config")]
 public class WaveConfig : ScriptableObject
 {
     [Header("Prefabs")]
-    [SerializeField] private List<Enemy> enemies;
+    [SerializeField] private List<Asteroid> asteroids;
+    [SerializeField] private UFO ufo;
 
     [Header("Spawning")]
     [SerializeField] private float spawnInterval = 3f;
@@ -17,7 +19,8 @@ public class WaveConfig : ScriptableObject
     [SerializeField] private int numAsteroidsPerWave = 3;
     [SerializeField] private int numUFOsPerWave = 1;
 
-    public List<Enemy> GetEnemies() { return enemies; }
+    public List<Asteroid> GetAsteroids() { return asteroids; }
+    public UFO GetUFO() { return ufo; }
 
     public float GetSpawnInterval() { return spawnInterval; }
     public float GetSpawnDelay() { return spawnDelay; }
@@ -36,5 +39,23 @@ public class WaveConfig : ScriptableObject
     public void SetNumUFOsPerWave(int numUFOsPerWave)
     {
         this.numUFOsPerWave = numUFOsPerWave;
+    }
+
+    public Stack<Enemy> CreateEnemyBurst()
+    {
+        var enemyBurst = new List<Enemy>();
+
+        for (int i = 0; i < numAsteroidsPerWave; i++)
+        {
+            int rIndex = Random.Range(0, asteroids.Count);
+            enemyBurst.Add(asteroids[rIndex].GetComponent<Enemy>());
+        }
+
+        for (int i = 0; i < numUFOsPerWave; i++)
+        {
+            enemyBurst.Add(ufo.GetComponent<Enemy>());
+        }
+
+        return ListUtils.CreateShuffledStack(enemyBurst);
     }
 }

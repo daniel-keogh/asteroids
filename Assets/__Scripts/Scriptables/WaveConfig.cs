@@ -11,47 +11,37 @@ public class WaveConfig : ScriptableObject
     [SerializeField] private UFO ufo;
 
     [Header("Spawning")]
-    [SerializeField] private float spawnInterval = 3f;
+    [SerializeField] private float spawnInterval = 2f;
     [SerializeField] private float spawnDelay = 0f;
-    [SerializeField] private float delayPerWave = 5f;
+    [SerializeField] private float waveDelay = 5f;
 
     [Header("Amount")]
-    [SerializeField] private int numAsteroidsPerWave = 3;
-    [SerializeField] private int numUFOsPerWave = 1;
+    [SerializeField] private int numAsteroids = 3;
+    [SerializeField] private int numUfos = 0;
 
     public List<Asteroid> GetAsteroids() { return asteroids; }
     public UFO GetUFO() { return ufo; }
 
     public float GetSpawnInterval() { return spawnInterval; }
     public float GetSpawnDelay() { return spawnDelay; }
-    public float GetDelayPerWave() { return delayPerWave; }
+    public float GetWaveDelay() { return waveDelay; }
 
-    public int GetNumAsteroidsPerWave() { return numAsteroidsPerWave; }
-    public int GetNumUFOsPerWave() { return numUFOsPerWave; }
+    public int GetNumAsteroids() { return numAsteroids; }
+    public int GetNumUFOs() { return numUfos; }
 
-    public int GetNumEnemiesPerWave() { return numAsteroidsPerWave + numUFOsPerWave; }
-
-    public void SetNumAsteroidsPerWave(int numAsteroidsPerWave)
-    {
-        this.numAsteroidsPerWave = numAsteroidsPerWave;
-    }
-
-    public void SetNumUFOsPerWave(int numUFOsPerWave)
-    {
-        this.numUFOsPerWave = numUFOsPerWave;
-    }
+    public int GetNumEnemies() { return numAsteroids + numUfos; }
 
     public Stack<Enemy> CreateEnemyBurst()
     {
         var enemyBurst = new List<Enemy>();
 
-        for (int i = 0; i < numAsteroidsPerWave; i++)
+        for (int i = 0; i < numAsteroids; i++)
         {
             int rIndex = Random.Range(0, asteroids.Count);
             enemyBurst.Add(asteroids[rIndex].GetComponent<Enemy>());
         }
 
-        for (int i = 0; i < numUFOsPerWave; i++)
+        for (int i = 0; i < numUfos; i++)
         {
             enemyBurst.Add(ufo.GetComponent<Enemy>());
         }

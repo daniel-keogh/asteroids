@@ -23,25 +23,21 @@ public class GameController : MonoBehaviour
         get { return playerScore; }
     }
 
-    public int WaveNumber
-    {
-        get { return waveNumber; }
-    }
-
     [Header("Player Lives")]
     [SerializeField] private int startingLives = 3;
 
     [Header("Waves")]
-    [SerializeField] private WaveConfig waveConfig;
+    [SerializeField] private List<WaveConfig> waveConfigs;
     [SerializeField] private TextMeshProUGUI waveIndicator;
 
     [Header("LeaderBoard")]
-    [SerializeField] private int maxLeaderBoardSize = 10;
+    [SerializeField] private int maxLeaderBoardSize = 12;
 
     private int playerScore = 0;
     private int waveNumber = 1;
     private int remainingLives;
     private int remainingEnemies;
+    private int currentWaveIndex = 0;
 
     void Awake()
     {
@@ -53,11 +49,10 @@ public class GameController : MonoBehaviour
         SaveSystem.MaxLeaderBoardSize = maxLeaderBoardSize;
 
         remainingLives = startingLives;
-        remainingEnemies = waveConfig.GetNumEnemiesPerWave();
 
         if (SceneManager.GetActiveScene().name == SceneNames.GAME_SCENE)
         {
-            StartCoroutine(SetupNextWave());
+            StartCoroutine(SetupNextWave(waveConfigs[currentWaveIndex]));
         }
     }
 
@@ -75,31 +70,46 @@ public class GameController : MonoBehaviour
         PointSpawners.EnemySpawnedEvent -= OnEnemySpawnedEvent;
     }
 
-    private IEnumerator SetupNextWave()
+    private IEnumerator SetupNextWave(WaveConfig currentWave)
     {
         // Don't show indicator on the first wave
-        if (waveNumber != 1)
+        if (waveNumber == 1)
+        {
+            yield return new WaitForSeconds(currentWave.GetWaveDelay());
+            waveNumber++;
+        }
+        else
         {
             // Show some feedback to the player
             waveIndicator.gameObject.SetActive(true);
             waveIndicator.text = $"Wave {waveNumber++}";
 
-            yield return new WaitForSeconds(waveConfig.GetDelayPerWave());
+            yield return new WaitForSeconds(currentWave.GetWaveDelay());
 
             waveIndicator.gameObject.SetActive(false);
         }
-        else
-        {
-            yield return new WaitForSeconds(waveConfig.GetDelayPerWave());
-            waveNumber++;
-        }
+
+        remainingEnemies = currentWave.GetNumEnemies();
 
         // Pass the config file to the PointSpawner
-        FindObjectOfType<PointSpawners>().SetWaveConfig(waveConfig);
-
-        remainingEnemies = waveConfig.GetNumEnemiesPerWave();
+        FindObjectOfType<PointSpawners>().SetWaveConfig(currentWave);
 
         EnableSpawning();
+    }
+
+    private WaveConfig NextWave()
+    {
+        if (currentWaveIndex < waveConfigs.Count - 1)
+        {
+            currentWaveIndex++;
+        }
+        else
+        {
+            // return the last WaveConfig
+            return waveConfigs[waveConfigs.Count - 1];
+        }
+
+        return waveConfigs[currentWaveIndex];
     }
 
     private void OnEnemySpawnedEvent()
@@ -121,7 +131,7 @@ public class GameController : MonoBehaviour
 
         if (currentWaveSize == 0 && remainingEnemies == 0)
         {
-            StartCoroutine(SetupNextWave());
+            StartCoroutine(SetupNextWave(NextWave()));
         }
     }
 

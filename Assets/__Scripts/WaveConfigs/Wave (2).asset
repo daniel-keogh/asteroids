@@ -1,0 +1,23 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 08de5cd8b8e63614983bda1ef30a223c, type: 3}
+  m_Name: Wave (2)
+  m_EditorClassIdentifier: 
+  asteroids:
+  - {fileID: 8261654414769820204, guid: a35df115022433b4aad3a51ede1c2b2b, type: 3}
+  - {fileID: 7458207695300214454, guid: 2fe7ff5042949214eba7c8fc2c27a5e4, type: 3}
+  ufo: {fileID: 7242363138560531065, guid: bc344af830fea7d4dac0dfd29f29dde8, type: 3}
+  spawnInterval: 2
+  spawnDelay: 0
+  waveDelay: 5
+  numAsteroids: 6
+  numUfos: 1

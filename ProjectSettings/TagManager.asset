@@ -10,6 +10,8 @@ TagManager:
   - SpawnPointBottom
   - SpawnPointLeft
   - SpawnPointRight
+  - Asteroid
+  - UFO
   layers:
   - Default
   - TransparentFX

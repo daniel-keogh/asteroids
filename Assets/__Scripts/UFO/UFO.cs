@@ -6,6 +6,8 @@ using UnityEngine;
 [RequireComponent(typeof(Enemy))]
 public class UFO : MonoBehaviour
 {
+    public const string TAG_NAME = "UFO";
+
     [Header("Death")]
     [SerializeField] private GameObject explosionEffect;
     [SerializeField] private float explosionDuration = 1f;

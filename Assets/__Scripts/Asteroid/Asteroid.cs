@@ -8,6 +8,8 @@ using UnityEngine;
 [RequireComponent(typeof(Enemy))]
 public class Asteroid : MonoBehaviour
 {
+    public const string TAG_NAME = "Asteroid";
+
     [Header("Destruction")]
     [SerializeField] private Asteroid breaksInto;
     [SerializeField] private int numHitsBeforeDesroy;

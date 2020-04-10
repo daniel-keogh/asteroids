@@ -6,8 +6,7 @@ using UnityEngine;
 public class WaveConfig : ScriptableObject
 {
     [Header("Prefabs")]
-    [SerializeField] private List<Asteroid> asteroids;
-    [SerializeField] private UFO ufo;
+    [SerializeField] private List<Enemy> enemies;
 
     [Header("Spawning")]
     [SerializeField] private float spawnInterval = 3f;
@@ -18,8 +17,7 @@ public class WaveConfig : ScriptableObject
     [SerializeField] private int numAsteroidsPerWave = 3;
     [SerializeField] private int numUFOsPerWave = 1;
 
-    public List<Asteroid> GetAsteroids() { return asteroids; }
-    public UFO GetUFO() { return ufo; }
+    public List<Enemy> GetEnemies() { return enemies; }
 
     public float GetSpawnInterval() { return spawnInterval; }
     public float GetSpawnDelay() { return spawnDelay; }

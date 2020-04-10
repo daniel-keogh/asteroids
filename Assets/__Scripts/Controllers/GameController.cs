@@ -37,7 +37,7 @@ public class GameController : MonoBehaviour
     [SerializeField] private int maxLeaderBoardSize = 10;
 
     private int playerScore = 0;
-    private int waveNumber = 0;
+    private int waveNumber = 1;
     private int remainingLives;
     private int remainingEnemies;
 
@@ -72,13 +72,22 @@ public class GameController : MonoBehaviour
 
     private IEnumerator SetupNextWave()
     {
-        // Show some feedback to the player
-        waveIndicator.gameObject.SetActive(true);
-        waveIndicator.text = $"Wave {++waveNumber}";
+        // Don't show indicator on the first wave
+        if (waveNumber != 1)
+        {
+            // Show some feedback to the player
+            waveIndicator.gameObject.SetActive(true);
+            waveIndicator.text = $"Wave {waveNumber++}";
 
-        yield return new WaitForSeconds(waveConfig.GetDelayPerWave());
+            yield return new WaitForSeconds(waveConfig.GetDelayPerWave());
 
-        waveIndicator.gameObject.SetActive(false);
+            waveIndicator.gameObject.SetActive(false);
+        }
+        else
+        {
+            yield return new WaitForSeconds(waveConfig.GetDelayPerWave());
+            waveNumber++;
+        }
 
         // Pass the config file to the PointSpawner
         FindObjectOfType<PointSpawners>().SetWaveConfig(waveConfig);

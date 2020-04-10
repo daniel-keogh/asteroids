@@ -40,23 +40,25 @@ public class PointSpawners : MonoBehaviour
             spawnStack = ListUtils.CreateShuffledStack(spawnPoints);
         }
 
-        var asteroidPrefabs = waveConfig.GetAsteroids();
-        var asteriod = Instantiate(
-            asteroidPrefabs[Random.Range(0, asteroidPrefabs.Count)],
+        var enemyPrefabs = waveConfig.GetEnemies();
+        var enemy = Instantiate(
+            enemyPrefabs[Random.Range(0, enemyPrefabs.Count)],
             enemyParent.transform
         );
 
         var sp = spawnStack.Pop();
-        asteriod.transform.position = sp.transform.position;
-        SetAsteroidDirection(sp, asteriod);
+        enemy.transform.position = sp.transform.position;
+
+        if (enemy.tag == Asteroid.TAG_NAME)
+        {
+            SetAsteroidDirection(sp, enemy.GetComponent<AsteroidMovement>());
+        }
 
         PublishOnEnemySpawnedEvent();
     }
 
-    private void SetAsteroidDirection(SpawnPoint sp, Asteroid asteroid)
+    private void SetAsteroidDirection(SpawnPoint sp, AsteroidMovement asteroid)
     {
-        var movement = asteroid.gameObject.GetComponent<AsteroidMovement>();
-
         float xDirection, yDirection;
 
         switch (sp.tag)
@@ -87,7 +89,7 @@ public class PointSpawners : MonoBehaviour
                 break;
         }
 
-        movement.Move(new Vector2(xDirection, yDirection));
+        asteroid.Move(new Vector2(xDirection, yDirection));
     }
 
     public void PublishOnEnemySpawnedEvent()

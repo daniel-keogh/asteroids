@@ -4,12 +4,12 @@
 TagManager:
   serializedVersion: 2
   tags:
-  - TopPointSpawner
-  - BottomPointSpawner
-  - LeftPointSpawner
-  - RightPointSpawner
   - PlayerLaser
   - EnemyLaser
+  - SpawnPointTop
+  - SpawnPointBottom
+  - SpawnPointLeft
+  - SpawnPointRight
   layers:
   - Default
   - TransparentFX

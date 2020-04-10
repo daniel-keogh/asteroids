@@ -21,21 +21,25 @@ public class GameController : MonoBehaviour
         get { return playerScore; }
     }
 
+    public int WaveNumber
+    {
+        get { return waveNumber; }
+    }
+
     [Header("Player Lives")]
     [SerializeField] private int startingLives = 3;
 
     [Header("Waves")]
-    [SerializeField] private int asteroidCountPerWave = 3;
-    [SerializeField] private float delayPerWave = 5f;
+    [SerializeField] private WaveConfig waveConfig;
     [SerializeField] private TextMeshProUGUI waveIndicator;
 
     [Header("LeaderBoard")]
     [SerializeField] private int maxLeaderBoardSize = 10;
 
     private int playerScore = 0;
-    private int waveNumber = 1;
+    private int waveNumber = 0;
     private int remainingLives;
-    private int remainingAsteroids;
+    private int remainingEnemies;
 
     void Awake()
     {
@@ -47,45 +51,51 @@ public class GameController : MonoBehaviour
         SaveSystem.MaxLeaderBoardSize = maxLeaderBoardSize;
 
         remainingLives = startingLives;
-        remainingAsteroids = asteroidCountPerWave;
+        remainingEnemies = waveConfig.GetNumEnemiesPerWave();
+
+        StartCoroutine(SetupNextWave());
     }
 
     private void OnEnable()
     {
         Enemy.EnemyDestroyedEvent += OnEnemyDestroyedEvent;
         Player.PlayerKilledEvent += OnPlayerKilledEvent;
-        PointSpawners.AsteroidSpawnedEvent += OnAsteroidSpawnedEvent;
+        PointSpawners.EnemySpawnedEvent += OnEnemySpawnedEvent;
     }
 
     private void OnDisable()
     {
         Enemy.EnemyDestroyedEvent -= OnEnemyDestroyedEvent;
         Player.PlayerKilledEvent -= OnPlayerKilledEvent;
-        PointSpawners.AsteroidSpawnedEvent -= OnAsteroidSpawnedEvent;
-    }
-
-    private void OnAsteroidSpawnedEvent()
-    {
-        remainingAsteroids--;
-
-        if (remainingAsteroids == 0)
-        {
-            DisableSpawning();
-        }
+        PointSpawners.EnemySpawnedEvent -= OnEnemySpawnedEvent;
     }
 
     private IEnumerator SetupNextWave()
     {
+        // Show some feedback to the player
         waveIndicator.gameObject.SetActive(true);
-        // show some feedback to the player
         waveIndicator.text = $"Wave {++waveNumber}";
 
-        yield return new WaitForSeconds(delayPerWave);
+        yield return new WaitForSeconds(waveConfig.GetDelayPerWave());
 
         waveIndicator.gameObject.SetActive(false);
 
-        remainingAsteroids = asteroidCountPerWave;
+        // Pass the config file to the PointSpawner
+        FindObjectOfType<PointSpawners>().SetWaveConfig(waveConfig);
+
+        remainingEnemies = waveConfig.GetNumEnemiesPerWave();
+
         EnableSpawning();
+    }
+
+    private void OnEnemySpawnedEvent()
+    {
+        remainingEnemies--;
+
+        if (remainingEnemies == 0)
+        {
+            DisableSpawning();
+        }
     }
 
     private void OnEnemyDestroyedEvent(Enemy enemy)
@@ -95,7 +105,7 @@ public class GameController : MonoBehaviour
 
         int currentWaveSize = FindObjectsOfType<Enemy>().Length - 1;
 
-        if (currentWaveSize == 0 && remainingAsteroids == 0)
+        if (currentWaveSize == 0 && remainingEnemies == 0)
         {
             StartCoroutine(SetupNextWave());
         }
@@ -111,19 +121,19 @@ public class GameController : MonoBehaviour
         }
     }
 
-    public void DisableSpawning()
-    {
-        foreach (var spawner in FindObjectsOfType<PointSpawners>())
-        {
-            spawner.DisableSpawning();
-        }
-    }
-
     public void EnableSpawning()
     {
         foreach (var spawner in FindObjectsOfType<PointSpawners>())
         {
             spawner.EnableSpawning();
+        }
+    }
+
+    public void DisableSpawning()
+    {
+        foreach (var spawner in FindObjectsOfType<PointSpawners>())
+        {
+            spawner.DisableSpawning();
         }
     }
 

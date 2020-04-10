@@ -44,7 +44,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   startingLives: 3
-  asteroidCountPerWave: 3
-  delayPerWave: 5
+  waveConfig: {fileID: 11400000, guid: f95c6aa56cba4404296d1a51f6bbec9c, type: 2}
   waveIndicator: {fileID: 0}
   maxLeaderBoardSize: 12

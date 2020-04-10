@@ -5,74 +5,112 @@ using Utilities;
 
 public class PointSpawners : MonoBehaviour
 {
-    [SerializeField] private List<Asteroid> asteroidPrefabs;
-    [SerializeField] private float spawnDelay;
-    [SerializeField] private float spawnInterval;
-    [SerializeField] [Range(-1, 1)] private float xDirection;
-    [SerializeField] [Range(-1, 1)] private float yDirection;
-
-    private const string SPAWN_ASTEROID_METHOD = "SpawnOneAsteroid";
-    private const string ASTEROID_PARENT = "AsteroidParent";
+    private const string SPAWN_ENEMY_METHOD = "SpawnOneEnemy";
+    private const string ENEMY_PARENT = "EnemyParent";
 
     private IList<SpawnPoint> spawnPoints;
     private Stack<SpawnPoint> spawnStack;
-    private GameObject asteroidParent;
+    private GameObject enemyParent;
+    private WaveConfig waveConfig;
 
-    // Event for telling the system an asteroid has spawned
-    public delegate void AsteroidSpawned();
-    public static event AsteroidSpawned AsteroidSpawnedEvent;
+    // Event for telling the system an Enemy has spawned
+    public delegate void EnemySpawned();
+    public static event EnemySpawned EnemySpawnedEvent;
 
     void Start()
     {
-        asteroidParent = GameObject.Find(ASTEROID_PARENT);
+        enemyParent = GameObject.Find(ENEMY_PARENT);
 
-        if (!asteroidParent)
+        if (!enemyParent)
         {
-            asteroidParent = new GameObject(ASTEROID_PARENT);
+            enemyParent = new GameObject(ENEMY_PARENT);
         }
 
-        // Get the spawn points here
+        // Get the SpawnPoints here
         spawnPoints = GetComponentsInChildren<SpawnPoint>();
 
-        // Create the stack of points
+        // Create a stack of SpawnPoints
         spawnStack = ListUtils.CreateShuffledStack(spawnPoints);
-
-        EnableSpawning();
     }
 
-    private void SpawnOneAsteroid()
+    private void SpawnOneEnemy()
     {
         if (spawnStack.Count == 0)
         {
             spawnStack = ListUtils.CreateShuffledStack(spawnPoints);
         }
 
+        var asteroidPrefabs = waveConfig.GetAsteroids();
         var asteriod = Instantiate(
             asteroidPrefabs[Random.Range(0, asteroidPrefabs.Count)],
-            asteroidParent.transform
+            enemyParent.transform
         );
 
         var sp = spawnStack.Pop();
         asteriod.transform.position = sp.transform.position;
-
-        var movement = asteriod.gameObject.GetComponent<AsteroidMovement>();
-        movement.Move(new Vector2(xDirection, yDirection));
+        SetAsteroidDirection(sp, asteriod);
 
         PublishOnEnemySpawnedEvent();
     }
 
+    private void SetAsteroidDirection(SpawnPoint sp, Asteroid asteroid)
+    {
+        var movement = asteroid.gameObject.GetComponent<AsteroidMovement>();
+
+        float xDirection, yDirection;
+
+        switch (sp.tag)
+        {
+            case SpawnPoint.TOP:
+                // Move downwards
+                xDirection = Random.Range(-1, 1);
+                yDirection = -1;
+                break;
+            case SpawnPoint.BOTTOM:
+                // Move upwards
+                xDirection = Random.Range(-1, 1);
+                yDirection = 1;
+                break;
+            case SpawnPoint.LEFT:
+                // Move right
+                xDirection = 1;
+                yDirection = Random.Range(-1, 1);
+                break;
+            case SpawnPoint.RIGHT:
+                // Move left
+                xDirection = -1;
+                yDirection = Random.Range(-1, 1);
+                break;
+            default:
+                xDirection = Random.Range(-1, 1);
+                yDirection = Random.Range(-1, 1);
+                break;
+        }
+
+        movement.Move(new Vector2(xDirection, yDirection));
+    }
+
     public void PublishOnEnemySpawnedEvent()
     {
-        AsteroidSpawnedEvent?.Invoke();
+        EnemySpawnedEvent?.Invoke();
     }
 
     public void EnableSpawning()
     {
-        InvokeRepeating(SPAWN_ASTEROID_METHOD, spawnDelay, spawnInterval);
+        InvokeRepeating(
+            SPAWN_ENEMY_METHOD,
+            waveConfig.GetSpawnDelay(),
+            waveConfig.GetSpawnInterval()
+        );
     }
 
     public void DisableSpawning()
     {
-        CancelInvoke(SPAWN_ASTEROID_METHOD);
+        CancelInvoke(SPAWN_ENEMY_METHOD);
+    }
+
+    public void SetWaveConfig(WaveConfig waveConfig)
+    {
+        this.waveConfig = waveConfig;
     }
 }

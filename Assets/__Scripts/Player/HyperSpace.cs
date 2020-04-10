@@ -9,12 +9,13 @@ using UnityEngine;
 [RequireComponent(typeof(SpriteRenderer))]
 public class HyperSpace : MonoBehaviour
 {
+    [Header("Repositioning")]
     [Tooltip("Prevents the player being re-positioned too close to the edge.")]
     [SerializeField] private float borderPadding = 1.0f;
-    [SerializeField] private bool disableRotation = false;
 
     [Header("Duration")]
     [SerializeField] private float duration = 2.0f;
+    [Tooltip("Sets the minimum time between hyperspace jumps.")]
     [SerializeField] private float cooldownDuration = 3.0f;
 
     private float maxRotate = 360;
@@ -33,6 +34,8 @@ public class HyperSpace : MonoBehaviour
 
         // The bottom-left of the viewport is (0,0); the top-right is (1,1).
         viewport = Camera.main.ViewportToWorldPoint(new Vector2(1, 1));
+
+        // Add some padding
         viewport.x -= borderPadding;
         viewport.y -= borderPadding;
 
@@ -43,15 +46,17 @@ public class HyperSpace : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.H))
         {
+            // Prevent the user from spamming the 'H' key
             if (isCooledDown)
             {
                 StartCoroutine(HyperSpaceCoroutine());
             }
         }
     }
+
     private void OnDisable()
     {
-        // In case the player dies while hyperspacing
+        // Reset everything in case the player dies while hyperspacing
         isCooledDown = true;
 
         GetComponent<PlayerMovement>().enabled = true;
@@ -81,17 +86,10 @@ public class HyperSpace : MonoBehaviour
 
     private void Move()
     {
-        rb.transform.position = GenerateRandomPosition();
+        // Set a new position & rotation
+        rb.rotation = Random.Range(-maxRotate, maxRotate);
 
-        if (!disableRotation)
-        {
-            rb.rotation = Random.Range(-maxRotate, maxRotate);
-        }
-    }
-
-    private Vector3 GenerateRandomPosition()
-    {
-        return new Vector2(
+        rb.transform.position = new Vector2(
             Random.Range(-viewport.y, viewport.y),
             Random.Range(-viewport.x, viewport.x)
         );
@@ -99,6 +97,7 @@ public class HyperSpace : MonoBehaviour
 
     private void PlayVFX()
     {
+        // Animation event
         hyperSpaceVFX?.Play();
     }
 }

@@ -23,6 +23,11 @@ public class GameController : MonoBehaviour
         get { return playerScore; }
     }
 
+    public int WaveNumber
+    {
+        get { return waveNumber; }
+    }
+
     [Header("Player Lives")]
     [SerializeField] private int startingLives = 3;
 
@@ -31,13 +36,14 @@ public class GameController : MonoBehaviour
     [SerializeField] private TextMeshProUGUI waveIndicator;
 
     [Header("LeaderBoard")]
+    [Tooltip("The maximum number of entries stored in the LeaderBoard")]
     [SerializeField] private int maxLeaderBoardSize = 12;
 
     private int playerScore = 0;
     private int waveNumber = 1;
+    private int currentWaveIndex = 0;
     private int remainingLives;
     private int remainingEnemies;
-    private int currentWaveIndex = 0;
 
     void Awake()
     {
@@ -46,10 +52,12 @@ public class GameController : MonoBehaviour
 
     void Start()
     {
+        // Set LeaderBoard size
         SaveSystem.MaxLeaderBoardSize = maxLeaderBoardSize;
 
         remainingLives = startingLives;
 
+        // Only start the corouting if in the GameScene
         if (SceneManager.GetActiveScene().name == SceneNames.GAME_SCENE)
         {
             StartCoroutine(SetupNextWave(waveConfigs[currentWaveIndex]));
@@ -89,11 +97,13 @@ public class GameController : MonoBehaviour
             waveIndicator.gameObject.SetActive(false);
         }
 
+        // The number of enemies in this wave
         remainingEnemies = currentWave.GetNumEnemies();
 
         // Pass the config file to the PointSpawner
         FindObjectOfType<PointSpawners>().SetWaveConfig(currentWave);
 
+        // Start spawning enemies
         EnableSpawning();
     }
 
@@ -105,7 +115,7 @@ public class GameController : MonoBehaviour
         }
         else
         {
-            // return the last WaveConfig
+            // Return the last WaveConfig
             return waveConfigs[waveConfigs.Count - 1];
         }
 
@@ -124,7 +134,7 @@ public class GameController : MonoBehaviour
 
     private void OnEnemyDestroyedEvent(Enemy enemy)
     {
-        // add the score value to the player score
+        // Add the score value to the player score
         playerScore += enemy.ScoreValue;
 
         int currentWaveSize = FindObjectsOfType<Enemy>().Length - 1;
@@ -145,7 +155,7 @@ public class GameController : MonoBehaviour
         }
     }
 
-    public void EnableSpawning()
+    private void EnableSpawning()
     {
         foreach (var spawner in FindObjectsOfType<PointSpawners>())
         {
@@ -153,7 +163,7 @@ public class GameController : MonoBehaviour
         }
     }
 
-    public void DisableSpawning()
+    private void DisableSpawning()
     {
         foreach (var spawner in FindObjectsOfType<PointSpawners>())
         {
@@ -177,5 +187,17 @@ public class GameController : MonoBehaviour
     public void ResetGame()
     {
         Destroy(gameObject);
+    }
+
+    public static GameController FindGameController()
+    {
+        GameController gc = FindObjectOfType<GameController>();
+
+        if (!gc)
+        {
+            Debug.LogWarning("Missing GameController");
+        }
+
+        return gc;
     }
 }

@@ -20,9 +20,10 @@ namespace Data
             }
         }
 
-        private static int maxLeaderBoardSize = 10;
+        private static int maxLeaderBoardSize = 12;
 
-        private static readonly string LEADERBOARD_DATA_PATH = Application.dataPath + "/leaderboard.json";
+        // Path to the LeaderBoard data file
+        private static readonly string LEADERBOARD_DATA_PATH = Application.persistentDataPath + "/leaderboard.json";
 
         public static void SaveToLeaderBoard(PlayerData player)
         {
@@ -45,7 +46,7 @@ namespace Data
 
                 if (player.score < min.score)
                 {
-                    // Player score not high enough
+                    // Player score not high enough to be added
                     return;
                 }
 
@@ -57,11 +58,13 @@ namespace Data
 
             // Create the new LeaderBoard
             LeaderBoard lb = new LeaderBoard();
+
+            // Sort the List in descending order
             temp.Sort();
             temp.Reverse();
             lb.players = temp.ToArray();
 
-            // Save to File
+            // Save the new LeaderBoard to the leaderboard.json file
             string json = JsonUtility.ToJson(lb, true);
             File.WriteAllText(LEADERBOARD_DATA_PATH, json);
         }

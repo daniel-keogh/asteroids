@@ -19,7 +19,7 @@ namespace Data
 
         public override string ToString()
         {
-            return "PlayerData: " + name + ", " + score;
+            return "[PlayerData] " + name + ", " + score;
         }
     }
 

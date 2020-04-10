@@ -5,8 +5,8 @@ using UnityEngine;
 [RequireComponent(typeof(Rigidbody2D))]
 public class AsteroidMovement : MonoBehaviour
 {
-    [SerializeField] private float maxRotation;
-    [SerializeField] private float speed;
+    [SerializeField] private float maxRotation = 50f;
+    [SerializeField] private float speed = 150f;
 
     private Rigidbody2D rb;
 

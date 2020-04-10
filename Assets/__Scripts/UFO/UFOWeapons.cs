@@ -4,10 +4,13 @@ using UnityEngine;
 
 public class UFOWeapons : MonoBehaviour
 {
+    [Header("Shooting")]
     [SerializeField] private float laserSpeed = 20.0f;
     [SerializeField] private float fireRate = 0.5f;
     [SerializeField] private Transform turretTransform;
     [SerializeField] private Laser laserPrefab;
+
+    [Header("Audio")]
     [SerializeField] private AudioClip shootClip;
     [SerializeField] [Range(0f, 1.0f)] private float shootVolume = 0.5f;
 
@@ -32,6 +35,7 @@ public class UFOWeapons : MonoBehaviour
     {
         if (isShooting)
         {
+            // Already shooting
             return;
         }
         else
@@ -67,7 +71,7 @@ public class UFOWeapons : MonoBehaviour
             laser.transform.rotation = transform.rotation;
 
             Rigidbody2D rb = laser.GetComponent<Rigidbody2D>();
-            // Shoot in whatever direction the player is facing
+            // Shoot in whatever direction the UFO is facing
             rb.velocity = transform.up * laserSpeed;
 
             audioSource.PlayOneShot(shootClip, shootVolume);

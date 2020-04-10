@@ -33,6 +33,8 @@ public class WaveConfig : ScriptableObject
 
     public Stack<Enemy> CreateEnemyBurst()
     {
+        // Returns a Stack containing the sum of numUfos & numAsteroids
+
         var enemyBurst = new List<Enemy>();
 
         for (int i = 0; i < numAsteroids; i++)

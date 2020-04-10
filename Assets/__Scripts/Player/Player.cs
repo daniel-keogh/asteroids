@@ -5,13 +5,16 @@ using UnityEngine;
 [RequireComponent(typeof(Rigidbody2D))]
 public class Player : MonoBehaviour
 {
-    [Header("Player Death")]
+    private const string RESPAWN_METHOD = "Respawn";
+
+    [Header("Health")]
+    [Tooltip("The number of times the player can be shot before dying.")]
+    [SerializeField] private int shotsBeforeDeath = 2;
+
+    [Header("Death")]
     [SerializeField] private GameObject explosionEffect;
     [SerializeField] private float explosionDuration = 1f;
     [SerializeField] private float repawnDelay = 3f;
-
-    [Header("Player Health")]
-    [SerializeField] private int shotsBeforeDeath = 2;
 
     [Header("Respawn")]
     [Tooltip("The number of seconds the player will be invincible after respawning.")]
@@ -36,7 +39,7 @@ public class Player : MonoBehaviour
     private void OnTriggerEnter2D(Collider2D other)
     {
         if (forceField.IsActivated)
-            return;
+            return; // Ignore
 
         var laser = other.GetComponent<Laser>();
 
@@ -57,12 +60,13 @@ public class Player : MonoBehaviour
     private void OnCollisionEnter2D(Collision2D other)
     {
         if (forceField.IsActivated)
-            return;
+            return; // Ignore
 
         var asteroid = other.collider.GetComponent<Asteroid>();
 
         if (asteroid)
         {
+            // Also destroy the asteroid
             Destroy(asteroid.gameObject);
         }
 
@@ -73,12 +77,14 @@ public class Player : MonoBehaviour
     {
         if (explosionEffect)
         {
+            // Show an explosion
             GameObject explosion = Instantiate(explosionEffect, transform.position, transform.rotation);
             Destroy(explosion, explosionDuration);
         }
 
+        // Disappear & respawn after a delay
         gameObject.SetActive(false);
-        Invoke("Respawn", repawnDelay);
+        Invoke(RESPAWN_METHOD, repawnDelay);
 
         PublishPlayerKilledEvent();
     }
@@ -97,13 +103,13 @@ public class Player : MonoBehaviour
 
             gameObject.SetActive(true);
 
+            // Try & prevent from dying immediately after respawning
             StartCoroutine(ImmunityCoroutine());
         }
     }
 
     private IEnumerator ImmunityCoroutine()
     {
-        // Try & prevent from dying immediately
         forceField.Activate();
         yield return new WaitForSeconds(immunityDuration);
         forceField.Deactivate();
@@ -111,6 +117,7 @@ public class Player : MonoBehaviour
 
     private void PublishPlayerKilledEvent()
     {
+        // Indicate the player has lost a life
         PlayerKilledEvent?.Invoke();
     }
 }

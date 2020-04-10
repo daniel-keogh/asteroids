@@ -6,9 +6,11 @@ using Utilities;
 
 public class SceneController : MonoBehaviour
 {
-    [SerializeField] private float transitionDelay;
+    [Header("Animate Scene Transitions")]
+    [SerializeField] private float transitionDelay = 1f;
     [SerializeField] private Animator transitionAnimator;
 
+    // Animation triggers
     private const string ANIMATOR_TRIGGER = "Start";
 
     public void PlayOnClick()
@@ -41,6 +43,7 @@ public class SceneController : MonoBehaviour
 
     public void QuitOnClick()
     {
+        // Debugging:
         // UnityEditor.EditorApplication.isPlaying = false;
 
         Application.Quit();
@@ -57,5 +60,17 @@ public class SceneController : MonoBehaviour
         yield return new WaitForSeconds(transitionDelay);
 
         SceneManager.LoadSceneAsync(sceneName);
+    }
+
+    public static SceneController FindSceneController()
+    {
+        SceneController sc = FindObjectOfType<SceneController>();
+
+        if (!sc)
+        {
+            Debug.LogWarning("Missing SceneController");
+        }
+
+        return sc;
     }
 }

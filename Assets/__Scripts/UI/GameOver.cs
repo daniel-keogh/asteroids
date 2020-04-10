@@ -32,7 +32,7 @@ public class GameOver : MonoBehaviour
             if (inputField.text.Length == 0)
                 return;
 
-            // Save the player's score & name to file
+            // Save the player's score & name to the leaderboard file
             SaveSystem.SaveToLeaderBoard(new PlayerData
             {
                 name = inputField.text,

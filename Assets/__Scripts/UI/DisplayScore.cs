@@ -20,6 +20,14 @@ public class DisplayScore : MonoBehaviour
 
     void Update()
     {
-        scoreText.text = $"{originalText}{(gc ? gc.PlayerScore : 0)}";
+        string score = "0"; // shown if `gc` is null
+
+        if (gc)
+        {
+            // Large numbers are separated by commas
+            score = string.Format("{0:n0}", gc.PlayerScore);
+        }
+
+        scoreText.text = $"{originalText}{score}";
     }
 }

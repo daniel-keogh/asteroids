@@ -14,7 +14,7 @@ public class Asteroid : MonoBehaviour
     [SerializeField] private Asteroid breaksInto;
     [SerializeField] private int numHitsBeforeDesroy;
     [SerializeField] private GameObject destroyEffect;
-    [SerializeField] private float destroyEffectDuration;
+    [SerializeField] private float destroyEffectDuration = 1f;
 
     private int numHits;
     private Animator animator;

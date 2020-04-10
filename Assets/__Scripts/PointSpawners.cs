@@ -47,6 +47,7 @@ public class PointSpawners : MonoBehaviour
             burst = waveConfig.CreateEnemyBurst();
         }
 
+        // Position the new Enemy
         var enemy = Instantiate(burst.Pop(), enemyParent.transform);
         var sp = spawnStack.Pop();
         enemy.transform.position = sp.transform.position;
@@ -91,12 +92,19 @@ public class PointSpawners : MonoBehaviour
                 break;
         }
 
+        // Move in that direction
         asteroid.Move(new Vector2(xDirection, yDirection));
     }
 
-    public void PublishOnEnemySpawnedEvent()
+    private void PublishOnEnemySpawnedEvent()
     {
+        // Signal that an Enemy has spawned
         EnemySpawnedEvent?.Invoke();
+    }
+
+    public void SetWaveConfig(WaveConfig waveConfig)
+    {
+        this.waveConfig = waveConfig;
     }
 
     public void EnableSpawning()
@@ -111,10 +119,5 @@ public class PointSpawners : MonoBehaviour
     public void DisableSpawning()
     {
         CancelInvoke(SPAWN_ENEMY_METHOD);
-    }
-
-    public void SetWaveConfig(WaveConfig waveConfig)
-    {
-        this.waveConfig = waveConfig;
     }
 }

@@ -18,6 +18,7 @@ public class UFO : MonoBehaviour
 
         if (laser)
         {
+            // Only die if hit by the player
             if (laser.tag == Laser.PLAYER_LASER)
             {
                 Destroy(laser.gameObject);
@@ -34,6 +35,7 @@ public class UFO : MonoBehaviour
 
         if (asteroid)
         {
+            // Also destroy the asteroid
             Destroy(asteroid.gameObject);
         }
 
@@ -42,8 +44,17 @@ public class UFO : MonoBehaviour
 
     private void Die()
     {
-        GameObject explosion = Instantiate(explosionEffect, transform.position, transform.rotation);
-        Destroy(explosion, explosionDuration);
+        if (explosionEffect)
+        {
+            // Show an explosion
+            GameObject explosion = Instantiate(
+                explosionEffect,
+                transform.position,
+                transform.rotation
+            );
+
+            Destroy(explosion, explosionDuration);
+        }
 
         Destroy(gameObject);
     }

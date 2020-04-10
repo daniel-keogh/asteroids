@@ -24,6 +24,9 @@ public class WrapAround : MonoBehaviour
 
     private void Wrap()
     {
+        // If the transform position is off screen, 
+        // try to place the object on the other side.
+
         if (transform.position.y > viewport.y)
         {
             transform.position -= sceneHeight;

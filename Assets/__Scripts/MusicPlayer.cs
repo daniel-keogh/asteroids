@@ -14,11 +14,11 @@ public class MusicPlayer : MonoBehaviour
     {
         if (FindObjectsOfType(GetType()).Length > 1)
         {
-            Destroy(gameObject); // destroy the current object
+            Destroy(gameObject); // Destroy the current object
         }
         else
         {
-            DontDestroyOnLoad(gameObject); // persist across scenes
+            DontDestroyOnLoad(gameObject); // Persist across scenes
         }
     }
 }

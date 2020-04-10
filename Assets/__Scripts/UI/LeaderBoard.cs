@@ -15,7 +15,7 @@ public class LeaderBoard : MonoBehaviour
 
     private void PrintItems()
     {
-        // Read the top scores and print them to the scren
+        // Read the top scores from the leaderboard file and print them to the scren
         var leaderBoard = Data.SaveSystem.LoadLeaderBoard();
 
         if (leaderBoard.players != null)
@@ -23,7 +23,7 @@ public class LeaderBoard : MonoBehaviour
             for (int i = 0; i < leaderBoard.players.Length; i++)
             {
                 var item = Instantiate(lbItem, layoutGroup.transform, false);
-                item.WritePlayerData(leaderBoard.players[i]);
+                item.SetPlayerData(leaderBoard.players[i]);
             }
         }
     }

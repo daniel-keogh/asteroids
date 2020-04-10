@@ -6,6 +6,7 @@ using UnityEngine;
 [RequireComponent(typeof(Rigidbody2D))]
 public class PlayerMovement : MonoBehaviour
 {
+    [Header("Speed")]
     [SerializeField] private float forwardSpeed = 8.0f;
     [SerializeField] private float rotationSpeed = 5.0f;
 
@@ -24,7 +25,8 @@ public class PlayerMovement : MonoBehaviour
         rotation = Input.GetAxis("Horizontal");
         forward = Input.GetAxis("Vertical");
 
-        // Enable/Disable the thruster ParticleEffect
+        // Enable/Disable the thruster ParticleEffect depending on whether or
+        // not the player is moving
         if (thrusters && forward > 0)
         {
             thrusters.Play();
@@ -47,12 +49,13 @@ public class PlayerMovement : MonoBehaviour
 
     private void OnDisable()
     {
-        // Stop any movement/rotation on re-spawn
+        // Prevent any movement/rotation on respawn
         forward = 0;
         rotation = 0;
 
         if (thrusters)
         {
+            // Disable the thruster particle effect
             thrusters.Stop();
         }
     }

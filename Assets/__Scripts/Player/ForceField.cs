@@ -26,11 +26,13 @@ public class ForceField : MonoBehaviour
         pointEffector = GetComponent<PointEffector2D>();
         animator = GetComponent<Animator>();
 
+        // Turn off by default
         Deactivate();
     }
 
     private void OnTriggerEnter2D(Collider2D other)
     {
+        // Destroy any Enemy lasers that hit the ForceField
         var laser = other.GetComponent<Laser>();
 
         if (laser)

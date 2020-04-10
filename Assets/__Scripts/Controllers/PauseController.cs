@@ -21,6 +21,7 @@ public class PauseController : MonoBehaviour
     {
         if (Input.GetKeyDown(pauseKey))
         {
+            // Pause/Unpause
             SetPaused(!IsPaused);
         }
     }
@@ -43,7 +44,7 @@ public class PauseController : MonoBehaviour
 
         if (sc)
         {
-            Time.timeScale = 1;
+            Time.timeScale = 1; // Reset time
             sc.GoToMainMenu();
         }
     }

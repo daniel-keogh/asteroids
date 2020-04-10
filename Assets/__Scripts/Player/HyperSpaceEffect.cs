@@ -5,6 +5,7 @@ using UnityEngine;
 [RequireComponent(typeof(ParticleSystem))]
 public class HyperSpaceEffect : MonoBehaviour
 {
+    // Animation triggers
     public const string START_TRIGGER = "Start";
     public const string END_TRIGGER = "End";
 

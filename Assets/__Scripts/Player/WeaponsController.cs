@@ -4,16 +4,22 @@ using UnityEngine;
 
 public class WeaponsController : MonoBehaviour
 {
+    [Header("Shooting")]
     [SerializeField] private float laserSpeed = 20.0f;
     [SerializeField] private float fireRate = 0.3f;
     [SerializeField] private Transform turretTransform;
     [SerializeField] private Laser laserPrefab;
+
+    [Header("Audio")]
     [SerializeField] private AudioClip shootClip;
     [SerializeField] [Range(0f, 1.0f)] private float shootVolume = 0.5f;
 
     private GameObject laserParent;
     private Coroutine firingCoroutine;
     private AudioSource audioSource;
+
+    public delegate void LaserFired(WeaponsController weapons);
+    public static LaserFired LaserFiredEvent;
 
     void Start()
     {
@@ -60,6 +66,7 @@ public class WeaponsController : MonoBehaviour
 
             // Play a sound
             audioSource.PlayOneShot(shootClip, shootVolume);
+            PublishLaserFiredEvent();
 
             // Sleep for a short time
             yield return new WaitForSeconds(fireRate);
@@ -72,5 +79,11 @@ public class WeaponsController : MonoBehaviour
         {
             StopCoroutine(firingCoroutine);
         }
+    }
+
+    private void PublishLaserFiredEvent()
+    {
+        // Indicate a Laser has been fired by the Player
+        LaserFiredEvent?.Invoke(this);
     }
 }

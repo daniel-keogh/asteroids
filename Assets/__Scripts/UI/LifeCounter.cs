@@ -39,11 +39,13 @@ public class LifeCounter : MonoBehaviour
     {
         if (lifeIcons.Count > 0)
         {
+            // Delete one of the LifeIcons
             Destroy(lifeIcons.Pop().gameObject);
         }
 
         if (lifeIcons.Count == 1)
         {
+            // Indicate this is the Player's final life
             ShowFinalLifeAnimation();
         }
     }
@@ -51,8 +53,7 @@ public class LifeCounter : MonoBehaviour
     private void ShowFinalLifeAnimation()
     {
         // Animate the icon on the top of the stack
-        var icon = lifeIcons.Peek();
-        icon.SetAnimatorEnabled(true);
+        lifeIcons.Peek().SetAnimatorEnabled(true);
 
         // TODO: play a sound
     }

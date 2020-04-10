@@ -44,7 +44,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3a34a7c5154795a4bb358e80eb46aad6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  transitionDelay: 1.25
+  transitionDelay: 1
   transitionAnimator: {fileID: 2637825544159368147}
 --- !u!1 &6936520744066078557
 GameObject:

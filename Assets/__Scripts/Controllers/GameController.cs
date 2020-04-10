@@ -1,8 +1,10 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using TMPro;
 using Data;
+using Utilities;
 
 public class GameController : MonoBehaviour
 {
@@ -53,7 +55,10 @@ public class GameController : MonoBehaviour
         remainingLives = startingLives;
         remainingEnemies = waveConfig.GetNumEnemiesPerWave();
 
-        StartCoroutine(SetupNextWave());
+        if (SceneManager.GetActiveScene().name == SceneNames.GAME_SCENE)
+        {
+            StartCoroutine(SetupNextWave());
+        }
     }
 
     private void OnEnable()

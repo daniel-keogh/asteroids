@@ -19,8 +19,7 @@ public class UFOBehaviour : MonoBehaviour
     [Tooltip("When the UFO is this distance from the player it will start to move backwards.")]
     [SerializeField] private float retreatDistance = 7.5f;
 
-    [Tooltip(@"The point where the UFO will move towards. The waypoint will be randomly
-    re-positioned once the UFO reaches it.")]
+    [Tooltip("The point where the UFO will move towards.\n\nThe waypoint will be randomly re-positioned once the UFO reaches it.")]
     [SerializeField] private UFOWaypoint waypointPrefab;
 
     [Header("Vision")]

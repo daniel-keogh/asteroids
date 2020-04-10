@@ -43,3 +43,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 053590276e518104e833d2dae48fb0d9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  borderPadding: 0.01
+  gizmoRadius: 0.25

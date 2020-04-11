@@ -512,6 +512,11 @@ PrefabInstance:
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
       value: PlayOnClick
       objectReference: {fileID: 0}
+    - target: {fileID: 5769061998616223119, guid: 93345d5f5fc4b5040b2cf9aaa2b638ca,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Arguments.m_ObjectArgument
+      value: 
+      objectReference: {fileID: 8300000, guid: ce2fe0a00eebefc49a856fd5fbf43707, type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 93345d5f5fc4b5040b2cf9aaa2b638ca, type: 3}
 --- !u!224 &7992972334783286791 stripped
@@ -682,6 +687,11 @@ PrefabInstance:
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
       value: GoToOptionsMenu
       objectReference: {fileID: 0}
+    - target: {fileID: 5769061998616223119, guid: 93345d5f5fc4b5040b2cf9aaa2b638ca,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Arguments.m_ObjectArgument
+      value: 
+      objectReference: {fileID: 8300000, guid: ce2fe0a00eebefc49a856fd5fbf43707, type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 93345d5f5fc4b5040b2cf9aaa2b638ca, type: 3}
 --- !u!224 &7992972334762311329 stripped
@@ -852,6 +862,11 @@ PrefabInstance:
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
       value: GoToLeaderBoard
       objectReference: {fileID: 0}
+    - target: {fileID: 5769061998616223119, guid: 93345d5f5fc4b5040b2cf9aaa2b638ca,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Arguments.m_ObjectArgument
+      value: 
+      objectReference: {fileID: 8300000, guid: ce2fe0a00eebefc49a856fd5fbf43707, type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 93345d5f5fc4b5040b2cf9aaa2b638ca, type: 3}
 --- !u!224 &7992972333680689740 stripped
@@ -1037,6 +1052,11 @@ PrefabInstance:
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
       value: QuitOnClick
       objectReference: {fileID: 0}
+    - target: {fileID: 5769061998616223119, guid: 93345d5f5fc4b5040b2cf9aaa2b638ca,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Arguments.m_ObjectArgument
+      value: 
+      objectReference: {fileID: 8300000, guid: ce2fe0a00eebefc49a856fd5fbf43707, type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 93345d5f5fc4b5040b2cf9aaa2b638ca, type: 3}
 --- !u!224 &7992972333044769051 stripped

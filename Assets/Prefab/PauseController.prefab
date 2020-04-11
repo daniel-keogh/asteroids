@@ -45,6 +45,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   pauseMenu: {fileID: 0}
+  onPauseClip: {fileID: 8300000, guid: 82e19eae2bf5f9448a001c4193fca86a, type: 3}
 --- !u!95 &567233833
 Animator:
   serializedVersion: 3

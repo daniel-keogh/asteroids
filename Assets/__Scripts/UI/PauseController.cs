@@ -28,7 +28,7 @@ public class PauseController : MonoBehaviour
 
     public void SetPaused(bool status)
     {
-        if (status && onPauseClip)
+        if (status)
         {
             soundController?.PlayOneShot(onPauseClip);
         }

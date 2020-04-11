@@ -133,7 +133,7 @@ MonoBehaviour:
         m_MethodName: PlayOneShot
         m_Mode: 2
         m_Arguments:
-          m_ObjectArgument: {fileID: 8300000, guid: 9f873d3a299a7ba418d713a58fe5cbf9,
+          m_ObjectArgument: {fileID: 8300000, guid: ce2fe0a00eebefc49a856fd5fbf43707,
             type: 3}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.AudioClip, UnityEngine
           m_IntArgument: 0
@@ -420,7 +420,7 @@ MonoBehaviour:
         m_MethodName: PlayOneShot
         m_Mode: 2
         m_Arguments:
-          m_ObjectArgument: {fileID: 8300000, guid: 9f873d3a299a7ba418d713a58fe5cbf9,
+          m_ObjectArgument: {fileID: 8300000, guid: ce2fe0a00eebefc49a856fd5fbf43707,
             type: 3}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.AudioClip, UnityEngine
           m_IntArgument: 0
@@ -561,7 +561,7 @@ MonoBehaviour:
         m_MethodName: PlayOneShot
         m_Mode: 2
         m_Arguments:
-          m_ObjectArgument: {fileID: 8300000, guid: 9f873d3a299a7ba418d713a58fe5cbf9,
+          m_ObjectArgument: {fileID: 8300000, guid: ce2fe0a00eebefc49a856fd5fbf43707,
             type: 3}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.AudioClip, UnityEngine
           m_IntArgument: 0
@@ -702,7 +702,7 @@ MonoBehaviour:
         m_MethodName: PlayOneShot
         m_Mode: 2
         m_Arguments:
-          m_ObjectArgument: {fileID: 8300000, guid: 9f873d3a299a7ba418d713a58fe5cbf9,
+          m_ObjectArgument: {fileID: 8300000, guid: ce2fe0a00eebefc49a856fd5fbf43707,
             type: 3}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.AudioClip, UnityEngine
           m_IntArgument: 0
@@ -1063,7 +1063,7 @@ RectTransform:
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 0}
   m_AnchoredPosition: {x: 0, y: 125}
-  m_SizeDelta: {x: -200, y: 100}
+  m_SizeDelta: {x: 0, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1982630050
 MonoBehaviour:
@@ -1505,7 +1505,7 @@ PrefabInstance:
         type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Arguments.m_ObjectArgument
       value: 
-      objectReference: {fileID: 8300000, guid: 9f873d3a299a7ba418d713a58fe5cbf9, type: 3}
+      objectReference: {fileID: 8300000, guid: ce2fe0a00eebefc49a856fd5fbf43707, type: 3}
     - target: {fileID: 3535861518225883959, guid: e0991e176f65d1246840bb6b17c5cfbd,
         type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Arguments.m_ObjectArgumentAssemblyTypeName
@@ -1550,7 +1550,7 @@ PrefabInstance:
         type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Arguments.m_ObjectArgument
       value: 
-      objectReference: {fileID: 8300000, guid: 9f873d3a299a7ba418d713a58fe5cbf9, type: 3}
+      objectReference: {fileID: 8300000, guid: 220ac3958781f214f81a5eb916752240, type: 3}
     - target: {fileID: 4006639735168626618, guid: e0991e176f65d1246840bb6b17c5cfbd,
         type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Arguments.m_ObjectArgumentAssemblyTypeName

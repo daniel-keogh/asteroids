@@ -39,6 +39,7 @@ public class GameController : MonoBehaviour
     private int currentWaveIndex = 0;
     private int remainingLives;
     private int remainingEnemies;
+    private Coroutine nextWaveCoroutine;
 
     void Awake()
     {
@@ -49,10 +50,18 @@ public class GameController : MonoBehaviour
     {
         remainingLives = startingLives;
 
-        // Only start the corouting if in the GameScene
+        // Only start the wave coroutine if in the GameScene
         if (SceneManager.GetActiveScene().name == SceneNames.GAME_SCENE)
         {
-            StartCoroutine(SetupNextWave(waveConfigs[currentWaveIndex]));
+            nextWaveCoroutine = StartCoroutine(SetupNextWave(waveConfigs[currentWaveIndex]));
+        }
+        else
+        {
+            // if not in GameScene, stop the wave coroutine
+            if (nextWaveCoroutine != null)
+            {
+                StopCoroutine(nextWaveCoroutine);
+            }
         }
     }
 
@@ -93,7 +102,7 @@ public class GameController : MonoBehaviour
         remainingEnemies = currentWave.GetNumEnemies();
 
         // Pass the config file to the PointSpawner
-        FindObjectOfType<PointSpawners>().SetWaveConfig(currentWave);
+        FindObjectOfType<PointSpawners>()?.SetWaveConfig(currentWave);
 
         // Start spawning enemies
         EnableSpawning();
@@ -133,7 +142,7 @@ public class GameController : MonoBehaviour
 
         if (currentWaveSize == 0 && remainingEnemies == 0)
         {
-            StartCoroutine(SetupNextWave(NextWave()));
+            nextWaveCoroutine = StartCoroutine(SetupNextWave(NextWave()));
         }
     }
 

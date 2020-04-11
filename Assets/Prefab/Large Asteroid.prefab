@@ -33,7 +33,7 @@ Transform:
   m_GameObject: {fileID: 2646086979634312365}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 1.5, y: 1.5, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
@@ -222,6 +222,7 @@ MonoBehaviour:
   destroyEffect: {fileID: 5456398976044202209, guid: 37deeb9da4879714a82b1b6f93f18260,
     type: 3}
   destroyEffectDuration: 1
+  explosionSound: {fileID: 8300000, guid: c31867ed8e0433641ad84f9bd9187813, type: 3}
 --- !u!114 &2646086979634312361
 MonoBehaviour:
   m_ObjectHideFlags: 0

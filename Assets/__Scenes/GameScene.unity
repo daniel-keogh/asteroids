@@ -184,7 +184,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 5
+  m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &567233832 stripped
 MonoBehaviour:
@@ -481,6 +481,18 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 5921453210823978421}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1643437882 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 5157010167995952756, guid: 282c8ba3a4b944441ba3d3b051a9e608,
+    type: 3}
+  m_PrefabInstance: {fileID: 5157010167322973195}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 82560d17e8ffc2d4c95e4c80ba6f66da, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1831572284
 GameObject:
   m_ObjectHideFlags: 0
@@ -752,7 +764,7 @@ PrefabInstance:
     - target: {fileID: 7832548209357809442, guid: e9a8a037c05498b4da451cb7f065b606,
         type: 3}
       propertyPath: m_RootOrder
-      value: 6
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 7832548209357809442, guid: e9a8a037c05498b4da451cb7f065b606,
         type: 3}
@@ -1158,11 +1170,21 @@ PrefabInstance:
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 567233832}
+    - target: {fileID: 2377776379142868310, guid: 5c41003f4ff47bf40b9b68b941e3a9d4,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Target
+      value: 
+      objectReference: {fileID: 1643437882}
     - target: {fileID: 2377776379584102207, guid: 5c41003f4ff47bf40b9b68b941e3a9d4,
         type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 567233832}
+    - target: {fileID: 2377776379584102207, guid: 5c41003f4ff47bf40b9b68b941e3a9d4,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Target
+      value: 
+      objectReference: {fileID: 1643437882}
     - target: {fileID: 8138106054076217056, guid: 5c41003f4ff47bf40b9b68b941e3a9d4,
         type: 3}
       propertyPath: m_Name

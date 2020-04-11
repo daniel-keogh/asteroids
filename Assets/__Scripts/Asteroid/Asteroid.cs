@@ -15,6 +15,7 @@ public class Asteroid : MonoBehaviour
     [SerializeField] private int numHitsBeforeDesroy;
     [SerializeField] private GameObject destroyEffect;
     [SerializeField] private float destroyEffectDuration = 1f;
+    [SerializeField] private AudioClip explosionSound;
 
     private int numHits;
     private Animator animator;
@@ -53,6 +54,9 @@ public class Asteroid : MonoBehaviour
                 // Points should only be given if the player destroyed it
                 GetComponent<Enemy>().ScoreValue = 0;
             }
+
+            // Play sound
+            SoundController.FindSoundController()?.PlayOneShot(explosionSound);
 
             // Show an explosion
             GameObject explosion = Instantiate(destroyEffect, transform.position, transform.rotation);

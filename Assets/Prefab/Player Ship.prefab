@@ -44,11 +44,11 @@ GameObject:
   - component: {fileID: 6723512523177929436}
   - component: {fileID: 902871887}
   - component: {fileID: 286812130}
-  - component: {fileID: 6723512523177929437}
-  - component: {fileID: 6723512523177929439}
-  - component: {fileID: 352865369}
-  - component: {fileID: 5829934110347238549}
   - component: {fileID: 6776455908487683428}
+  - component: {fileID: 6723512523177929437}
+  - component: {fileID: 5829934110347238549}
+  - component: {fileID: 352865369}
+  - component: {fileID: 6723512523177929439}
   m_Layer: 8
   m_Name: Player Ship
   m_TagString: Untagged
@@ -65,7 +65,7 @@ Transform:
   m_GameObject: {fileID: 6723512523177929433}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.8, y: 0.8, z: 0.8}
+  m_LocalScale: {x: 0.8, y: 0.8, z: 1}
   m_Children:
   - {fileID: 1653570244}
   - {fileID: 1616801561}
@@ -332,6 +332,25 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!114 &6776455908487683428
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6723512523177929433}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dc984073b3b70724dbf99729ce0ddea0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  shotsBeforeDeath: 2
+  explosionEffect: {fileID: 1534296265662101853, guid: 1b3e1fa6f8edd0d468e5b4a9aaac7178,
+    type: 3}
+  explosionDuration: 1
+  repawnDelay: 3
+  explosionSound: {fileID: 8300000, guid: b0261e30f6223ad4e89db22333594ea1, type: 3}
+  immunityDuration: 3
 --- !u!114 &6723512523177929437
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -346,7 +365,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   forwardSpeed: 8
   rotationSpeed: 5
---- !u!114 &6723512523177929439
+--- !u!114 &5829934110347238549
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -355,9 +374,13 @@ MonoBehaviour:
   m_GameObject: {fileID: 6723512523177929433}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8a4945a185a7f6142b3057558d3f0825, type: 3}
+  m_Script: {fileID: 11500000, guid: 3e792e20b5a87bd488a02bbbb58182c7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  borderPadding: 1
+  duration: 2
+  cooldownDuration: 3
+  sound: {fileID: 8300000, guid: e2e4139f04ce6b94f9460603ce75eca9, type: 3}
 --- !u!114 &352865369
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -376,7 +399,7 @@ MonoBehaviour:
   laserPrefab: {fileID: 2102178937, guid: 5f94e9263b777894c91d32ff667e52a5, type: 3}
   shootClip: {fileID: 8300000, guid: e3252be42181bbb45a8ad1dd83cb2359, type: 3}
   shootVolume: 0.5
---- !u!114 &5829934110347238549
+--- !u!114 &6723512523177929439
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -385,31 +408,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 6723512523177929433}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3e792e20b5a87bd488a02bbbb58182c7, type: 3}
+  m_Script: {fileID: 11500000, guid: 8a4945a185a7f6142b3057558d3f0825, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  borderPadding: 1
-  disableRotation: 0
-  duration: 2
-  cooldownDuration: 3
---- !u!114 &6776455908487683428
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6723512523177929433}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: dc984073b3b70724dbf99729ce0ddea0, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  explosionEffect: {fileID: 1534296265662101853, guid: 1b3e1fa6f8edd0d468e5b4a9aaac7178,
-    type: 3}
-  explosionDuration: 1
-  repawnDelay: 3
-  shotsBeforeDeath: 2
-  immunityDuration: 3
 --- !u!1001 &2467506667551457213
 PrefabInstance:
   m_ObjectHideFlags: 0

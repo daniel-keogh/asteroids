@@ -14,7 +14,7 @@ public class PauseController : MonoBehaviour
     void Start()
     {
         pauseMenu.SetActive(false);
-        soundController = FindObjectOfType<SoundController>();
+        soundController = SoundController.FindSoundController();
     }
 
     void Update()

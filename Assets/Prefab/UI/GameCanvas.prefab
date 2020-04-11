@@ -9,8 +9,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 117893488}
-  - component: {fileID: 117893490}
   - component: {fileID: 117893489}
+  - component: {fileID: 117893490}
   m_Layer: 5
   m_Name: LifeCounter
   m_TagString: Untagged
@@ -37,20 +37,6 @@ RectTransform:
   m_AnchoredPosition: {x: -132, y: -50}
   m_SizeDelta: {x: 200, y: 75}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &117893490
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 117893487}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 108da5009cf356841b4a80b60c26fc5b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  lifeIconPrefab: {fileID: 4377149750914792737, guid: bfa1e21ae9ea25643872311efd2dcc66,
-    type: 3}
 --- !u!114 &117893489
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -76,6 +62,20 @@ MonoBehaviour:
   m_ChildControlHeight: 1
   m_ChildScaleWidth: 0
   m_ChildScaleHeight: 0
+--- !u!114 &117893490
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 117893487}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 108da5009cf356841b4a80b60c26fc5b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  lifeIconPrefab: {fileID: 4377149750914792737, guid: bfa1e21ae9ea25643872311efd2dcc66,
+    type: 3}
 --- !u!1 &258723197
 GameObject:
   m_ObjectHideFlags: 0
@@ -502,7 +502,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &1636838125
 RectTransform:
   m_ObjectHideFlags: 0
@@ -832,22 +832,22 @@ PrefabInstance:
     - target: {fileID: 5769061998616223112, guid: 93345d5f5fc4b5040b2cf9aaa2b638ca,
         type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 225
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5769061998616223112, guid: 93345d5f5fc4b5040b2cf9aaa2b638ca,
         type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: -153
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5769061998616223112, guid: 93345d5f5fc4b5040b2cf9aaa2b638ca,
         type: 3}
       propertyPath: m_SizeDelta.x
-      value: 450
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5769061998616223112, guid: 93345d5f5fc4b5040b2cf9aaa2b638ca,
         type: 3}
       propertyPath: m_SizeDelta.y
-      value: 94
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5769061998616223112, guid: 93345d5f5fc4b5040b2cf9aaa2b638ca,
         type: 3}
@@ -857,7 +857,7 @@ PrefabInstance:
     - target: {fileID: 5769061998616223112, guid: 93345d5f5fc4b5040b2cf9aaa2b638ca,
         type: 3}
       propertyPath: m_AnchorMin.y
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5769061998616223112, guid: 93345d5f5fc4b5040b2cf9aaa2b638ca,
         type: 3}
@@ -867,7 +867,7 @@ PrefabInstance:
     - target: {fileID: 5769061998616223112, guid: 93345d5f5fc4b5040b2cf9aaa2b638ca,
         type: 3}
       propertyPath: m_AnchorMax.y
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5769061998616223112, guid: 93345d5f5fc4b5040b2cf9aaa2b638ca,
         type: 3}
@@ -997,22 +997,22 @@ PrefabInstance:
     - target: {fileID: 5769061998616223112, guid: 93345d5f5fc4b5040b2cf9aaa2b638ca,
         type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 225
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5769061998616223112, guid: 93345d5f5fc4b5040b2cf9aaa2b638ca,
         type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: -47
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5769061998616223112, guid: 93345d5f5fc4b5040b2cf9aaa2b638ca,
         type: 3}
       propertyPath: m_SizeDelta.x
-      value: 450
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5769061998616223112, guid: 93345d5f5fc4b5040b2cf9aaa2b638ca,
         type: 3}
       propertyPath: m_SizeDelta.y
-      value: 94
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5769061998616223112, guid: 93345d5f5fc4b5040b2cf9aaa2b638ca,
         type: 3}
@@ -1022,7 +1022,7 @@ PrefabInstance:
     - target: {fileID: 5769061998616223112, guid: 93345d5f5fc4b5040b2cf9aaa2b638ca,
         type: 3}
       propertyPath: m_AnchorMin.y
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5769061998616223112, guid: 93345d5f5fc4b5040b2cf9aaa2b638ca,
         type: 3}
@@ -1032,7 +1032,7 @@ PrefabInstance:
     - target: {fileID: 5769061998616223112, guid: 93345d5f5fc4b5040b2cf9aaa2b638ca,
         type: 3}
       propertyPath: m_AnchorMax.y
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5769061998616223112, guid: 93345d5f5fc4b5040b2cf9aaa2b638ca,
         type: 3}
@@ -1203,6 +1203,11 @@ PrefabInstance:
         type: 2}
     - target: {fileID: 8273520035506618860, guid: 78b66e7fdd1db1b499c699e70ccc3988,
         type: 3}
+      propertyPath: m_enableVertexGradient
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8273520035506618860, guid: 78b66e7fdd1db1b499c699e70ccc3988,
+        type: 3}
       propertyPath: m_colorMode
       value: 2
       objectReference: {fileID: 0}
@@ -1210,7 +1215,7 @@ PrefabInstance:
         type: 3}
       propertyPath: m_fontColorGradientPreset
       value: 
-      objectReference: {fileID: 11400000, guid: e911fe56742b5ee438fc13a23dfb7e4c,
+      objectReference: {fileID: 11400000, guid: f4f4306dc98efe04bbc5ed4698f11a6e,
         type: 2}
     - target: {fileID: 8273520035506618860, guid: 78b66e7fdd1db1b499c699e70ccc3988,
         type: 3}

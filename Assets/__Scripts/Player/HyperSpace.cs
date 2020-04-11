@@ -18,6 +18,9 @@ public class HyperSpace : MonoBehaviour
     [Tooltip("Sets the minimum time between hyperspace jumps.")]
     [SerializeField] private float cooldownDuration = 3.0f;
 
+    [Header("Audio")]
+    [SerializeField] private AudioClip sound;
+
     private float maxRotate = 360;
     private bool isCooledDown = true;
     private Rigidbody2D rb;
@@ -25,12 +28,15 @@ public class HyperSpace : MonoBehaviour
     private HyperSpaceEffect hyperSpaceVFX;
     private Vector3 viewport;
     private Vector3 startScale;
+    private SoundController sc;
 
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
         animator = GetComponent<Animator>();
         hyperSpaceVFX = GetComponentInChildren<HyperSpaceEffect>();
+
+        sc = SoundController.FindSoundController();
 
         // The bottom-left of the viewport is (0,0); the top-right is (1,1).
         viewport = Camera.main.ViewportToWorldPoint(new Vector2(1, 1));
@@ -71,6 +77,8 @@ public class HyperSpace : MonoBehaviour
         isCooledDown = false;
 
         animator.SetTrigger(HyperSpaceEffect.START_TRIGGER);
+
+        sc?.PlayOneShot(sound);
 
         yield return new WaitForSeconds(duration);
 

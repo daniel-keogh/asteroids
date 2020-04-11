@@ -15,6 +15,7 @@ public class Player : MonoBehaviour
     [SerializeField] private GameObject explosionEffect;
     [SerializeField] private float explosionDuration = 1f;
     [SerializeField] private float repawnDelay = 3f;
+    [SerializeField] private AudioClip explosionSound;
 
     [Header("Respawn")]
     [Tooltip("The number of seconds the player will be invincible after respawning.")]
@@ -77,6 +78,8 @@ public class Player : MonoBehaviour
     {
         if (explosionEffect)
         {
+            SoundController.FindSoundController()?.PlayOneShot(explosionSound);
+
             // Show an explosion
             GameObject explosion = Instantiate(explosionEffect, transform.position, transform.rotation);
             Destroy(explosion, explosionDuration);

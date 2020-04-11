@@ -11,6 +11,7 @@ public class UFO : MonoBehaviour
     [Header("Death")]
     [SerializeField] private GameObject explosionEffect;
     [SerializeField] private float explosionDuration = 1f;
+    [SerializeField] private AudioClip explosionSound;
 
     private void OnTriggerEnter2D(Collider2D other)
     {
@@ -46,6 +47,8 @@ public class UFO : MonoBehaviour
     {
         if (explosionEffect)
         {
+            SoundController.FindSoundController()?.PlayOneShot(explosionSound);
+
             // Show an explosion
             GameObject explosion = Instantiate(
                 explosionEffect,

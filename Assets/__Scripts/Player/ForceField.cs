@@ -13,11 +13,14 @@ public class ForceField : MonoBehaviour
         get { return isActivated; }
     }
 
+    [SerializeField] private AudioClip hitByLaserClip;
+
     private SpriteRenderer spriteRenderer;
     private CapsuleCollider2D capsuleCollider;
     private PointEffector2D pointEffector;
     private Animator animator;
     private bool isActivated;
+    private SoundController sc;
 
     private void Start()
     {
@@ -25,6 +28,8 @@ public class ForceField : MonoBehaviour
         capsuleCollider = GetComponent<CapsuleCollider2D>();
         pointEffector = GetComponent<PointEffector2D>();
         animator = GetComponent<Animator>();
+
+        sc = SoundController.FindSoundController();
 
         // Turn off by default
         Deactivate();
@@ -39,6 +44,7 @@ public class ForceField : MonoBehaviour
         {
             if (laser.tag == Laser.ENEMY_LASER)
             {
+                sc?.PlayOneShot(hitByLaserClip);
                 Destroy(laser.gameObject);
             }
         }

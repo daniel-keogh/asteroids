@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using TMPro;
-using Data;
 using Utilities;
 
 public class GameController : MonoBehaviour
@@ -35,10 +34,6 @@ public class GameController : MonoBehaviour
     [SerializeField] private List<WaveConfig> waveConfigs;
     [SerializeField] private TextMeshProUGUI waveIndicator;
 
-    [Header("LeaderBoard")]
-    [Tooltip("The maximum number of entries stored in the LeaderBoard")]
-    [SerializeField] private int maxLeaderBoardSize = 12;
-
     private int playerScore = 0;
     private int waveNumber = 1;
     private int currentWaveIndex = 0;
@@ -52,9 +47,6 @@ public class GameController : MonoBehaviour
 
     void Start()
     {
-        // Set LeaderBoard size
-        SaveSystem.MaxLeaderBoardSize = maxLeaderBoardSize;
-
         remainingLives = startingLives;
 
         // Only start the corouting if in the GameScene

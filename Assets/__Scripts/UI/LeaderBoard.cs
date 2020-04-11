@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using Data;
 
 public class LeaderBoard : MonoBehaviour
 {
@@ -15,15 +16,15 @@ public class LeaderBoard : MonoBehaviour
 
     private void PrintItems()
     {
-        // Read the top scores from the leaderboard file and print them to the scren
-        var leaderBoard = Data.SaveSystem.LoadLeaderBoard();
+        // Read the top scores from the leaderboard file and print them to the screen
+        var leaderBoard = SaveSystem.LoadLeaderBoard();
 
         if (leaderBoard.players != null)
         {
             for (int i = 0; i < leaderBoard.players.Length; i++)
             {
                 var item = Instantiate(lbItem, layoutGroup.transform, false);
-                item.SetPlayerData(leaderBoard.players[i]);
+                item.SetPlayerData(leaderBoard.players[i], i + 1);
             }
         }
     }

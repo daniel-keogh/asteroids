@@ -52,9 +52,11 @@ public class PointSpawners : MonoBehaviour
         var sp = spawnStack.Pop();
         enemy.transform.position = sp.transform.position;
 
-        if (enemy.tag == Asteroid.TAG_NAME)
+        // Get the Asteroids moving
+        var asteroid = enemy.GetComponent<AsteroidMovement>();
+        if (asteroid)
         {
-            SetAsteroidMovement(sp, enemy.GetComponent<AsteroidMovement>());
+            SetAsteroidMovement(sp, asteroid);
         }
 
         PublishOnEnemySpawnedEvent();

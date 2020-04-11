@@ -34,7 +34,7 @@ public class PauseController : MonoBehaviour
         }
 
         Time.timeScale = status ? 0 : 1; // stop/start time
-        pauseMenu.SetActive(status); // show the pause menu UI
+        pauseMenu.SetActive(status); // Show the pause menu UI
         IsPaused = status;
     }
 

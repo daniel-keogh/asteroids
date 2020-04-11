@@ -301,7 +301,7 @@ MonoBehaviour:
     m_Top: 0
     m_Bottom: 0
   m_ChildAlignment: 4
-  m_Spacing: 6
+  m_Spacing: 12
   m_ChildForceExpandWidth: 1
   m_ChildForceExpandHeight: 1
   m_ChildControlWidth: 1
@@ -344,7 +344,7 @@ RectTransform:
   m_AnchorMin: {x: 0, y: 0.5}
   m_AnchorMax: {x: 1, y: 0.5}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: 50}
+  m_SizeDelta: {x: 0, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &1516716684
 CanvasRenderer:
@@ -420,8 +420,8 @@ MonoBehaviour:
   m_outlineColor:
     serializedVersion: 2
     rgba: 4278190080
-  m_fontSize: 36
-  m_fontSizeBase: 36
+  m_fontSize: 60
+  m_fontSizeBase: 60
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
@@ -437,7 +437,7 @@ MonoBehaviour:
   m_enableWordWrapping: 1
   m_wordWrappingRatios: 0.4
   m_overflowMode: 0
-  m_firstOverflowCharacterIndex: 0
+  m_firstOverflowCharacterIndex: -1
   m_linkedTextComponent: {fileID: 0}
   m_isLinkedTextComponent: 0
   m_isTextTruncated: 0
@@ -837,7 +837,7 @@ PrefabInstance:
     - target: {fileID: 5769061998616223112, guid: 93345d5f5fc4b5040b2cf9aaa2b638ca,
         type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: -151.5
+      value: -153
       objectReference: {fileID: 0}
     - target: {fileID: 5769061998616223112, guid: 93345d5f5fc4b5040b2cf9aaa2b638ca,
         type: 3}
@@ -847,7 +847,7 @@ PrefabInstance:
     - target: {fileID: 5769061998616223112, guid: 93345d5f5fc4b5040b2cf9aaa2b638ca,
         type: 3}
       propertyPath: m_SizeDelta.y
-      value: 97
+      value: 94
       objectReference: {fileID: 0}
     - target: {fileID: 5769061998616223112, guid: 93345d5f5fc4b5040b2cf9aaa2b638ca,
         type: 3}
@@ -1002,7 +1002,7 @@ PrefabInstance:
     - target: {fileID: 5769061998616223112, guid: 93345d5f5fc4b5040b2cf9aaa2b638ca,
         type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: -48.5
+      value: -47
       objectReference: {fileID: 0}
     - target: {fileID: 5769061998616223112, guid: 93345d5f5fc4b5040b2cf9aaa2b638ca,
         type: 3}
@@ -1012,7 +1012,7 @@ PrefabInstance:
     - target: {fileID: 5769061998616223112, guid: 93345d5f5fc4b5040b2cf9aaa2b638ca,
         type: 3}
       propertyPath: m_SizeDelta.y
-      value: 97
+      value: 94
       objectReference: {fileID: 0}
     - target: {fileID: 5769061998616223112, guid: 93345d5f5fc4b5040b2cf9aaa2b638ca,
         type: 3}

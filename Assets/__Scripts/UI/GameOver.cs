@@ -29,6 +29,7 @@ public class GameOver : MonoBehaviour
     {
         if (gc)
         {
+            // Don't accept empty input
             if (inputField.text.Length == 0)
                 return;
 
@@ -40,6 +41,7 @@ public class GameOver : MonoBehaviour
             });
         }
 
+        // Close the popup
         ToggleSaveScoreUI(false);
     }
 }

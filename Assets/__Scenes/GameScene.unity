@@ -1146,11 +1146,6 @@ PrefabInstance:
       propertyPath: waveIndicator
       value: 
       objectReference: {fileID: 1516716683}
-    - target: {fileID: 7680037249322081369, guid: 27183e16ea321cd4dbfd62e226df3a96,
-        type: 3}
-      propertyPath: pointsForExtraLife
-      value: 100
-      objectReference: {fileID: 0}
     - target: {fileID: 7680037249322081370, guid: 27183e16ea321cd4dbfd62e226df3a96,
         type: 3}
       propertyPath: m_Name

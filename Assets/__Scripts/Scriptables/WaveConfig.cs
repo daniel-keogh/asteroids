@@ -39,6 +39,7 @@ public class WaveConfig : ScriptableObject
 
         for (int i = 0; i < numAsteroids; i++)
         {
+            // Pick a random asteroid prefab
             int rIndex = Random.Range(0, asteroids.Count);
             enemyBurst.Add(asteroids[rIndex].GetComponent<Enemy>());
         }

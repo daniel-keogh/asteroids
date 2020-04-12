@@ -44,7 +44,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   startingLives: 3
-  pointsForExtraLife: 2000
+  pointsForExtraLife: 1600
   waveConfigs:
   - {fileID: 11400000, guid: f95c6aa56cba4404296d1a51f6bbec9c, type: 2}
   - {fileID: 11400000, guid: a5d9dcd17e1b9d54e8b0f01a5c0cf76c, type: 2}

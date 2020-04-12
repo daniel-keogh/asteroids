@@ -7,7 +7,7 @@ using UnityEngine;
 public class PlayerMovement : MonoBehaviour
 {
     [Header("Speed")]
-    [SerializeField] private float forwardSpeed = 9.0f;
+    [SerializeField] private float forwardSpeed = 10.0f;
     [SerializeField] private float rotationSpeed = 5.0f;
 
     private Rigidbody2D rb;

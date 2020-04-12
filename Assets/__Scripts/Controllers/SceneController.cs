@@ -36,6 +36,12 @@ public class SceneController : MonoBehaviour
         StartCoroutine(SceneTransition(SceneNames.LEADERBOARD_SCREEN));
     }
 
+    public void GoToTutorial()
+    {
+        StartCoroutine(SceneTransition(SceneNames.TUTORIAL));
+    }
+
+
     public void GameOver()
     {
         StartCoroutine(SceneTransition(SceneNames.GAME_OVER));

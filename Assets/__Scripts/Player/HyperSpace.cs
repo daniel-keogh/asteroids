@@ -62,7 +62,7 @@ public class HyperSpace : MonoBehaviour
 
     private void OnDisable()
     {
-        // Reset everything in case the player dies while hyperspacing
+        // Reset everything in case the player died while hyperspacing
         isCooledDown = true;
 
         GetComponent<PlayerMovement>().enabled = true;

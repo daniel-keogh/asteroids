@@ -29,7 +29,7 @@ public class GameController : MonoBehaviour
 
     [Header("Player Lives")]
     [SerializeField] private int startingLives = 3;
-    [SerializeField] private int pointsForExtraLife = 2000;
+    [SerializeField] private int pointsForExtraLife = 1600;
 
     [Header("Waves")]
     [SerializeField] private List<WaveConfig> waveConfigs;

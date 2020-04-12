@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+[RequireComponent(typeof(AsteroidMovement))]
 [RequireComponent(typeof(PolygonCollider2D))]
 [RequireComponent(typeof(Rigidbody2D))]
 [RequireComponent(typeof(Animator))]
@@ -53,7 +54,7 @@ public class Asteroid : MonoBehaviour
                 GetComponent<Enemy>().ScoreValue = 0;
             }
 
-            // Play sound
+            // Play a sound
             SoundController.FindSoundController()?.PlayOneShot(explosionSound);
 
             // Show an explosion
@@ -91,7 +92,7 @@ public class Asteroid : MonoBehaviour
             float rotation = Random.Range(0f, 360f);
             transform.rotation = Quaternion.Euler(new Vector3(0, 0, rotation));
 
-            // Stop asteroids from sticking together
+            // Try to stop asteroids from sticking together
             a.transform.Translate(a.transform.up);
         }
     }

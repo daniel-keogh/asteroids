@@ -14,6 +14,6 @@ public class LifeIcon : MonoBehaviour
 
     public void SetAnimatorEnabled(bool status)
     {
-        GetComponent<Animator>().enabled = status;
+        animator.enabled = status;
     }
 }

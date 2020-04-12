@@ -16,7 +16,7 @@ public class WeaponsController : MonoBehaviour
 
     private GameObject laserParent;
     private Coroutine firingCoroutine;
-    private AudioSource audioSource;
+    private SoundController sc;
 
     public delegate void LaserFired(WeaponsController weapons);
     public static LaserFired LaserFiredEvent;
@@ -30,7 +30,7 @@ public class WeaponsController : MonoBehaviour
             laserParent = new GameObject(Laser.LASER_PARENT);
         }
 
-        audioSource = GetComponent<AudioSource>();
+        sc = SoundController.FindSoundController();
     }
 
     void Update()
@@ -65,7 +65,8 @@ public class WeaponsController : MonoBehaviour
             rb.velocity = transform.up * laserSpeed;
 
             // Play a sound
-            audioSource.PlayOneShot(shootClip, shootVolume);
+            sc?.PlayOneShot(shootClip, shootVolume);
+
             PublishLaserFiredEvent();
 
             // Sleep for a short time

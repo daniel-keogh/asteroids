@@ -1,18 +1,30 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 using Data;
 
 public class OptionsMenu : MonoBehaviour
 {
-    public void ToggleMusic()
+    private Toggle musicToggle;
+    private MusicPlayer musicPlayer;
+
+    void Start()
     {
-        MusicPlayer.FindMusicPlayer()?.ToggleMusic();
+        musicToggle = GetComponentInChildren<Toggle>();
+
+        musicPlayer = MusicPlayer.FindMusicPlayer();
+
+        // Set the toggle's default value
+        if (musicPlayer)
+        {
+            musicToggle.SetIsOnWithoutNotify(!musicPlayer.IsMuted());
+        }
     }
 
-    public void ToggleSoundEffects()
+    public void ToggleMusic()
     {
-        SoundController.FindSoundController()?.ToggleSounds();
+        musicPlayer?.ToggleMusic();
     }
 
     public void ClearLeaderBoard()

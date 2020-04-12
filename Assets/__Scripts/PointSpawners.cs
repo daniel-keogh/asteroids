@@ -66,6 +66,7 @@ public class PointSpawners : MonoBehaviour
     {
         float xDirection, yDirection;
 
+        // Determine movement direction based on the position of the SpawnPoint
         switch (sp.tag)
         {
             case SpawnPoint.TOP:

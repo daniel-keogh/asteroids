@@ -14,9 +14,9 @@ public class GameOver : MonoBehaviour
 
     private void Start()
     {
-        ToggleSaveScoreUI(false);
-
         gc = FindObjectOfType<GameController>();
+
+        ToggleSaveScoreUI(false);
     }
 
     public void ToggleSaveScoreUI(bool show)
@@ -41,7 +41,7 @@ public class GameOver : MonoBehaviour
             });
         }
 
-        // Close the popup
+        // Hide the input box
         ToggleSaveScoreUI(false);
     }
 }

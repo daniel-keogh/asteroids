@@ -24,8 +24,6 @@ public class UFO : MonoBehaviour
             {
                 Destroy(laser.gameObject);
                 Die();
-
-                PublishUFODestroyedEvent();
             }
         }
     }
@@ -40,6 +38,8 @@ public class UFO : MonoBehaviour
             Destroy(asteroid.gameObject);
         }
 
+        // Don't give the player any points
+        GetComponent<Enemy>().ScoreValue = 0;
         Die();
     }
 
@@ -60,6 +60,7 @@ public class UFO : MonoBehaviour
         }
 
         Destroy(gameObject);
+        PublishUFODestroyedEvent();
     }
 
     private void PublishUFODestroyedEvent()

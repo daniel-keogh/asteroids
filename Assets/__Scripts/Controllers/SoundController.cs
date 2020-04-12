@@ -20,9 +20,12 @@ public class SoundController : MonoBehaviour
         }
     }
 
-    public void ToggleSounds()
+    public void PlayOneShot(AudioClip clip, float volume)
     {
-        audioSource.mute = !audioSource.mute;
+        if (clip)
+        {
+            audioSource.PlayOneShot(clip, volume);
+        }
     }
 
     public static SoundController FindSoundController()

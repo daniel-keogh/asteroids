@@ -17,7 +17,7 @@ public class UFOWeapons : MonoBehaviour
 
     private GameObject laserParent;
     private Coroutine firingCoroutine;
-    private AudioSource audioSource;
+    private SoundController sc;
     private bool isShooting = false;
 
     void Start()
@@ -29,7 +29,7 @@ public class UFOWeapons : MonoBehaviour
             laserParent = new GameObject(Laser.LASER_PARENT);
         }
 
-        audioSource = GetComponent<AudioSource>();
+        sc = SoundController.FindSoundController();
     }
 
     public void StartShooting()
@@ -75,7 +75,7 @@ public class UFOWeapons : MonoBehaviour
             // Shoot in whatever direction the UFO is facing
             rb.velocity = transform.up * laserSpeed;
 
-            audioSource.PlayOneShot(shootClip, shootVolume);
+            sc.PlayOneShot(shootClip, shootVolume);
 
             yield return new WaitForSeconds(fireRate);
         }

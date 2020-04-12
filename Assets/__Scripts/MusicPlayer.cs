@@ -7,6 +7,8 @@ public class MusicPlayer : MonoBehaviour
 {
     private AudioSource audioSource;
 
+    private const string MUTE_PREF = "MUTE_MUSICPLAYER";
+
     void Awake()
     {
         SetupSingleton();
@@ -15,11 +17,10 @@ public class MusicPlayer : MonoBehaviour
     void Start()
     {
         audioSource = GetComponent<AudioSource>();
-    }
 
-    public void ToggleMusic()
-    {
-        audioSource.mute = !audioSource.mute;
+        // Set whether MusicPlayer should be muted or not by reading PlayerPrefs
+        int flag = PlayerPrefs.GetInt(MUTE_PREF, 0);
+        audioSource.mute = flag == 1;
     }
 
     private void SetupSingleton()
@@ -32,6 +33,18 @@ public class MusicPlayer : MonoBehaviour
         {
             DontDestroyOnLoad(gameObject); // Persist across scenes
         }
+    }
+
+    public void ToggleMusic()
+    {
+        // Save player's preference
+        audioSource.mute = !audioSource.mute;
+        PlayerPrefs.SetInt(MUTE_PREF, audioSource.mute ? 1 : 0);
+    }
+
+    public bool IsMuted()
+    {
+        return audioSource.mute;
     }
 
     public static MusicPlayer FindMusicPlayer()

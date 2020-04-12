@@ -14,7 +14,7 @@ public class SpawnPoint : MonoBehaviour
     [SerializeField] private float borderPadding = 0.01f;
     [SerializeField] private float gizmoRadius = 0.25f;
 
-    void Start()
+    void Update()
     {
         SnapToEdge();
     }

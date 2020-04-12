@@ -43,9 +43,6 @@ public class SceneController : MonoBehaviour
 
     public void QuitOnClick()
     {
-        // Debugging:
-        // UnityEditor.EditorApplication.isPlaying = false;
-
         Application.Quit();
     }
 

@@ -67,6 +67,16 @@ public class Asteroid : MonoBehaviour
         }
     }
 
+    private void OnCollisionEnter2D(Collision2D other)
+    {
+        if (other.collider.GetComponent<Asteroid>())
+            return; // ignore collision
+
+        // Don't award any points
+        GetComponent<Enemy>().ScoreValue = 0;
+        PublishAsteroidDestroyedEvent();
+    }
+
     private void ToggleIsShot(int flag)
     {
         // For animating the Asteroid when shot

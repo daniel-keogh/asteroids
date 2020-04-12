@@ -12,8 +12,8 @@ public class LifeIcon : MonoBehaviour
         animator = GetComponent<Animator>();
     }
 
-    public void SetAnimatorEnabled(bool status)
+    public void SetIsFinalLife(bool status)
     {
-        animator.enabled = status;
+        animator.SetBool("IsFinalLife", status);
     }
 }

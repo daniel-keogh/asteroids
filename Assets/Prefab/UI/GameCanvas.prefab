@@ -76,6 +76,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   lifeIconPrefab: {fileID: 4377149750914792737, guid: bfa1e21ae9ea25643872311efd2dcc66,
     type: 3}
+  extraLifeGivenClip: {fileID: 8300000, guid: 3d1280fd6cfac3a43b104d4421357615, type: 3}
 --- !u!1 &258723197
 GameObject:
   m_ObjectHideFlags: 0

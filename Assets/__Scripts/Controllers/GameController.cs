@@ -29,6 +29,7 @@ public class GameController : MonoBehaviour
 
     [Header("Player Lives")]
     [SerializeField] private int startingLives = 3;
+    [SerializeField] private int pointsForExtraLife = 2000;
 
     [Header("Waves")]
     [SerializeField] private List<WaveConfig> waveConfigs;
@@ -137,6 +138,14 @@ public class GameController : MonoBehaviour
     {
         // Add the score value to the player score
         playerScore += enemy.ScoreValue;
+
+        if (playerScore >= pointsForExtraLife)
+        {
+            // Give player an extra life
+            FindObjectOfType<LifeCounter>()?.AwardExtraLife();
+            remainingLives++;
+            pointsForExtraLife += playerScore;
+        }
 
         // Determine if its time for another wave
         int currentWaveSize = FindObjectsOfType<Enemy>().Length - 1;

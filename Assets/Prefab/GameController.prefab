@@ -44,10 +44,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   startingLives: 3
+  pointsForExtraLife: 2000
   waveConfigs:
   - {fileID: 11400000, guid: f95c6aa56cba4404296d1a51f6bbec9c, type: 2}
   - {fileID: 11400000, guid: a5d9dcd17e1b9d54e8b0f01a5c0cf76c, type: 2}
   - {fileID: 11400000, guid: 2ea14f18c171f7547a18c6747fb83ba7, type: 2}
   - {fileID: 11400000, guid: f4a8a22bf9c946e49870dee4096aa038, type: 2}
   waveIndicator: {fileID: 0}
-  maxLeaderBoardSize: 12

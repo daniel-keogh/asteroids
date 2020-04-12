@@ -5,6 +5,7 @@ using UnityEngine;
 public class LifeCounter : MonoBehaviour
 {
     [SerializeField] private LifeIcon lifeIconPrefab;
+    [SerializeField] private AudioClip extraLifeGivenClip;
 
     private GameController gc;
     private Stack<LifeIcon> lifeIcons;
@@ -21,7 +22,7 @@ public class LifeCounter : MonoBehaviour
 
         if (lifeIcons.Count == 1)
         {
-            ShowFinalLifeAnimation();
+            ShowFinalLifeAnimation(true);
         }
     }
 
@@ -46,14 +47,14 @@ public class LifeCounter : MonoBehaviour
         if (lifeIcons.Count == 1)
         {
             // Indicate this is the Player's final life
-            ShowFinalLifeAnimation();
+            ShowFinalLifeAnimation(true);
         }
     }
 
-    private void ShowFinalLifeAnimation()
+    private void ShowFinalLifeAnimation(bool show)
     {
-        // Animate the icon on the top of the stack
-        lifeIcons.Peek().SetAnimatorEnabled(true);
+        // Enable/disable animation for the icon on the top of the stack
+        lifeIcons.Peek().SetIsFinalLife(show);
     }
 
     private void SetupLifeIcons()
@@ -68,5 +69,20 @@ public class LifeCounter : MonoBehaviour
                 lifeIcons.Push(Instantiate(lifeIconPrefab, transform));
             }
         }
+    }
+
+    public void AwardExtraLife()
+    {
+        // Disable animation if necessary
+        if (lifeIcons.Count == 1)
+        {
+            ShowFinalLifeAnimation(false);
+        }
+
+        // Play a sound
+        SoundController.FindSoundController()?.PlayOneShot(extraLifeGivenClip);
+
+        // Add an icon to the stack
+        lifeIcons.Push(Instantiate(lifeIconPrefab, transform));
     }
 }

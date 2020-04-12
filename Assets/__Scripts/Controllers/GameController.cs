@@ -91,7 +91,7 @@ public class GameController : MonoBehaviour
         {
             // Show some feedback to the player
             waveIndicator.gameObject.SetActive(true);
-            waveIndicator.text = $"Wave {waveNumber++}";
+            waveIndicator.text = $"Level {waveNumber++}";
 
             yield return new WaitForSeconds(currentWave.GetWaveDelay());
 
@@ -116,7 +116,7 @@ public class GameController : MonoBehaviour
         }
         else
         {
-            // Return the last WaveConfig
+            // Keep returning the last WaveConfig
             return waveConfigs[waveConfigs.Count - 1];
         }
 
@@ -138,6 +138,7 @@ public class GameController : MonoBehaviour
         // Add the score value to the player score
         playerScore += enemy.ScoreValue;
 
+        // Determine if its time for another wave
         int currentWaveSize = FindObjectsOfType<Enemy>().Length - 1;
 
         if (currentWaveSize == 0 && remainingEnemies == 0)

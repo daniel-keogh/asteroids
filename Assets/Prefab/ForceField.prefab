@@ -151,3 +151,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1429a1bdebc7eb443bc29f00491c90a6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  hitByLaserClip: {fileID: 8300000, guid: deeb222237837854b8989c2a0955d5a5, type: 3}

@@ -37,11 +37,11 @@ public class ForceField : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D other)
     {
-        // Destroy any Enemy lasers that hit the ForceField
         var laser = other.GetComponent<Laser>();
 
         if (laser)
         {
+            // Destroy any Enemy lasers that hit the ForceField
             if (laser.tag == Laser.ENEMY_LASER)
             {
                 sc?.PlayOneShot(hitByLaserClip);

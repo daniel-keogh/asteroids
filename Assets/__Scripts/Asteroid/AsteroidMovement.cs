@@ -5,8 +5,9 @@ using UnityEngine;
 [RequireComponent(typeof(Rigidbody2D))]
 public class AsteroidMovement : MonoBehaviour
 {
-    [SerializeField] private float maxRotation = 50f;
-    [SerializeField] private float speed = 150f;
+    [SerializeField] private float rotation = 100f;
+    [SerializeField] private float minSpeed = 150f;
+    [SerializeField] private float maxSpeed = 300f;
 
     private Rigidbody2D rb;
 
@@ -17,14 +18,12 @@ public class AsteroidMovement : MonoBehaviour
 
     void Start()
     {
-        rb.AddTorque(Random.Range(-maxRotation, maxRotation));
-        // Add initial movement and rotation
-        // var force = new Vector2(0, speed);
-        // rb.AddForce(force);
+        // Add inital rotation
+        rb.AddTorque(Random.Range(-rotation, rotation));
     }
 
     public void Move(Vector2 direction)
     {
-        rb.AddForce(direction * speed);
+        rb.AddRelativeForce(direction * Random.Range(minSpeed, maxSpeed));
     }
 }

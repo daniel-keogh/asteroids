@@ -43,9 +43,7 @@ public class Asteroid : MonoBehaviour
                 }
                 else
                 {
-                    // Break in two
-                    Instantiate(breaksInto, transform.position, transform.rotation);
-                    Instantiate(breaksInto, transform.position, transform.rotation);
+                    BreakInTwo();
                 }
             }
 
@@ -70,11 +68,32 @@ public class Asteroid : MonoBehaviour
     private void OnCollisionEnter2D(Collision2D other)
     {
         if (other.collider.GetComponent<Asteroid>())
-            return; // ignore collision
+            return; // ignore collisions with other Asteroids
 
-        // Don't award any points
+        // Don't award any points for collisions
         GetComponent<Enemy>().ScoreValue = 0;
         PublishAsteroidDestroyedEvent();
+    }
+
+    private void BreakInTwo()
+    {
+        for (int i = 0; i < 2; i++)
+        {
+            var a = Instantiate(breaksInto, transform.position, transform.rotation);
+
+            var movement = a.GetComponent<AsteroidMovement>();
+            movement.Move(new Vector2(
+                Random.Range(-1, 1),
+                Random.Range(-1, 1)
+            ));
+
+            // Set a rotation
+            float rotation = Random.Range(0f, 360f);
+            transform.rotation = Quaternion.Euler(new Vector3(0, 0, rotation));
+
+            // Stop asteroids from sticking together
+            a.transform.Translate(a.transform.up);
+        }
     }
 
     private void ToggleIsShot(int flag)

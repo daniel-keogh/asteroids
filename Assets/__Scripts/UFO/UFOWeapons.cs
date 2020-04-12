@@ -2,7 +2,6 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-[RequireComponent(typeof(AudioSource))]
 public class UFOWeapons : MonoBehaviour
 {
     [Header("Shooting")]

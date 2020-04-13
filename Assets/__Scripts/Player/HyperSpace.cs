@@ -68,6 +68,8 @@ public class HyperSpace : MonoBehaviour
         GetComponent<PlayerMovement>().enabled = true;
         GetComponent<WeaponsController>().enabled = true;
         GetComponent<SpriteRenderer>().enabled = true;
+        GetComponent<PolygonCollider2D>().enabled = true;
+        GetComponentInChildren<ForceField>().gameObject.SetActive(true);
 
         transform.localScale = startScale;
     }

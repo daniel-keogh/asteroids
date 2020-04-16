@@ -12,6 +12,7 @@ public class Asteroid : MonoBehaviour
     public const string TAG_NAME = "Asteroid";
 
     [Header("Destruction")]
+    [Tooltip("Two of these get Instantiated when this Asteroid is destroyed.")]
     [SerializeField] private Asteroid breaksInto;
     [SerializeField] private int numHitsBeforeDesroy;
     [SerializeField] private GameObject destroyEffect;
@@ -92,7 +93,7 @@ public class Asteroid : MonoBehaviour
             float rotation = Random.Range(0f, 360f);
             transform.rotation = Quaternion.Euler(new Vector3(0, 0, rotation));
 
-            // Try to stop asteroids from sticking together
+            // Shoddy attempt at stopping asteroids from sticking on top of each other
             a.transform.Translate(a.transform.up);
         }
     }

@@ -15,7 +15,7 @@ public class HyperSpace : MonoBehaviour
 
     [Header("Duration")]
     [SerializeField] private float duration = 2.0f;
-    [Tooltip("Sets the minimum time between hyperspace jumps.")]
+    [Tooltip("Sets the minimum time between one jump and the next.")]
     [SerializeField] private float cooldownDuration = 3.0f;
 
     [Header("Audio")]
@@ -71,6 +71,7 @@ public class HyperSpace : MonoBehaviour
         GetComponent<PolygonCollider2D>().enabled = true;
         GetComponentInChildren<ForceField>().gameObject.SetActive(true);
 
+        // Make sure the player is returned back to their original size
         transform.localScale = startScale;
     }
 

@@ -51,14 +51,14 @@ public class GameController : MonoBehaviour
     {
         remainingLives = startingLives;
 
-        // Only start the wave coroutine if in the GameScene
+        // Only start the wave Coroutine if in the GameScene
         if (SceneManager.GetActiveScene().name == SceneNames.GAME_SCENE)
         {
             nextWaveCoroutine = StartCoroutine(SetupNextWave(waveConfigs[currentWaveIndex]));
         }
         else
         {
-            // if not in GameScene, stop the wave coroutine
+            // If no longer in GameScene, make sure to stop the wave Coroutine
             if (nextWaveCoroutine != null)
             {
                 StopCoroutine(nextWaveCoroutine);
@@ -113,6 +113,7 @@ public class GameController : MonoBehaviour
     {
         if (currentWaveIndex < waveConfigs.Count - 1)
         {
+            // Return the next WaveConfig
             currentWaveIndex++;
         }
         else

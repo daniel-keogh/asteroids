@@ -9,6 +9,10 @@ public class LeaderBoardItem : MonoBehaviour
 {
     public void SetPlayerData(PlayerData player, int rank)
     {
+        // Format the Leaderboard item so it looks like:
+        //
+        // NAME                                    SCORE
+        //
         // Reference: "textmeshpro right and left align on same line"
         // https://forum.unity.com/threads/textmeshpro-right-and-left-align-on-same-line.485157/
         GetComponentInChildren<TextMeshProUGUI>().text = (

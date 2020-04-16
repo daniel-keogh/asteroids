@@ -38,7 +38,7 @@ public class UFO : MonoBehaviour
             Destroy(asteroid.gameObject);
         }
 
-        // Don't give the player any points
+        // Don't give the player any points for collisions
         GetComponent<Enemy>().ScoreValue = 0;
         Die();
     }

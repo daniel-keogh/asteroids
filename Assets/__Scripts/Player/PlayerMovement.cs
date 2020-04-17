@@ -7,8 +7,8 @@ using UnityEngine;
 public class PlayerMovement : MonoBehaviour
 {
     [Header("Speed")]
-    [SerializeField] private float forwardSpeed = 10.0f;
-    [SerializeField] private float rotationSpeed = 5.0f;
+    [SerializeField] private float forwardSpeed = 600.0f;
+    [SerializeField] private float rotationSpeed = 300.0f;
 
     private Rigidbody2D rb;
     private float forward, rotation;
@@ -39,11 +39,11 @@ public class PlayerMovement : MonoBehaviour
 
     void FixedUpdate()
     {
-        forward = forward * forwardSpeed;
-        var force = new Vector2(0, forward);
-        rb.AddRelativeForce(force); // Go in whatever direction the player is facing
+        forward = forward * forwardSpeed * Time.fixedDeltaTime;
+        // Go in whatever direction the player is facing
+        rb.AddRelativeForce(new Vector2(0, forward));
 
-        rotation = rotation * rotationSpeed;
+        rotation = rotation * rotationSpeed * Time.fixedDeltaTime;
         rb.AddTorque(-rotation);
     }
 

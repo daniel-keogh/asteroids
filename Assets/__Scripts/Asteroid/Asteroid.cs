@@ -21,6 +21,7 @@ public class Asteroid : MonoBehaviour
 
     private int numHits;
     private Animator animator;
+    private GameObject enemyParent;
 
     void Start()
     {
@@ -79,9 +80,14 @@ public class Asteroid : MonoBehaviour
 
     private void BreakInTwo()
     {
+        if (!enemyParent)
+        {
+            enemyParent = GameObject.Find(PointSpawners.ENEMY_PARENT);
+        }
+
         for (int i = 0; i < 2; i++)
         {
-            var a = Instantiate(breaksInto, transform.position, transform.rotation);
+            var a = Instantiate(breaksInto, transform.position, transform.rotation, enemyParent.transform);
 
             var movement = a.GetComponent<AsteroidMovement>();
             movement.Move(new Vector2(
@@ -101,7 +107,7 @@ public class Asteroid : MonoBehaviour
     private void ToggleIsShot(int flag)
     {
         // For animating the Asteroid when shot
-        animator.SetBool("IsShot", flag == 1 ? true : false);
+        animator.SetBool("IsShot", flag == 1);
     }
 
     private void PublishAsteroidDestroyedEvent()

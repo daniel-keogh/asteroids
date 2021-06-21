@@ -5,28 +5,8 @@ using UnityEngine.SceneManagement;
 using TMPro;
 using Utilities;
 
-public class GameController : MonoBehaviour
+public class GameController : SingletonController
 {
-    public int StartingLives
-    {
-        get { return startingLives; }
-    }
-
-    public int RemainingLives
-    {
-        get { return remainingLives; }
-    }
-
-    public int PlayerScore
-    {
-        get { return playerScore; }
-    }
-
-    public int WaveNumber
-    {
-        get { return waveNumber; }
-    }
-
     [Header("Player Lives")]
     [SerializeField] private int startingLives = 3;
     [SerializeField] private int pointsForExtraLife = 1600;
@@ -42,10 +22,10 @@ public class GameController : MonoBehaviour
     private int remainingEnemies;
     private Coroutine nextWaveCoroutine;
 
-    void Awake()
-    {
-        SetupSingleton();
-    }
+    public int StartingLives => startingLives;
+    public int RemainingLives => remainingLives;
+    public int PlayerScore => playerScore;
+    public int WaveNumber => waveNumber;
 
     void Start()
     {
@@ -183,33 +163,8 @@ public class GameController : MonoBehaviour
         }
     }
 
-    private void SetupSingleton()
-    {
-        // Check for any other objects of the same type
-        if (FindObjectsOfType(GetType()).Length > 1)
-        {
-            Destroy(gameObject); // destroy the current object
-        }
-        else
-        {
-            DontDestroyOnLoad(gameObject); // persist across scenes
-        }
-    }
-
     public void ResetGame()
     {
         Destroy(gameObject);
-    }
-
-    public static GameController FindGameController()
-    {
-        GameController gc = FindObjectOfType<GameController>();
-
-        if (!gc)
-        {
-            Debug.LogWarning("Missing GameController");
-        }
-
-        return gc;
     }
 }

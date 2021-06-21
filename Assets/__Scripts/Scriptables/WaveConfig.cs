@@ -19,17 +19,17 @@ public class WaveConfig : ScriptableObject
     [SerializeField] private int numAsteroids = 3;
     [SerializeField] private int numUfos = 0;
 
-    public List<Asteroid> GetAsteroids() { return asteroids; }
-    public UFO GetUFO() { return ufo; }
+    public List<Asteroid> GetAsteroids() => asteroids;
+    public UFO GetUFO() => ufo;
 
-    public float GetSpawnInterval() { return spawnInterval; }
-    public float GetSpawnDelay() { return spawnDelay; }
-    public float GetWaveDelay() { return waveDelay; }
+    public float GetSpawnInterval() => spawnInterval;
+    public float GetSpawnDelay() => spawnDelay;
+    public float GetWaveDelay() => waveDelay;
 
-    public int GetNumAsteroids() { return numAsteroids; }
-    public int GetNumUFOs() { return numUfos; }
+    public int GetNumAsteroids() => numAsteroids;
+    public int GetNumUFOs() => numUfos;
 
-    public int GetNumEnemies() { return numAsteroids + numUfos; }
+    public int GetNumEnemies() => numAsteroids + numUfos;
 
     public Stack<Enemy> CreateEnemyBurst()
     {

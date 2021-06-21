@@ -17,39 +17,19 @@ public class SceneController : MonoBehaviour
     {
         // Reset the GameController singleton before re-playing.
         FindObjectOfType<GameController>()?.ResetGame();
-
-        StartCoroutine(SceneTransition(SceneNames.GAME_SCENE));
+        ChangeScene(SceneNames.GAME_SCENE);
     }
 
-    public void GoToMainMenu()
-    {
-        StartCoroutine(SceneTransition(SceneNames.MAIN_MENU));
-    }
+    public void GoToMainMenu() => ChangeScene(SceneNames.MAIN_MENU);
+    public void GoToOptionsMenu() => ChangeScene(SceneNames.OPTIONS_MENU);
+    public void GoToLeaderBoard() => ChangeScene(SceneNames.LEADERBOARD_SCREEN);
+    public void GoToTutorial() => ChangeScene(SceneNames.TUTORIAL);
+    public void GameOver() => ChangeScene(SceneNames.GAME_OVER);
+    public void QuitOnClick() => Application.Quit();
 
-    public void GoToOptionsMenu()
+    public void ChangeScene(string name)
     {
-        StartCoroutine(SceneTransition(SceneNames.OPTIONS_MENU));
-    }
-
-    public void GoToLeaderBoard()
-    {
-        StartCoroutine(SceneTransition(SceneNames.LEADERBOARD_SCREEN));
-    }
-
-    public void GoToTutorial()
-    {
-        StartCoroutine(SceneTransition(SceneNames.TUTORIAL));
-    }
-
-
-    public void GameOver()
-    {
-        StartCoroutine(SceneTransition(SceneNames.GAME_OVER));
-    }
-
-    public void QuitOnClick()
-    {
-        Application.Quit();
+        StartCoroutine(SceneTransition(name));
     }
 
     private IEnumerator SceneTransition(string sceneName)
@@ -63,17 +43,5 @@ public class SceneController : MonoBehaviour
         yield return new WaitForSeconds(transitionDelay);
 
         SceneManager.LoadSceneAsync(sceneName);
-    }
-
-    public static SceneController FindSceneController()
-    {
-        SceneController sc = FindObjectOfType<SceneController>();
-
-        if (!sc)
-        {
-            Debug.LogWarning("Missing SceneController");
-        }
-
-        return sc;
     }
 }

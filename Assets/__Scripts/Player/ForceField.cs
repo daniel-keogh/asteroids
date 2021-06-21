@@ -8,11 +8,6 @@ using UnityEngine;
 [RequireComponent(typeof(Animator))]
 public class ForceField : MonoBehaviour
 {
-    public bool IsActivated
-    {
-        get { return isActivated; }
-    }
-
     [SerializeField] private AudioClip hitByLaserClip;
 
     private SpriteRenderer spriteRenderer;
@@ -21,6 +16,8 @@ public class ForceField : MonoBehaviour
     private Animator animator;
     private bool isActivated;
     private SoundController sc;
+
+    public bool IsActivated => isActivated;
 
     private void Start()
     {

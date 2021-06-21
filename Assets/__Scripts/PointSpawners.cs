@@ -6,7 +6,7 @@ using Utilities;
 public class PointSpawners : MonoBehaviour
 {
     private const string SPAWN_ENEMY_METHOD = "SpawnOneEnemy";
-    private const string ENEMY_PARENT = "EnemyParent";
+    public const string ENEMY_PARENT = "EnemyParent";
 
     private IList<SpawnPoint> spawnPoints;
     private Stack<SpawnPoint> spawnStack;

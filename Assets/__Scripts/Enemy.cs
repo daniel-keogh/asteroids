@@ -6,14 +6,8 @@ public class Enemy : MonoBehaviour
 {
     public int ScoreValue
     {
-        get
-        {
-            return scoreValue;
-        }
-        set
-        {
-            scoreValue = Mathf.Abs(value);
-        }
+        get => scoreValue;
+        set => scoreValue = Mathf.Abs(value);
     }
 
     [Header("Scoring")]
